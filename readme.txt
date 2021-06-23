@@ -5,3 +5,4 @@ b3: git add .
 b4: git commit -m "viet gi do cũng được, viết là tạo branch [tên] cũng đc"
 b5: git push -u origin [tên branch vừa tạo]
 xong.
+Oke
