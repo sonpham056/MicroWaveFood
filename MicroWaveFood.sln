@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30804.86
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MicroWaveFood", "MicroWaveFood.csproj", "{EE13FAA3-3363-4E0E-BA64-C0389654E9BA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EE13FAA3-3363-4E0E-BA64-C0389654E9BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EE13FAA3-3363-4E0E-BA64-C0389654E9BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EE13FAA3-3363-4E0E-BA64-C0389654E9BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EE13FAA3-3363-4E0E-BA64-C0389654E9BA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {67F743C6-BA6B-4DA8-BC4A-524776D4550C}
+	EndGlobalSection
+EndGlobal
