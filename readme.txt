@@ -6,3 +6,4 @@ b4: git commit -m "viet gi do cũng được, viết là tạo branch [tên] cũ
 b5: git push -u origin [tên branch vừa tạo]
 xong.
 Oke
+Phong
