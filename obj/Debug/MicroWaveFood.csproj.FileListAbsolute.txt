@@ -106,3 +106,5 @@ C:\Users\ASUS\source\repos\WebDungCuNauAn\MicroWaveFood\obj\Debug\MicroWaveFood.
 C:\Users\ASUS\source\repos\WebDungCuNauAn\MicroWaveFood\obj\Debug\MicroWaveFood.csproj.CopyComplete
 C:\Users\ASUS\source\repos\WebDungCuNauAn\MicroWaveFood\obj\Debug\MicroWaveFood.dll
 C:\Users\ASUS\source\repos\WebDungCuNauAn\MicroWaveFood\obj\Debug\MicroWaveFood.pdb
+C:\Users\ASUS\source\repos\WebDungCuNauAn\MicroWaveFood\obj\Debug\MicroWaveFood.Migrations.init.resources
+C:\Users\ASUS\source\repos\WebDungCuNauAn\MicroWaveFood\obj\Debug\MicroWaveFood.csproj.GenerateResource.cache
