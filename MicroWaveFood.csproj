@@ -189,6 +189,10 @@
     <Compile Include="Migrations\202106290930400_addFullDB.Designer.cs">
       <DependentUpon>202106290930400_addFullDB.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202106291357042_addGroupTypeToProductTypeAndOriginToProduct.cs" />
+    <Compile Include="Migrations\202106291357042_addGroupTypeToProductTypeAndOriginToProduct.Designer.cs">
+      <DependentUpon>202106291357042_addGroupTypeToProductTypeAndOriginToProduct.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
@@ -398,6 +402,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202106290930400_addFullDB.resx">
       <DependentUpon>202106290930400_addFullDB.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202106291357042_addGroupTypeToProductTypeAndOriginToProduct.resx">
+      <DependentUpon>202106291357042_addGroupTypeToProductTypeAndOriginToProduct.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
