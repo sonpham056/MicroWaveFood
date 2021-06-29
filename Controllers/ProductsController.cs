@@ -48,10 +48,12 @@ namespace MicroWaveFood.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ProductId,ProductTypeId,ProductName,Price,Unit,Date,Image,Quantity,status")] Product product)
+        public ActionResult Create([Bind(Include = "ProductId,ProductTypeId,ProductName,ProductDescribe,Price,Unit,Date,Image,Quantity,status,Origin")] Product product)
         {
             if (ModelState.IsValid)
             {
+                product.status = true;
+                product.Image = "/Images/" + product.Image;
                 db.Products.Add(product);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -82,7 +84,7 @@ namespace MicroWaveFood.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ProductId,ProductTypeId,ProductName,Price,Unit,Date,Image,Quantity,status")] Product product)
+        public ActionResult Edit([Bind(Include = "ProductId,ProductTypeId,ProductName,ProductDescribe,Price,Unit,Date,Image,Quantity,status,Origin")] Product product)
         {
             if (ModelState.IsValid)
             {

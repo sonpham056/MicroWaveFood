@@ -12,6 +12,7 @@ namespace MicroWaveFood.Models
         [Key]
         [Column(Order = 1)]
         public int OrderId { get; set; }
+        [Required]
         public DateTime OrderDate { get; set; }
         public bool Status { get; set; }
         public string UserId { get; set; }
