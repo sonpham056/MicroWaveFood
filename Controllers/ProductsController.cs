@@ -10,6 +10,7 @@ using MicroWaveFood.Models;
 
 namespace MicroWaveFood.Controllers
 {
+    [Authorize(Roles = "admin")]
     public class ProductsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
