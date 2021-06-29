@@ -25,7 +25,8 @@ namespace MicroWaveFood
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/Site.css",
-                      "~/Content/Nav-bar.css"));
+                      "~/Content/Nav-bar.css",
+                      "~/Content/Login.css"));
         }
     }
 }
