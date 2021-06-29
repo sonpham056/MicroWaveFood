@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
-using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -11,109 +10,112 @@ using MicroWaveFood.Models;
 
 namespace MicroWaveFood.Controllers
 {
-    public class ProductTypesController : Controller
+    public class ProductsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: ProductTypes
+        // GET: Products
         public ActionResult Index()
         {
-            return View(db.productTypes.ToList());
+            var products = db.Products.Include(p => p.ProductType);
+            return View(products.ToList());
         }
 
-        // GET: ProductTypes/Details/5
+        // GET: Products/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ProductType productType = db.productTypes.Find(id);
-            if (productType == null)
+            Product product = db.Products.Find(id);
+            if (product == null)
             {
                 return HttpNotFound();
             }
-            return View(productType);
+            return View(product);
         }
 
-        // GET: ProductTypes/Create
+        // GET: Products/Create
         public ActionResult Create()
         {
+            ViewBag.ProductTypeId = new SelectList(db.productTypes, "ProductTypeId", "Name");
             return View();
         }
 
-        // POST: ProductTypes/Create
+        // POST: Products/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ProductTypeId,Name,Origin,Image")] ProductType productType)
+        public ActionResult Create([Bind(Include = "ProductId,ProductTypeId,ProductName,Price,Unit,Date,Image,Quantity,status")] Product product)
         {
             if (ModelState.IsValid)
             {
-                productType.Status = true;
-
-                db.productTypes.Add(productType);
+                db.Products.Add(product);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(productType);
+            ViewBag.ProductTypeId = new SelectList(db.productTypes, "ProductTypeId", "Name", product.ProductTypeId);
+            return View(product);
         }
 
-        // GET: ProductTypes/Edit/5
+        // GET: Products/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ProductType productType = db.productTypes.Find(id);
-            if (productType == null)
+            Product product = db.Products.Find(id);
+            if (product == null)
             {
                 return HttpNotFound();
             }
-            return View(productType);
+            ViewBag.ProductTypeId = new SelectList(db.productTypes, "ProductTypeId", "Name", product.ProductTypeId);
+            return View(product);
         }
 
-        // POST: ProductTypes/Edit/5
+        // POST: Products/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ProductTypeId,Name,Origin,Image,Status")] ProductType productType)
+        public ActionResult Edit([Bind(Include = "ProductId,ProductTypeId,ProductName,Price,Unit,Date,Image,Quantity,status")] Product product)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(productType).State = EntityState.Modified;
+                db.Entry(product).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(productType);
+            ViewBag.ProductTypeId = new SelectList(db.productTypes, "ProductTypeId", "Name", product.ProductTypeId);
+            return View(product);
         }
 
-        // GET: ProductTypes/Delete/5
+        // GET: Products/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ProductType productType = db.productTypes.Find(id);
-            if (productType == null)
+            Product product = db.Products.Find(id);
+            if (product == null)
             {
                 return HttpNotFound();
             }
-            return View(productType);
+            return View(product);
         }
 
-        // POST: ProductTypes/Delete/5
+        // POST: Products/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            ProductType productType = db.productTypes.Find(id);
-            db.productTypes.Remove(productType);
+            Product product = db.Products.Find(id);
+            db.Products.Remove(product);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
