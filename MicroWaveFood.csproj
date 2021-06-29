@@ -184,11 +184,20 @@
     <Compile Include="Migrations\202106290322307_addNameToUser.Designer.cs">
       <DependentUpon>202106290322307_addNameToUser.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202106290930400_addFullDB.cs" />
+    <Compile Include="Migrations\202106290930400_addFullDB.Designer.cs">
+      <DependentUpon>202106290930400_addFullDB.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
+    <Compile Include="Models\Bill.cs" />
+    <Compile Include="Models\Comment.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Order.cs" />
+    <Compile Include="Models\Product.cs" />
+    <Compile Include="Models\ProductType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\CreateRoleViewModel.cs" />
@@ -380,6 +389,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202106290322307_addNameToUser.resx">
       <DependentUpon>202106290322307_addNameToUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202106290930400_addFullDB.resx">
+      <DependentUpon>202106290930400_addFullDB.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
