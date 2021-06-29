@@ -173,6 +173,7 @@
     <Compile Include="Controllers\AdministrationController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Controllers\ProductTypesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -192,6 +193,18 @@
     <Compile Include="Migrations\202106291357042_addGroupTypeToProductTypeAndOriginToProduct.cs" />
     <Compile Include="Migrations\202106291357042_addGroupTypeToProductTypeAndOriginToProduct.Designer.cs">
       <DependentUpon>202106291357042_addGroupTypeToProductTypeAndOriginToProduct.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202106291444382_addRequiredToFields.cs" />
+    <Compile Include="Migrations\202106291444382_addRequiredToFields.Designer.cs">
+      <DependentUpon>202106291444382_addRequiredToFields.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202106291457011_addProductDescribeToProduct.cs" />
+    <Compile Include="Migrations\202106291457011_addProductDescribeToProduct.Designer.cs">
+      <DependentUpon>202106291457011_addProductDescribeToProduct.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202106291510554_removedUserNameRequired.cs" />
+    <Compile Include="Migrations\202106291510554_removedUserNameRequired.Designer.cs">
+      <DependentUpon>202106291510554_removedUserNameRequired.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -220,6 +233,8 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Images\botmi_so11.jpg" />
+    <Content Include="Images\whipping-archor-1L.jpg" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -378,6 +393,11 @@
     <Content Include="Views\ProductTypes\Details.cshtml" />
     <Content Include="Views\ProductTypes\Edit.cshtml" />
     <Content Include="Views\ProductTypes\Index.cshtml" />
+    <Content Include="Views\Products\Create.cshtml" />
+    <Content Include="Views\Products\Delete.cshtml" />
+    <Content Include="Views\Products\Details.cshtml" />
+    <Content Include="Views\Products\Edit.cshtml" />
+    <Content Include="Views\Products\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -405,6 +425,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202106291357042_addGroupTypeToProductTypeAndOriginToProduct.resx">
       <DependentUpon>202106291357042_addGroupTypeToProductTypeAndOriginToProduct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202106291444382_addRequiredToFields.resx">
+      <DependentUpon>202106291444382_addRequiredToFields.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202106291457011_addProductDescribeToProduct.resx">
+      <DependentUpon>202106291457011_addProductDescribeToProduct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202106291510554_removedUserNameRequired.resx">
+      <DependentUpon>202106291510554_removedUserNameRequired.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

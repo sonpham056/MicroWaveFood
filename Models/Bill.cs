@@ -15,6 +15,7 @@ namespace MicroWaveFood.Models
         public int ProductId { get; set; }
         public int OrderId { get; set; }
         public int? CommentId { get; set; }
+        [Required]
         public int Amount { get; set; }
         public bool Status { get; set; }
         public Order Order { get; set; }
