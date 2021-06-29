@@ -1,0 +1,70 @@
+﻿@model IEnumerable<Microsoft.AspNet.Identity.EntityFramework.IdentityRole>
+@{
+    ViewBag.Title = "ListRoles";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>List Roles</h2>
+<h3><a href="CreateRole">Create new role</a></h3>
+@if (Model.Any())
+{
+    <div class="bd-example">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-4">
+                    Id
+                </div>
+                <div class="col-sm-4">
+                    Name
+                </div>
+            </div>
+            @foreach (var id in Model)
+            {
+                <div class="row">
+                    <div class="col-sm-4">
+                        @id.Id
+                    </div>
+                    <div class="col-sm-4">
+                        @id.Name
+                    </div>
+                    <div class="col-sm">
+                        @Html.ActionLink("Manage", "ManageRole", new { id.Id }) |
+                        @Html.ActionLink("Edit", "Edit", new { id.Id }) |
+                        <a class="delete" data-role-id="@id.Id">Delete</a>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+}
+else
+{
+    <h3>No role created yet! Click <a href="CreateRole">HERE</a> to create a new role</h3>
+}
+
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+            $('.delete').click(function (e) {
+                bootbox.confirm("This will delete this role from all users, Are you sure you want to delete?", function (result) {
+                    if (result == true) {
+                        var element = $(e.target);
+                        $.ajax({
+                            url: "/api/Administration/?id=" + element.attr('data-role-id'),
+                            type: "Delete"
+                        }).done(function () {
+                            element.parent('div').parent().fadeOut(1000);
+                            alert("Delete succeed");
+                        }).fail(function () {
+                            alert("Delete Failed");
+                        })
+                    }
+                })
+               
+            });
+        });
+    </script>
+   
+}
+

@@ -8,27 +8,76 @@
     @Scripts.Render("~/bundles/modernizr")
 
 </head>
-<body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
+<body class="hero-anime">
+    <div class="navigation-wrap bg-light start-header start-style">
         <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                </ul>
-                @Html.Partial("_LoginPartial")
+            <div class="row">
+                <div class="col-12">
+                    <nav class="navbar navbar-expand-md navbar-light">
+
+                        <a class="navbar-brand" href="https://front.codes/" target="_blank"><img src="https://assets.codepen.io/1462889/fcy.png" alt=""></a>
+
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="navbar-nav ml-auto py-4 py-md-0">
+                                <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4 active">
+                                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Home</a>
+                                    <div class="dropdown-menu">
+                                        @Html.ActionLink("Home", "Index", "Home", new { }, new { @class = "dropdown-item" })
+                                    </div>
+                                </li>
+                                @if (User.IsInRole("admin"))
+                                {
+                                    <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+                                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Manage</a>
+                                        <div class="dropdown-menu">
+                                            @Html.ActionLink("Manage Role", "ListRoles", "Administration", new { }, new { @class = "dropdown-item" })
+
+                                        </div>
+                                    </li>
+                                }
+                                <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+                                    @Html.Partial("_LoginPartial")
+                                </li>
+                                @*<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+                                        <a class="nav-link" href="#">Agency</a>
+                                    </li>
+                                    <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+                                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Services</a>
+                                        <div class="dropdown-menu">
+                                            <a class="dropdown-item" href="#">Action</a>
+                                            <a class="dropdown-item" href="#">Another action</a>
+                                            <a class="dropdown-item" href="#">Something else here</a>
+                                            <a class="dropdown-item" href="#">Another action</a>
+                                        </div>
+                                    </li>
+                                    <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+                                        <a class="nav-link" href="#">Journal</a>
+                                    </li>
+                                    <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+                                        <a class="nav-link" href="#">Contact</a>
+                                    </li>*@
+                            </ul>
+                        </div>
+                        @*@{Html.RenderAction("LoginPartial", "Notification");}*@
+                        
+
+                    </nav>
+                </div>
             </div>
         </div>
     </div>
+    <div class="my-2 py-2">
+    </div>
+    <!-- Link to page
+    ================================================== -->
+    @*<a href="https://front.codes/" class="logo" target="_blank">
+            <img src="https://assets.codepen.io/1462889/fcy.png" alt="">
+        </a>*@
+
     <div class="container body-content">
         @RenderBody()
         <hr />
@@ -36,7 +85,6 @@
             <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
         </footer>
     </div>
-
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)

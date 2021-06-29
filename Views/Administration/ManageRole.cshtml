@@ -1,0 +1,29 @@
+﻿@model List<MicroWaveFood.ViewModels.UserRoleViewModel>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Manage Role</h2>
+@using (Html.BeginForm())
+{
+    <div class="panel panel-default">
+        <div class="panel-heading">List of Users</div>
+        <div class="panel-body">
+            @for (int i = 0; i < Model.Count; i++)
+            {
+                @Html.HiddenFor(a => Model[i].RoleId)
+                @Html.HiddenFor(a => Model[i].UserId)
+                @Html.HiddenFor(a => Model[i].UserName)
+                @Html.CheckBoxFor(a => Model[i].IsSelected)
+                <span> @Model[i].UserName</span>
+                <br />
+            }
+
+        </div>
+        <div class="panel-footer">
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+    </div>
+}
+
