@@ -20,6 +20,7 @@ namespace MicroWaveFood.Models
         public string Image { get; set; }
         public int Quantity { get; set; }
         public bool status { get; set; }
+        public string Origin { get; set; }
         public ProductType ProductType { get; set; }
 
         public virtual List<Bill> Bills { get; set; }

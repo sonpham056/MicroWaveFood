@@ -13,7 +13,7 @@ namespace MicroWaveFood.Models
         [Column(Order = 1)]
         public int ProductTypeId { get; set; }
         public string Name { get; set; }
-        public string Origin { get; set; }
+        public string GroupType { get; set; }
         public string Image { get; set; }
         public bool Status { get; set; }
         public virtual List<Product> Products { get; set; }
