@@ -19,7 +19,7 @@ namespace MicroWaveFood.Controllers
         // GET: ProductTypes
         public ActionResult Index()
         {
-            return View(db.productTypes.ToList());
+            return View(db.productTypes.Where(a => a.Status == true).ToList());
         }
 
         // GET: ProductTypes/Details/5
@@ -74,6 +74,10 @@ namespace MicroWaveFood.Controllers
             {
                 return HttpNotFound();
             }
+            if (productType.Status == false)
+            {
+                return HttpNotFound();
+            }
             return View(productType);
         }
 
@@ -82,10 +86,11 @@ namespace MicroWaveFood.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ProductTypeId,Name,Origin,Image,Status")] ProductType productType)
+        public ActionResult Edit([Bind(Include = "ProductTypeId,Name,GroupType,Image")] ProductType productType)
         {
             if (ModelState.IsValid)
             {
+                productType.Image = "/Images/" + productType.Image;
                 db.Entry(productType).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -105,6 +110,10 @@ namespace MicroWaveFood.Controllers
             {
                 return HttpNotFound();
             }
+            if (productType.Status == false)
+            {
+                return HttpNotFound();
+            }
             return View(productType);
         }
 
@@ -114,7 +123,9 @@ namespace MicroWaveFood.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             ProductType productType = db.productTypes.Find(id);
-            db.productTypes.Remove(productType);
+            //db.productTypes.Remove(productType);
+            productType.Status = false;
+            db.Entry(productType).State = EntityState.Modified;
             db.SaveChanges();
             return RedirectToAction("Index");
         }
