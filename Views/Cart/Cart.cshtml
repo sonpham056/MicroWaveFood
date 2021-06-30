@@ -1,0 +1,70 @@
+﻿@model IEnumerable<MicroWaveFood.Models.Cart>
+
+@{
+    ViewBag.Title = "Cart";
+}
+
+<h2>Cart</h2>
+<div class="row">
+    <div class="col-md-7">
+        <form>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th colspan="2">Sản phẩm</th>
+                        <th class="centerTH">Giá</th>
+                        <th class="centerTH">Số lượng</th>
+                        <th colspan="2">Tổng</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody class="cart-form">
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td class="product-name">
+                                <div class="product-thumbnail">
+                                    <a>
+                                        <img src="@item.ProductImage" width="60" height="60" />
+                                    </a>
+                                </div>
+                            </td>
+                            <td class="product-details">
+                                <div class="cart-item-detail">
+                                    <a href="#" class="product-title">@item.ProductName</a>
+                                </div>
+                                <div>
+                                    @Html.ActionLink("Delete", "CartDelete", new { productId = item.ProductId })
+                                </div>
+                            </td>
+                            <td class="product-price">
+                                <span>@String.Format("{0:0}", item.ProductPrice)</span>
+                                <span>đ</span>
+                            </td>
+                            <td class="product-quantity">
+                                <div class="input-spiner">
+                                    <input type="number" value="@Html.DisplayFor(modelItem => item.Amount)" min="0" max="200" step="1" />
+                                </div>
+
+                                @*@Html.DisplayFor(modelItem => item.Amount)*@
+
+                            </td>
+                            <td>
+                                @String.Format("{0:0}", item.Total)
+                                <span>đ</span>
+                                @*@Html.DisplayFor(modelItem => item.Total)*@
+                            </td>
+                            <td>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </form>
+    </div>
+    <div class="col-md-5">
+
+    </div>
+</div>
+
+
