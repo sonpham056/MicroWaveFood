@@ -15,7 +15,7 @@
                 <div class="col-12">
                     <nav class="navbar navbar-expand-md navbar-light">
 
-                        <a class="navbar-brand" href="/" ><img src="https://assets.codepen.io/1462889/fcy.png" alt=""></a>
+                        <a class="navbar-brand" href="/"><img src="https://assets.codepen.io/1462889/fcy.png" alt=""></a>
 
                         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                             <span class="navbar-toggler-icon"></span>
@@ -88,5 +88,22 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+    <script src="~/Scripts/bootstrap-input-spinner.js"></script>
+    <script>
+        $("input[type='number']").inputSpinner()
+        var $changedInput = $("#changedInput")
+        var $valueOnInput = $("#valueOnInput")
+        var $valueOnChange = $("#valueOnChange")
+        $changedInput.on("input", function (event) {
+            $valueOnInput.html($(event.target).val(3))
+            // or $valueOnInput.html(event.target.value) // in vanilla js
+            // or $valueOnInput.html($changedInput.val())
+            alert("123");
+        })
+        $changedInput.on("change", function (event) {
+            $valueOnChange.html($(event.target).val(alert("123")))
+            alert("123");
+        })
+    </script>
 </body>
 </html>

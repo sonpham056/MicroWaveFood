@@ -7,6 +7,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using MicroWaveFood.Models;
+using MicroWaveFood.ViewModels;
 
 namespace MicroWaveFood.Controllers
 {
@@ -333,7 +334,63 @@ namespace MicroWaveFood.Controllers
             base.Dispose(disposing);
         }
 
-#region Helpers
+        public async Task<ActionResult> ProvideInfo()
+        {
+            var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
+            var userInfo = new UserInfoViewModel
+            {
+                Address = user.Address,
+                District = user.District,
+                Guild = user.Guild,
+                Name = user.Name,
+                PhoneNumber = user.PhoneNumber,
+                Province = user.Province
+            };
+            return View(userInfo);
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> ProvideInfo(UserInfoViewModel model, ManageMessageId? message)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+            var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
+            user.Name = model.Name;
+            user.PhoneNumber = model.PhoneNumber;
+            user.Province = model.Province;
+            user.District = model.District;
+            user.Guild = model.Guild;
+            user.Address = model.Address;
+            var result = await UserManager.UpdateAsync(user);
+
+            ViewBag.StatusMessage =
+                message == ManageMessageId.ChangePasswordSuccess ? "Your password has been changed."
+                : message == ManageMessageId.SetPasswordSuccess ? "Your password has been set."
+                : message == ManageMessageId.SetTwoFactorSuccess ? "Your two-factor authentication provider has been set."
+                : message == ManageMessageId.Error ? "An error has occurred."
+                : message == ManageMessageId.AddPhoneSuccess ? "Your phone number was added."
+                : message == ManageMessageId.RemovePhoneSuccess ? "Your phone number was removed."
+                : "";
+
+            var userId = User.Identity.GetUserId();
+            var modelIndexView = new IndexViewModel
+            {
+                HasPassword = HasPassword(),
+                PhoneNumber = await UserManager.GetPhoneNumberAsync(userId),
+                TwoFactor = await UserManager.GetTwoFactorEnabledAsync(userId),
+                Logins = await UserManager.GetLoginsAsync(userId),
+                BrowserRemembered = await AuthenticationManager.TwoFactorBrowserRememberedAsync(userId)
+            };
+            if (result.Succeeded)
+            {
+                return View("index", modelIndexView);
+            }
+            AddErrors(result);
+            return View(modelIndexView);
+        }
+        #region Helpers
         // Used for XSRF protection when adding external logins
         private const string XsrfKey = "XsrfId";
 
