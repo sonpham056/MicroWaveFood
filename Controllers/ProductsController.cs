@@ -18,7 +18,7 @@ namespace MicroWaveFood.Controllers
         // GET: Products
         public ActionResult Index()
         {
-            var products = db.Products.Include(p => p.ProductType);
+            var products = db.Products.Where(a => a.status == true && a.ProductType.Status == true).Include(p => p.ProductType);
             return View(products.ToList());
         }
 
@@ -34,13 +34,17 @@ namespace MicroWaveFood.Controllers
             {
                 return HttpNotFound();
             }
+            if (product.status == false)
+            {
+                return HttpNotFound();
+            }
             return View(product);
         }
 
         // GET: Products/Create
         public ActionResult Create()
         {
-            ViewBag.ProductTypeId = new SelectList(db.productTypes, "ProductTypeId", "Name");
+            ViewBag.ProductTypeId = new SelectList(db.productTypes.Where(a => a.Status == true), "ProductTypeId", "Name");
             return View();
         }
 
@@ -73,6 +77,10 @@ namespace MicroWaveFood.Controllers
             }
             Product product = db.Products.Find(id);
             if (product == null)
+            {
+                return HttpNotFound();
+            }
+            if (product.status == false)
             {
                 return HttpNotFound();
             }
@@ -109,6 +117,10 @@ namespace MicroWaveFood.Controllers
             {
                 return HttpNotFound();
             }
+            if (product.status == false)
+            {
+                return HttpNotFound();
+            }
             return View(product);
         }
 
@@ -118,7 +130,8 @@ namespace MicroWaveFood.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Product product = db.Products.Find(id);
-            db.Products.Remove(product);
+            product.status = false;
+            db.Entry(product).State = EntityState.Modified;
             db.SaveChanges();
             return RedirectToAction("Index");
         }
