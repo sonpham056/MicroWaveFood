@@ -12,6 +12,12 @@ namespace MicroWaveFood.Models
     {
         [StringLength(255, ErrorMessage = "Tên không được quá 255 ký tự!")]
         public string Name { get; set; }
+        public string Province { get; set; }
+        public string District { get; set; }
+        [StringLength(255, ErrorMessage = "Phường/xã quá dài")]
+        public string Guild { get; set; }
+        [StringLength(255, ErrorMessage = "Địa chỉ quá dài!")]
+        public string Address { get; set; }
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
             // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType

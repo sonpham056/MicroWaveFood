@@ -175,6 +175,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdministrationController.cs" />
+    <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
@@ -210,11 +211,16 @@
     <Compile Include="Migrations\202106291510554_removedUserNameRequired.Designer.cs">
       <DependentUpon>202106291510554_removedUserNameRequired.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202106300416194_addMoreInfomationToUser.cs" />
+    <Compile Include="Migrations\202106300416194_addMoreInfomationToUser.Designer.cs">
+      <DependentUpon>202106300416194_addMoreInfomationToUser.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
     <Compile Include="Models\Bill.cs" />
+    <Compile Include="Models\Cart.cs" />
     <Compile Include="Models\Comment.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Order.cs" />
@@ -224,6 +230,8 @@
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\CreateRoleViewModel.cs" />
     <Compile Include="ViewModels\EditRoleViewModel.cs" />
+    <Compile Include="ViewModels\HomeIndexViewModel.cs" />
+    <Compile Include="ViewModels\UserInfoViewModel.cs" />
     <Compile Include="ViewModels\UserRoleViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -238,7 +246,10 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Images\botmi_so11.jpg" />
+    <Content Include="Images\cheese-productType.jpg" />
+    <Content Include="Images\shopping-cart.png" />
     <Content Include="Images\whipping-archor-1L.jpg" />
+    <Content Include="Scripts\bootstrap-input-spinner.js" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -402,6 +413,9 @@
     <Content Include="Views\Products\Details.cshtml" />
     <Content Include="Views\Products\Edit.cshtml" />
     <Content Include="Views\Products\Index.cshtml" />
+    <Content Include="Views\Manage\ProvideInfo.cshtml" />
+    <Content Include="Views\Cart\Cart.cshtml" />
+    <Content Include="Views\Cart\CartPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -438,6 +452,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202106291510554_removedUserNameRequired.resx">
       <DependentUpon>202106291510554_removedUserNameRequired.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202106300416194_addMoreInfomationToUser.resx">
+      <DependentUpon>202106300416194_addMoreInfomationToUser.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -214,7 +214,6 @@ h1 {
 }
 
 p {
-    text-align: center;
     margin: 0;
     padding-top: 10px;
     opacity: 1;
@@ -224,9 +223,9 @@ p {
 }
 
 body.hero-anime p {
-    opacity: 0;
+    /*opacity: 0;
     transform: translateY(40px);
-    transition-delay: 1700ms;
+    transition-delay: 1700ms;*/
 }
 
 h1 span {
