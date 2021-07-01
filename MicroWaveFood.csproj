@@ -178,6 +178,7 @@
     <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Controllers\ProductTypesController.cs" />
     <Compile Include="Global.asax.cs">
@@ -215,6 +216,18 @@
     <Compile Include="Migrations\202106300416194_addMoreInfomationToUser.Designer.cs">
       <DependentUpon>202106300416194_addMoreInfomationToUser.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202107010846549_somefix.cs" />
+    <Compile Include="Migrations\202107010846549_somefix.Designer.cs">
+      <DependentUpon>202107010846549_somefix.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202107010919548_addTotalToOrder.cs" />
+    <Compile Include="Migrations\202107010919548_addTotalToOrder.Designer.cs">
+      <DependentUpon>202107010919548_addTotalToOrder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202107010950278_addIsDeliveredToOrder.cs" />
+    <Compile Include="Migrations\202107010950278_addIsDeliveredToOrder.Designer.cs">
+      <DependentUpon>202107010950278_addIsDeliveredToOrder.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
@@ -245,9 +258,15 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Images\Anh-vuong.jpg" />
+    <Content Include="Images\Banner-anchor-1.jpg" />
+    <Content Include="Images\Banner-whip-2.jpg" />
+    <Content Include="Images\Bo-anchor-2.jpg" />
     <Content Include="Images\botmi_so11.jpg" />
     <Content Include="Images\cheese-productType.jpg" />
+    <Content Include="Images\lAU.jpg" />
     <Content Include="Images\shopping-cart.png" />
+    <Content Include="Images\Tran-chau.jpg" />
     <Content Include="Images\whipping-archor-1L.jpg" />
     <Content Include="Scripts\bootstrap-input-spinner.js" />
     <Content Include="Scripts\bootstrap.bundle.js" />
@@ -416,9 +435,11 @@
     <Content Include="Views\Manage\ProvideInfo.cshtml" />
     <Content Include="Views\Cart\Cart.cshtml" />
     <Content Include="Views\Cart\CartPartial.cshtml" />
+    <Content Include="Views\Order\Payment.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Bill\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -455,6 +476,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202106300416194_addMoreInfomationToUser.resx">
       <DependentUpon>202106300416194_addMoreInfomationToUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202107010846549_somefix.resx">
+      <DependentUpon>202107010846549_somefix.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202107010919548_addTotalToOrder.resx">
+      <DependentUpon>202107010919548_addTotalToOrder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202107010950278_addIsDeliveredToOrder.resx">
+      <DependentUpon>202107010950278_addIsDeliveredToOrder.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

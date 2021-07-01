@@ -43,7 +43,7 @@
                             </td>
                             <td class="product-quantity">
                                 <div class="input-spiner">
-                                    <input type="number" value="@Html.DisplayFor(modelItem => item.Amount)" min="0" max="200" step="1" />
+                                    <input class="changedInput" type="number" value="@Html.DisplayFor(modelItem => item.Amount)" data-id="@item.ProductId" data-link="@Url.Action("AddToCart", "Cart", new { @productId = item.ProductId, @strUrl = Request.Url.ToString() })" min="0" max="200" step="1" />
                                 </div>
 
                                 @*@Html.DisplayFor(modelItem => item.Amount)*@
@@ -53,9 +53,7 @@
                                 @String.Format("{0:0}", item.Total)
                                 <span>đ</span>
                                 @*@Html.DisplayFor(modelItem => item.Total)*@
-                            </td>
-                            <td>
-                            </td>
+                            </td>                            
                         </tr>
                     }
                 </tbody>
@@ -63,7 +61,21 @@
         </form>
     </div>
     <div class="col-md-5">
-
+        <div class="cart-collaterals">
+            <div class="cart-totals">
+                <h2>Cộng giỏ hàng</h2>
+                <div class="row" style="justify-content:space-around">
+                    <div>Tổng cộng:</div>
+                    <div>
+                        <span>@ViewBag.PriceSum</span>
+                        <span>đ</span>
+                    </div>
+                </div>
+                <div class="container">
+                    <a href="@Url.Action("Payment", "Order")" class="btn btn-primary btn-thanh-toan">Thanh toán</a>
+                </div>
+            </div>  
+        </div>
     </div>
 </div>
 
