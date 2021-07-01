@@ -23,7 +23,7 @@ namespace MicroWaveFood.Controllers
             return listCart;
         }
 
-        public ActionResult AddToCart(int productId, string strUrl)
+        public ActionResult AddToCart(int productId, string strUrl, bool? isMinus)
         {
             //take cart
             List<Cart> list = TakeCart();
@@ -35,7 +35,12 @@ namespace MicroWaveFood.Controllers
                 list.Add(cart);
                 return Redirect(strUrl);
             }
-            else
+            else if (isMinus != null)
+            {
+                cart.Amount--;
+                return Redirect(strUrl);
+            } 
+            else 
             {
                 cart.Amount++;
                 return Redirect(strUrl);
