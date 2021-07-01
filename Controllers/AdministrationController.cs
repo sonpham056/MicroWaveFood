@@ -86,7 +86,7 @@ namespace MicroWaveFood.Controllers
             {
                 if (await userManager.IsInRoleAsync(user.Id, roleView.Name))
                 {
-                    roleView.Users.Add(user.Name);
+                    roleView.Users.Add(user.Email);
                 }
             }
             return View(roleView);

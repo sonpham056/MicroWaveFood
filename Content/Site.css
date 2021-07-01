@@ -3,6 +3,7 @@
     padding-bottom: 20px;
 }
 
+
 /* Set padding to keep content from hitting the edges */
 /*.body-content {
     padding-left: 15px;
@@ -145,3 +146,34 @@ div > img {
 thead > tr > th.centerTH {
     text-align: center;
 }
+
+.cart-collaterals {
+    padding: 1.7em 2em 2em;
+    border: 1px solid #e1e1e1;
+}
+.cart-order-details .cart_totals > h2, .cart-order-details .order-review .step-title {
+    margin-top: 1px;
+}
+.cart-order-details .cart_totals > h2, .cart-order-details .order-review .step-title {
+    margin-bottom: 1em;
+}
+.widget-title, .widgettitle, .cart-totals > h2 {
+    font-size: 1rem;
+    text-transform: uppercase;
+    color: #222222;
+    padding-bottom: 1em;
+    border-bottom: 1px solid #e1e1e1;
+}
+
+td.data-title{
+    display:flex ;
+    justify-content: flex-end;
+}
+
+
+.btn-thanh-toan{
+    margin-top: 20px;
+    display: block;
+    width: 100%;
+}
+

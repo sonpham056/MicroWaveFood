@@ -34,20 +34,20 @@
     <div class="row">
         @foreach (var item in Model.ProductList)
         {
-        <div class="col pt-5">
-            <div class="productImg">
-                <img src="@item.Image" width="100" height="120" />
-            </div>
-            <div class="productContent">
-                <div>
-                    <p style="text-align:center">@item.ProductName</p>
+            <div class="col pt-5">
+                <div class="productImg">
+                    <img src="@item.Image" width="100" height="120" />
                 </div>
-                <div>
-                    <p style="text-align:center">@item.Price</p>
+                <div class="productContent">
+                    <div>
+                        <p style="text-align:center">@item.ProductName</p>
+                    </div>
+                    <div>
+                        <p style="text-align:center">@item.Price</p>
+                    </div>
                 </div>
+                <a href="@Url.Action("AddToCart", "Cart", new { @productId = item.ProductId, @strUrl = Request.Url.ToString() })" class="btn btn-primary">Thêm vào giỏ hàng</a>
             </div>
-            <a href="@Url.Action("AddToCart", "Cart", new { @productId = item.ProductId, @strUrl = Request.Url.ToString() })" class="btn btn-primary">Thêm vào giỏ hàng</a>
-        </div>
         }
     </div>
 </div>
