@@ -259,12 +259,15 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Images\Anh-vuong.jpg" />
+    <Content Include="Images\app-store.png" />
     <Content Include="Images\Banner-anchor-1.jpg" />
     <Content Include="Images\Banner-whip-2.jpg" />
     <Content Include="Images\Bo-anchor-2.jpg" />
     <Content Include="Images\botmi_so11.jpg" />
     <Content Include="Images\cheese-productType.jpg" />
     <Content Include="Images\lAU.jpg" />
+    <Content Include="Images\logo.png" />
+    <Content Include="Images\play-store.png" />
     <Content Include="Images\shopping-cart.png" />
     <Content Include="Images\Tran-chau.jpg" />
     <Content Include="Images\whipping-archor-1L.jpg" />
