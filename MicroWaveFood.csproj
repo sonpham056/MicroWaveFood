@@ -241,9 +241,15 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Images\Anh-vuong.jpg" />
+    <Content Include="Images\Banner-anchor-1.jpg" />
+    <Content Include="Images\Banner-whip-2.jpg" />
+    <Content Include="Images\Bo-anchor-2.jpg" />
     <Content Include="Images\botmi_so11.jpg" />
     <Content Include="Images\cheese-productType.jpg" />
+    <Content Include="Images\lAU.jpg" />
     <Content Include="Images\shopping-cart.png" />
+    <Content Include="Images\Tran-chau.jpg" />
     <Content Include="Images\whipping-archor-1L.jpg" />
     <Content Include="Scripts\bootstrap-input-spinner.js" />
     <Content Include="Scripts\bootstrap.bundle.js" />
