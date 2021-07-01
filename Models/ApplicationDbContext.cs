@@ -23,8 +23,10 @@ namespace MicroWaveFood.Models
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
 
-            modelBuilder.Entity<Bill>()
-                .HasRequired(a => a.Comment);
+
+
+
+            //do not delete this line
             base.OnModelCreating(modelBuilder);
         }
         public static ApplicationDbContext Create()

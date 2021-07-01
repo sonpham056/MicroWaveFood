@@ -14,12 +14,11 @@ namespace MicroWaveFood.Models
         public int BillId { get; set; }
         public int ProductId { get; set; }
         public int OrderId { get; set; }
-        public int? CommentId { get; set; }
         [Required]
         public int Amount { get; set; }
         public bool Status { get; set; }
         public Order Order { get; set; }
         public Product Product { get; set; }
-        public Comment Comment { get; set; }
+        public virtual ICollection<Comment> comment { get; set; }
     }
 }
