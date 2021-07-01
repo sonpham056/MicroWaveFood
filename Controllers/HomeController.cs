@@ -48,7 +48,7 @@ namespace MicroWaveFood.Controllers
         {
             ViewBag.AmountSum = AmountSum();
             ViewBag.PriceSum = PriceSum();
-            ViewBag.Message = "Your application description page.";
+            ViewBag.Message = "Your application description page."; 
 
             return View();
         }
