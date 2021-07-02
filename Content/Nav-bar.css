@@ -72,8 +72,6 @@ body {
 .navbar-brand img {
     height: 28px;
     width: auto;
-    display: block;
-    filter: brightness(10%);
     -webkit-transition: all 0.3s ease-out;
     transition: all 0.3s ease-out;
 }
