@@ -29,8 +29,8 @@
                                     <div class="dropdown-menu">
                                         @Html.ActionLink("Home", "Index", "Home", new { }, new { @class = "dropdown-item" })
                                     </div>
-                                @if (User.IsInRole("admin"))
-                                {
+                                    @if (User.IsInRole("admin"))
+                                    {
                                     <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
                                         <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Manage</a>
                                         <div class="dropdown-menu">
@@ -40,104 +40,99 @@
                                         </div>
                                     </li>
                                 }
-                                @Html.Partial("_LoginPartial")
-                                @*<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
-            <a class="nav-link" href="#">Agency</a>
-        </li>
-        <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
-            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Services</a>
-            <div class="dropdown-menu">
-                <a class="dropdown-item" href="#">Action</a>
-                <a class="dropdown-item" href="#">Another action</a>
-                <a class="dropdown-item" href="#">Something else here</a>
-                <a class="dropdown-item" href="#">Another action</a>
-            </div>
-        </li>
-        <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
-            <a class="nav-link" href="#">Journal</a>
-        </li>
-        <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
-            <a class="nav-link" href="#">Contact</a>
-        </li>*@
-                            </ul>
-                        </div>
-                        @*@{Html.RenderAction("LoginPartial", "Notification");}*@
+                                    @Html.Partial("_LoginPartial")
+                                    @*<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+                                            <a class="nav-link" href="#">Agency</a>
+                                        </li>
+                                        <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+                                            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Services</a>
+                                            <div class="dropdown-menu">
+                                                <a class="dropdown-item" href="#">Action</a>
+                                                <a class="dropdown-item" href="#">Another action</a>
+                                                <a class="dropdown-item" href="#">Something else here</a>
+                                                <a class="dropdown-item" href="#">Another action</a>
+                                            </div>
+                                        </li>
+                                        <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+                                            <a class="nav-link" href="#">Journal</a>
+                                        </li>
+                                        <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+                                            <a class="nav-link" href="#">Contact</a>
+                                        </li>*@
+                                </ul>
+                            </div>
+                            @*@{Html.RenderAction("LoginPartial", "Notification");}*@
 
 
-                    </nav>
+                        </nav>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    
-    <!-- Link to page
-    ================================================== -->
-    @*<a href="https://front.codes/" class="logo" target="_blank">
-            <img src="https://assets.codepen.io/1462889/fcy.png" alt="">
-        </a>*@
 
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <div class="footer">
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="footer-col-1">
-                            <h3>Download Our App</h3>
-                            <p>Download App for android and iOs.</p>
-                            <div>
-                                <img src="~/Images/play-store.png" />
-                                <img src="~/Images/app-store.png" />
-                            </div>
-                        </div>
+        <!-- Link to page
+        ================================================== -->
+        @*<a href="https://front.codes/" class="logo" target="_blank">
+                <img src="https://assets.codepen.io/1462889/fcy.png" alt="">
+            </a>*@
 
-                        <div class="footer-col-2">
-                            <div class="app-logo">
-                                <img src="~/Images/logo.png" width="20" />
+        <div class="container body-content">
+            @RenderBody()
+            <hr />
+            <footer>
+                <div class="footer">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="footer-col-1">
+                                <h3>Download Our App</h3>
+                                <p>Download App for android and iOs.</p>
+                                <div>
+                                    <img src="~/Images/play-store.png" />
+                                    <img src="~/Images/app-store.png" />
+                                </div>
                             </div>
 
-                            <p>Our purpose Is To Sustainably make the Pleasure and BeneFit of Sports Accessible to the Many.</p>
+                            <div class="footer-col-2">
+                                <div class="app-logo">
+                                    <img src="~/Images/logo.png" width="20" />
+                                </div>
 
+                                <p>Our purpose Is To Sustainably make the Pleasure and BeneFit of Sports Accessible to the Many.</p>
+
+                            </div>
+                            <div class="footer-col-3">
+                                <h3>Useful Links</h3>
+                                <p>Coupons</p>
+                                <p>Blog Post</p>
+                                <p>Return Policy</p>
+                                <p>Become Affiliate</p>
+                            </div>
+                            <div class="footer-col-4">
+                                <h3>Follow Us</h3>
+                                <ul>
+                                    <li>
+                                        <a href="https://www.facebook.com/quynhthu1911">Facebook </a>
+                                    </li>
+                                </ul>
+                                <ul>
+                                    <li>
+                                        <a href="https://www.instagram.com/quynhthu.qt/">Instagram </a>
+                                    </li>
+                                </ul>
+                                <ul>
+                                    <li>
+                                        <a href="https://www.facebook.com/Quoc.Son.QS/">Team Leader </a>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
-                        <div class="footer-col-3">
-                            <h3>Useful Links</h3>
-                            <p>Coupons</p>
-                            <p>Blog Post</p>
-                            <p>Return Policy</p>
-                            <p>Become Affiliate</p>
-                        </div>
-                        <div class="footer-col-4">
-                            <h3>Follow Us</h3>
-                            <ul>
-                                <li>
-                                    <a href="https://www.facebook.com/quynhthu1911">Facebook </a>
-                                </li>
-                            </ul>
-                            <ul>
-                                <li>
-                                    <a href="https://www.instagram.com/quynhthu.qt/">Instagram </a>
-                                </li>
-                            </ul>
-                            <ul>
-                                <li>
-                                    <a href="https://www.facebook.com/Quoc.Son.QS/">Team Leader </a>
-                                </li>
-                            </ul>
-
-
-
-                        </div>
+                        <hr />
+                        <p3 class="copyright">Copyright 2021 - QuocPhong</p3>
                     </div>
-                    <hr />
-                    <p3 class="copyright">Copyright 2021 - QuocPhong</p3>
                 </div>
-            </div>
-        </footer>
-    </div>
-
-    
-</body>
+            </footer>
+        </div>
+    </body>
 </html>
 
 @Scripts.Render("~/bundles/jquery")
