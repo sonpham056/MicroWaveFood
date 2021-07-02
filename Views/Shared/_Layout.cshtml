@@ -3,20 +3,21 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <title>BakingDom - Bring your cake</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
 </head>
 <body class="hero-anime">
-    <div class="navigation-wrap bg-light start-header start-style">
-        <div class="container">
+    <div class="navigation-wrap bg-light start-header start-style sticky-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="">
+                <img src="~/Images/logo.png" height="100">
+            </a>
             <div class="row">
                 <div class="col-12">
                     <nav class="navbar navbar-expand-md navbar-light">
-
-                        <a class="navbar-brand" href="/"><img src="https://assets.codepen.io/1462889/fcy.png" alt=""></a>
-
+                        @*https://assets.codepen.io/1462889/fcy.png*@
                         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                             <span class="navbar-toggler-icon"></span>
                         </button>
@@ -27,9 +28,7 @@
                                     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Home</a>
                                     <div class="dropdown-menu">
                                         @Html.ActionLink("Home", "Index", "Home", new { }, new { @class = "dropdown-item" })
-
                                     </div>
-                                </li>
                                 @if (User.IsInRole("admin"))
                                 {
                                     <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
@@ -43,23 +42,23 @@
                                 }
                                 @Html.Partial("_LoginPartial")
                                 @*<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
-                                        <a class="nav-link" href="#">Agency</a>
-                                    </li>
-                                    <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
-                                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Services</a>
-                                        <div class="dropdown-menu">
-                                            <a class="dropdown-item" href="#">Action</a>
-                                            <a class="dropdown-item" href="#">Another action</a>
-                                            <a class="dropdown-item" href="#">Something else here</a>
-                                            <a class="dropdown-item" href="#">Another action</a>
-                                        </div>
-                                    </li>
-                                    <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
-                                        <a class="nav-link" href="#">Journal</a>
-                                    </li>
-                                    <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
-                                        <a class="nav-link" href="#">Contact</a>
-                                    </li>*@
+            <a class="nav-link" href="#">Agency</a>
+        </li>
+        <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Services</a>
+            <div class="dropdown-menu">
+                <a class="dropdown-item" href="#">Action</a>
+                <a class="dropdown-item" href="#">Another action</a>
+                <a class="dropdown-item" href="#">Something else here</a>
+                <a class="dropdown-item" href="#">Another action</a>
+            </div>
+        </li>
+        <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+            <a class="nav-link" href="#">Journal</a>
+        </li>
+        <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+            <a class="nav-link" href="#">Contact</a>
+        </li>*@
                             </ul>
                         </div>
                         @*@{Html.RenderAction("LoginPartial", "Notification");}*@
@@ -70,8 +69,7 @@
             </div>
         </div>
     </div>
-    <div class="my-2 py-2">
-    </div>
+    
     <!-- Link to page
     ================================================== -->
     @*<a href="https://front.codes/" class="logo" target="_blank">
@@ -82,14 +80,71 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - con me may</p> @*footerNGUNGUOI*@
+            <div class="footer">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="footer-col-1">
+                            <h3>Download Our App</h3>
+                            <p>Download App for android and iOs.</p>
+                            <div>
+                                <img src="~/Images/play-store.png" />
+                                <img src="~/Images/app-store.png" />
+                            </div>
+                        </div>
+
+                        <div class="footer-col-2">
+                            <div class="app-logo">
+                                <img src="~/Images/logo.png" width="20" />
+                            </div>
+
+                            <p>Our purpose Is To Sustainably make the Pleasure and BeneFit of Sports Accessible to the Many.</p>
+
+                        </div>
+                        <div class="footer-col-3">
+                            <h3>Useful Links</h3>
+                            <p>Coupons</p>
+                            <p>Blog Post</p>
+                            <p>Return Policy</p>
+                            <p>Become Affiliate</p>
+                        </div>
+                        <div class="footer-col-4">
+                            <h3>Follow Us</h3>
+                            <ul>
+                                <li>
+                                    <a href="https://www.facebook.com/quynhthu1911">Facebook </a>
+                                </li>
+                            </ul>
+                            <ul>
+                                <li>
+                                    <a href="https://www.instagram.com/quynhthu.qt/">Instagram </a>
+                                </li>
+                            </ul>
+                            <ul>
+                                <li>
+                                    <a href="https://www.facebook.com/Quoc.Son.QS/">Team Leader </a>
+                                </li>
+                            </ul>
+
+
+
+                        </div>
+                    </div>
+                    <hr />
+                    <p3 class="copyright">Copyright 2021 - QuocPhong</p3>
+                </div>
+            </div>
         </footer>
     </div>
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
-    <script src="~/Scripts/bootstrap-input-spinner.js"></script>
-    <script>
+
+    
+</body>
+</html>
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+@RenderSection("scripts", required: false)
+<script src="~/Scripts/bootstrap-input-spinner.js"></script>
+<script>
         $("input[type='number']").inputSpinner({ buttonsOnly: true })
         var $changedInput = $(".changedInput")
         var $valueOnInput = $("#valueOnInput")
@@ -123,37 +178,4 @@
             var url = $changedInput.attr("data-link");
             window.location.href = url;
         })
-    </script>
-    @*<nav class="navbar navbar-expand-md navbar-light bg-light sticky-top">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="">
-                <img src="img/logo.png" height="100">
-            </a>
-
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarResponsive">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a class="nav-link active" href="#">Nguyên liệu nấu ăn</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Nguyên liệu làm bánh</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Đồ pha chế</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Dụng cụ</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Liên hệ</a>
-                    </li>
-                </ul>
-
-            </div>
-        </div>
-    </nav>*@
-</body>
-</html>
+</script>
