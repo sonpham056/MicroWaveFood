@@ -1,25 +1,6 @@
-﻿.title {
-    text-align: center;
-    margin: 0 auto 80px;
-    position: relative;
-    line-height: 60px;
-    color: #555;
-}
-
-    .title::after {
-        content: "";
-        background: #ff523b;
-        width: 80px;
-        height: 5px;
-        border-radius: 5px;
-        position: absolute;
-        bottom: 0;
-        left: 50%;
-        transform: translateX(-50%);
-    }
-
+﻿
 carousel-inner img {
-    width: 50%!important;
+    width: 70%!important;
 }
 
 .navbar li a {
@@ -27,7 +8,7 @@ carousel-inner img {
 }
 
    /*Media carousel*/
-
+   
 @media (max-width: 992px) {
     .carousel-caption {
         top: 20%;
@@ -65,6 +46,24 @@ carousel-inner img {
             padding: 8px 14px;
         }
 }
+
+.carousel-indicators {
+    position: absolute;
+    right: 30px;
+    bottom: 0;
+    left: 0;
+    z-index: 15;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: center;
+    justify-content: flex-start;
+    padding-left: 0;
+    margin-right: 15%;
+    margin-left: 5%;
+    list-style: none;
+    flex-wrap: wrap;
+}
+
 .carousel-indicators li {
     box-sizing: content-box;
     -ms-flex: 0 1 auto;
@@ -86,15 +85,20 @@ carousel-inner img {
 .carousel-item {
     position: relative;
     display: none;
-    float: left;
+    float:none;
+    margin:0 0 0 0 !important;
     width: 50%!important;
-    margin-right: -100%;
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
     transition: -webkit-transform 0.6s ease-in-out;
     transition: transform 0.6s ease-in-out;
     transition: transform 0.6s ease-in-out, -webkit-transform 0.6s ease-in-out;
+    align-self:center
 }
+
+    .carousel-item:active {
+        margin: 0 0 0 0;
+    }
 @media (max-width: 576px) {
     .carousel-caption {
         top: 10%;

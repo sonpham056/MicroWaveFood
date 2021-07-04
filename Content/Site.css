@@ -1,6 +1,6 @@
-﻿body {
+﻿html, body {
+    height: 100%;
 }
-
 * {
     margin: 0;
     padding: 0;
@@ -36,7 +36,7 @@ html, body {
 }*/
 .title {
     text-align: center;
-    margin: 0 auto 80px;
+    margin: 0 auto 10px;
     position: relative;
     line-height: 60px;
     color: #555;
@@ -45,14 +45,29 @@ html, body {
     .title::after {
         content: "";
         background: #ff523b;
-        width: 80px;
+        width: 200px;
         height: 5px;
         border-radius: 5px;
         position: absolute;
-        bottom: 0;
+        bottom: -5px;
         left: 50%;
+        margin-bottom: 10px;
         transform: translateX(-50%);
     }
+    /*.title::before {
+        content: "";
+        background: #ff523b;
+        width: 200px;
+        height: 5px;
+        border-radius: 5px;
+        position: absolute;
+        top:-5px;
+        left: 50%;
+        transform: translateX(-50%);
+        margin-top:10px;
+    }*/
+
+
 
 .container-content {
     min-height: 500px;
