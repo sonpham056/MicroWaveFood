@@ -1,0 +1,115 @@
+﻿.title {
+    text-align: center;
+    margin: 0 auto 80px;
+    position: relative;
+    line-height: 60px;
+    color: #555;
+}
+
+    .title::after {
+        content: "";
+        background: #ff523b;
+        width: 80px;
+        height: 5px;
+        border-radius: 5px;
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+carousel-inner img {
+    width: 50%!important;
+}
+
+.navbar li a {
+    color: black !important;
+}
+
+   /*Media carousel*/
+
+@media (max-width: 992px) {
+    .carousel-caption {
+        top: 20%;
+    }
+
+        .carousel-caption h1 {
+            font-size: 250%;
+        }
+
+        .carousel-caption h3 {
+            font-size: 160%;
+        }
+
+        .carousel-caption .btn {
+            font-size: 120%;
+        }
+}
+
+@media (max-width: 768px) {
+    .carousel-caption {
+        top: 20%;
+    }
+
+        .carousel-caption h1 {
+            font-size: 220%;
+        }
+
+        .carousel-caption h3 {
+            font-size: 140%;
+            padding-bottom: 0.2rem;
+        }
+
+        .carousel-caption .btn {
+            font-size: 95%;
+            padding: 8px 14px;
+        }
+}
+.carousel-indicators li {
+    box-sizing: content-box;
+    -ms-flex: 0 1 auto;
+    flex: 0 1 auto;
+    width: 30px;
+    height: 3px;
+    margin-right: 3px;
+    margin-left: 3px;
+    text-indent: -999px;
+    cursor: pointer;
+    background-color: black !important;
+    background-clip: padding-box;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    opacity: .5;
+    transition: opacity 0.6s ease;
+}
+
+.carousel-item {
+    position: relative;
+    display: none;
+    float: left;
+    width: 50%!important;
+    margin-right: -100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    transition: -webkit-transform 0.6s ease-in-out;
+    transition: transform 0.6s ease-in-out;
+    transition: transform 0.6s ease-in-out, -webkit-transform 0.6s ease-in-out;
+}
+@media (max-width: 576px) {
+    .carousel-caption {
+        top: 10%;
+    }
+
+        .carousel-caption h1 {
+            font-size: 150%;
+        }
+
+        .carousel-caption h3 {
+            font-size: 110%;
+        }
+
+        .carousel-caption .btn {
+            font-size: 90%;
+            padding: 4px 8px;
+        }
+}

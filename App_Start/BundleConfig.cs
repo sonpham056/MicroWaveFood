@@ -26,7 +26,8 @@ namespace MicroWaveFood
                       "~/Content/bootstrap.css",
                       "~/Content/Site.css",
                       "~/Content/Nav-bar.css",
-                      "~/Content/Login.css"));
+                      "~/Content/Login.css",
+                      "~/Content/Carousel.css"));
         }
     }
 }
