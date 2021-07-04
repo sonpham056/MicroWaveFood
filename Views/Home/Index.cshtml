@@ -116,3 +116,27 @@
         </div>
     </div>
 </div>
+
+<div class="container">
+    <div class="row">
+        @foreach (var item in Model.ProductList)
+        {
+            <div class="col pt-5">
+                <div class="productImg">
+                    <img class="img-index" src="@item.Image"/>
+                </div>
+                <div class="product-content-container">
+                    <div class="productContent">
+                        <div class="product-name">
+                            <p style="text-align:center">@item.ProductName</p>
+                        </div>
+                        <div class="product-price">
+                            <p style="text-align:center">@item.Price</p>
+                        </div>
+                    </div>
+                    <a href="@Url.Action("AddToCart", "Cart", new { @productId = item.ProductId, @strUrl = Request.Url.ToString() })" class="btn btn-primary">Thêm vào giỏ hàng</a>
+                </div>
+            </div>
+        }
+    </div>
+</div>

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Security.Claims;
@@ -392,6 +393,9 @@ namespace MicroWaveFood.Controllers
         public ActionResult LogOff()
         {
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
+            Session["cart"] = null;
+            ViewBag.PriceSum = PriceSum();
+            ViewBag.AmountSum = AmountSum();
             return RedirectToAction("Index", "Home");
         }
 
@@ -419,10 +423,40 @@ namespace MicroWaveFood.Controllers
                     _signInManager = null;
                 }
             }
-
             base.Dispose(disposing);
         }
+        public List<Cart> TakeCart()
+        {
+            List<Cart> listCart = Session["Cart"] as List<Cart>;
+            if (listCart == null)
+            {
+                //if list cart doesn't exist, create one
+                listCart = new List<Cart>();
+                Session["Cart"] = listCart;
+            }
+            return listCart;
+        }
+        public int AmountSum()
+        {
+            int amount = 0;
+            List<Cart> list = Session["Cart"] as List<Cart>;
+            if (list != null)
+            {
+                amount = list.Sum(n => n.Amount);
+            }
+            return amount;
+        }
 
+        public long PriceSum()
+        {
+            long sum = 0;
+            List<Cart> list = Session["Cart"] as List<Cart>;
+            if (list != null)
+            {
+                sum = list.Sum(n => n.Total);
+            }
+            return sum;
+        }
         #region Helpers
         // Used for XSRF protection when adding external logins
         private const string XsrfKey = "XsrfId";
