@@ -11,6 +11,13 @@
         <a class="navbar-brand" href="">
             <img src="img/logo.png" height="100">
         </a>
+=======
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.0.4/popper.js"></script>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+>>>>>>> 3a144de34cfe4a73b30bc24720c06d699cf94767
 
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
             <span class="navbar-toggler-icon"></span>
@@ -38,74 +45,80 @@
     </div>
 </nav>*@
 </head>
-<body class="hero-anime">
-    <div class="navigation-wrap bg-light start-header start-style sticky-top">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="">
-                <img src="~/Images/logo.png" height="100">
-            </a>
-            <div class="row">
-                <div class="col-12">
-                    <nav class="navbar navbar-expand-md navbar-light">
-                        @*https://assets.codepen.io/1462889/fcy.png*@
-                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                            <span class="navbar-toggler-icon"></span>
-                        </button>
+<body>
+    <nav class="start-header container-fluid sticky-top navbar-expand-md ">
+        <nav class="header-navbar ">
+            <form class="form-inline mr-auto row" target="_self">
+                <a class="navbar-branch" href="#" style="justify-self:start">
+                    <img src="~/Images/logo.png" height="80">
+                </a>
+                <div class="form-group navbar-collapse">
+                    <input class="form-control search-field" type="search" name="search" id="search-field">
+                    <label for="search-field">
+                        <i class="fa fa-search"></i>
+                    </label>
 
-                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                            <ul class="navbar-nav ml-auto py-4 py-md-0">
-                                <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4 active">
-                                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Home</a>
-                                    <div class="dropdown-menu">
-                                        @Html.ActionLink("Home", "Index", "Home", new { }, new { @class = "dropdown-item" })
-                                    </div>
-                                @if (User.IsInRole("admin"))
-                                {
-                                    <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
-                                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Manage</a>
-                                        <div class="dropdown-menu">
-                                            @Html.ActionLink("Manage Role", "ListRoles", "Administration", new { }, new { @class = "dropdown-item" })
-                                            @Html.ActionLink("Product Type", "Index", "ProductTypes", new { }, new { @class = "dropdown-item" })
-                                            @Html.ActionLink("Product", "Index", "Products", new { }, new { @class = "dropdown-item" })
-                                        </div>
-                                    </li>
-                                }
-                                @Html.Partial("_LoginPartial")
-                                @*<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
-            <a class="nav-link" href="#">Agency</a>
-        </li>
-        <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
-            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Services</a>
-            <div class="dropdown-menu">
-                <a class="dropdown-item" href="#">Action</a>
-                <a class="dropdown-item" href="#">Another action</a>
-                <a class="dropdown-item" href="#">Something else here</a>
-                <a class="dropdown-item" href="#">Another action</a>
-            </div>
-        </li>
-        <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
-            <a class="nav-link" href="#">Journal</a>
-        </li>
-        <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
-            <a class="nav-link" href="#">Contact</a>
-        </li>*@
-                            </ul>
-                        </div>
-                        @*@{Html.RenderAction("LoginPartial", "Notification");}*@
-
-
-                    </nav>
                 </div>
-            </div>
-        </div>
-    </div>
-    
-    <!-- Link to page
-    ================================================== -->
-    @*<a href="https://front.codes/" class="logo" target="_blank">
-            <img src="https://assets.codepen.io/1462889/fcy.png" alt="">
-        </a>*@
+                @if (User.IsInRole("admin"))
+                {
+                <div class="link-action">
+                    <ul>
+                        @Html.ActionLink("Home", "ListRoles", "Administration", new { }, new { @class = "li" })
+                        @Html.ActionLink("Product Type", "Index", "ProductTypes", new { }, new { @class = "li" })
+                        @Html.ActionLink("Product", "Index", "Products", new { }, new { @class = "li" })
+                    </ul>
+                </div>
+                }
 
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Account
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        @Html.Partial("_LoginPartial")
+                    </div>
+
+                </div>
+
+            </form>
+
+
+        </nav>
+    </nav>
+    @*
+            @if (User.Identity != null)
+                                {
+                                    if (User.IsInRole("admin"))
+                                    {
+                                        @Html.ActionLink("Manage Role", "ListRoles", "Administration", new { }, new { @class = "dropdown-item" })
+                                        @Html.ActionLink("Product Type", "Index", "ProductTypes", new { }, new { @class = "dropdown-item" })
+                                        @Html.ActionLink("Product", "Index", "Products", new { }, new { @class = "dropdown-item" })
+                                    }
+                                    else
+                                    {
+                                        <p class="dropdown-item-text">UnAdmin Role</p>
+                                        <a clas>Give Feedback</a>
+                                        <a class="dropdown-item" role="presentation" href="#">
+                                            <p>Giỏ hàng</p>
+                                            <img src="~/Images/shopping-cart.png" />
+                                        </a>
+                                        @Html.ActionLink("Đăng xuất", "LogOff", "Account", new { }, new { @class = "dropdown-item" })
+
+                                    }
+
+                                }
+                                else
+                                {
+                                    <p class="dropdown-item-text">UnAdmin Role</p>
+                                }
+
+            <a class="dropdown-item" role="presentation" href="#">First Item</a>
+        <a class="dropdown-item" role="presentation" href="#">Second Item</a>
+        <a class="dropdown-item" role="presentation" href="#">Third Item</a>*@
+
+    @*@Html.ActionLink("Manage Role", "ListRoles", "Administration", new { }, new { @class = "dropdown-item" })
+        @Html.ActionLink("Product Type", "Index", "ProductTypes", new { }, new { @class = "dropdown-item" })
+        @Html.ActionLink("Product", "Index", "Products", new { }, new { @class = "dropdown-item" })*@
     <div class="container body-content">
         @RenderBody()
         <hr />
@@ -170,7 +183,7 @@
         </footer>
     </div>
 
-    
+
 </body>
 </html>
 
@@ -212,11 +225,7 @@
             var url = $changedInput.attr("data-link");
             window.location.href = url;
         })
-<<<<<<< HEAD
+
     </script>
    
-</body>
-</html>
-=======
-</script>
->>>>>>> 843ace0df792fed23532a8c15cf8620229cf1554
+
