@@ -250,10 +250,10 @@ td.data-title {
         width: 250px
     }
 
-a {
+/*a {
     text-decoration: none;
     padding-left:30px;
-}
+}*/
 
 div > img {
     width: 50%;
@@ -288,12 +288,12 @@ h2 {
     border-color: #94464e;
 }
 
-p a {
+/*p a {
     padding-left: 10px;
     color: #94464e;
     text-decoration: none;
     background-color: transparent;
-}
+}*/
 
 .navbar-brand {
 }
