@@ -1,0 +1,33 @@
+﻿.start-header .header-navbar .form-inline .search-field {
+    display: inline;
+    width: 80%;
+    background: none;
+    border: none;
+    border-bottom: 1px solid transparent;
+    border-radius: 0;
+    color: #00ff90;
+    box-shadow: none;
+    color: inherit;
+    transition: border-bottom-color 0.3s;
+}
+    .start-header .header-navbar .form-inline .search-field:focus {
+        border-bottom: 1px solid #ccc;
+    }
+
+
+.start-header .header-navbar{
+    display:inline;
+
+}
+.form-inline {
+    
+    display: flex;
+    align-items: stretch;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    justify-content: space-between;
+
+}
+.start-header {
+    padding-bottom: 80px;
+}
