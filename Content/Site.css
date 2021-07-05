@@ -289,7 +289,7 @@ div > img {
 .col-md-8 {
     -ms-flex: 0 0 66.666667%;
     flex: 0 0 75.666667%;
-    /*max-width: fit-content;*/
+    max-width: fit-content;
     border: 1px solid grey;
     border-radius: 20px;
 }
