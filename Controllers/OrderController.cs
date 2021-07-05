@@ -5,9 +5,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Data.Entity;
 
 namespace MicroWaveFood.Controllers
 {
+    [Authorize]
     public class OrderController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
@@ -82,6 +84,35 @@ namespace MicroWaveFood.Controllers
             ViewBag.AmountSum = AmountSum();
             ViewBag.PriceSum = PriceSum();
             return View(order);
+        }
+
+        public ActionResult History()
+        {
+            var user = db.Users.Find(User.Identity.GetUserId());
+            if (user == null)
+            {
+                ViewBag.Message = "Vui lòng đăng nhập!";
+                return View("Error");
+            }
+            List<Order> list = db.Orders.Include("Bills.Product").Where(a => a.UserId == user.Id && a.Status == true).OrderByDescending(a => a.OrderDate).ToList();
+            ViewBag.AmountSum = AmountSum();
+            ViewBag.PriceSum = PriceSum();
+            return View(list);
+        }
+
+        [Authorize(Roles = "admin")]
+        public ActionResult OrderConfirm()
+        {
+            var user = db.Users.Find(User.Identity.GetUserId());
+            if (user == null)
+            {
+                ViewBag.Message = "Vui lòng đăng nhập!";
+                return View("Error");
+            }
+            List<Order> list = db.Orders.Include("Bills.Product").Where(a => a.Status == true).OrderByDescending(a => a.OrderDate).ToList();
+            ViewBag.AmountSum = AmountSum();
+            ViewBag.PriceSum = PriceSum();
+            return View(list);
         }
 
 
