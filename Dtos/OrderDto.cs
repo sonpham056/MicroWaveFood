@@ -7,6 +7,6 @@ namespace MicroWaveFood.Dtos
 {
     public class OrderDto
     {
-        public string OrderId { get; set; }
+        public int OrderId { get; set; }
     }
 }
