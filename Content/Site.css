@@ -262,15 +262,15 @@ div > img {
 .container body-content {
 }
 
-h2 {
-    padding-left: 500px;
+.row .col-md-8 > h2 {
+    padding-left: 110px;
     font-size: 2rem;
 }
 
-.btn-primary {
+.col-md-8.btn-primary {
     color: #fff;
-    background-color: #dc3545;
-    border-color: #94464e;
+    background-color: #007bff;
+    border-color: #0062cc;
 }
 
 p a {
