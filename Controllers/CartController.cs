@@ -1,4 +1,5 @@
-﻿using MicroWaveFood.Models;
+﻿using Microsoft.AspNet.Identity;
+using MicroWaveFood.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -76,6 +77,11 @@ namespace MicroWaveFood.Controllers
             {
                 return RedirectToAction("Index", "Home");
             }
+            var user = db.Users.Find(User.Identity.GetUserId());
+            ViewBag.UserProvince = user.Province;
+            ViewBag.UserDistrict = user.District;
+            ViewBag.Guild = user.Guild;
+            ViewBag.Address = user.Address;
             ViewBag.AmountSum = AmountSum();
             ViewBag.PriceSum = PriceSum();
             return View(list);

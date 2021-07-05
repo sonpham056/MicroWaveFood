@@ -6,133 +6,201 @@
     <title>BakingDom - Bring your cake</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.0.4/popper.js"></script>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 
 </head>
-<body class="hero-anime">
-    <div class="navigation-wrap bg-light start-header start-style sticky-top">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="">
-                <img src="~/Images/logo.png" height="100">
-            </a>
-            <div class="row">
-                <div class="col-12">
-                    <nav class="navbar navbar-expand-md navbar-light">
-                        @*https://assets.codepen.io/1462889/fcy.png*@
-                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                            <span class="navbar-toggler-icon"></span>
-                        </button>
+<body>
+    <nav class="start-header container-fluid sticky-top navbar-expand-md">
+        <nav class="header-navbar ">
+            <div class="form-inline mr-auto row" target="_self" style="justify-content: space-evenly">
+                <a class="navbar-branch" href="#" style="justify-self:start">
+                    <img src="~/Images/logo.png" height="80">
+                </a>
+                <div class="form-group navbar-collapse">
+                    <input class="form-control search-field" type="search" name="search" id="search-field">
+                    <label for="search-field">
+                        <i class="fa fa-search"></i>
+                    </label>
 
-                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                            <ul class="navbar-nav ml-auto py-4 py-md-0">
-                                <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4 active">
-                                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Home</a>
-                                    <div class="dropdown-menu">
-                                        @Html.ActionLink("Home", "Index", "Home", new { }, new { @class = "dropdown-item" })
-                                    </div>
-                                    @if (User.IsInRole("admin"))
-                                    {
-                                    <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
-                                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Manage</a>
-                                        <div class="dropdown-menu">
-                                            @Html.ActionLink("Manage Role", "ListRoles", "Administration", new { }, new { @class = "dropdown-item" })
-                                            @Html.ActionLink("Product Type", "Index", "ProductTypes", new { }, new { @class = "dropdown-item" })
-                                            @Html.ActionLink("Product", "Index", "Products", new { }, new { @class = "dropdown-item" })
-                                        </div>
-                                    </li>
-                                }
-                                    @Html.Partial("_LoginPartial")
-                                    @*<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
-                                            <a class="nav-link" href="#">Agency</a>
-                                        </li>
-                                        <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
-                                            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Services</a>
-                                            <div class="dropdown-menu">
-                                                <a class="dropdown-item" href="#">Action</a>
-                                                <a class="dropdown-item" href="#">Another action</a>
-                                                <a class="dropdown-item" href="#">Something else here</a>
-                                                <a class="dropdown-item" href="#">Another action</a>
-                                            </div>
-                                        </li>
-                                        <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
-                                            <a class="nav-link" href="#">Journal</a>
-                                        </li>
-                                        <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
-                                            <a class="nav-link" href="#">Contact</a>
-                                        </li>*@
-                                </ul>
-                            </div>
-                            @*@{Html.RenderAction("LoginPartial", "Notification");}*@
-
-
-                        </nav>
-                    </div>
                 </div>
+                @if (User.IsInRole("admin"))
+                {
+                    <div class="link-action">
+                        <ul class="nav navbar-nav navbar-right">
+                            <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+                                @Html.ActionLink("Home", "Index", "Home", new { }, new { @class = "nav-link active" })
+                            </li>
+                            <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+                                @Html.ActionLink("Product Type", "Index", "ProductTypes", new { }, new { @class = "nav-link active" })
+                            </li>
+                            <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+                                @Html.ActionLink("Product", "Index", "Products", new { }, new { @class = "nav-link active" })
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="link-action">
+                        <ul class="nav navbar-nav navbar-right">
+                            <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+                                <div class="dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <a class="nav-link active">Account</a>
+                                </div>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    @Html.Partial("_LoginPartial")
+                                </div>
+                            </li>
+                            <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+                                @Html.Partial("../Cart/CartPartial")
+                            </li>
+                        </ul>
+                    </div>
+                }
+                else
+                {
+                    <div class="link-action">
+                        <ul class="nav navbar-nav navbar-right">
+                            @if (Request.IsAuthenticated)
+                            {
+                                <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+                                    <div class="dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <a class="nav-link active">Account</a>
+                                    </div>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                        @Html.Partial("_LoginPartial")
+                                    </div>
+                                </li>
+                            }
+                            else
+                            {
+                                @Html.Partial("_LoginPartial")
+                            }
+                            <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+                                @Html.Partial("../Cart/CartPartial")
+                            </li>
+                        </ul>
+                    </div>
+
+                }
+
+
+                @*<div class="dropdown">
+                        <div class="nav-item pl-4 pl-md-0 ml-0 ml-md-4 dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+
+                        </div>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            @Html.Partial("_LoginPartial")
+                        </div>
+                    </div>*@
+
+                @*<div class="link-action">
+                        <ul class="nav navbar-nav navbar-right">
+                            <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+                            </li>
+                        </ul>
+                    </div>*@
+
             </div>
-        </div>
+        </nav>
+    </nav>
+    @*
+            @if (User.Identity != null)
+                                {
+                                    if (User.IsInRole("admin"))
+                                    {
+                                        @Html.ActionLink("Manage Role", "ListRoles", "Administration", new { }, new { @class = "dropdown-item" })
+                                        @Html.ActionLink("Product Type", "Index", "ProductTypes", new { }, new { @class = "dropdown-item" })
+                                        @Html.ActionLink("Product", "Index", "Products", new { }, new { @class = "dropdown-item" })
+                                    }
+                                    else
+                                    {
+                                        <p class="dropdown-item-text">UnAdmin Role</p>
+                                        <a clas>Give Feedback</a>
+                                        <a class="dropdown-item" role="presentation" href="#">
+                                            <p>Giỏ hàng</p>
+                                            <img src="~/Images/shopping-cart.png" />
+                                        </a>
+                                        @Html.ActionLink("Đăng xuất", "LogOff", "Account", new { }, new { @class = "dropdown-item" })
 
-        <!-- Link to page
-        ================================================== -->
-        @*<a href="https://front.codes/" class="logo" target="_blank">
-                <img src="https://assets.codepen.io/1462889/fcy.png" alt="">
-            </a>*@
+                                    }
 
-        <div class="container body-content">
-            @RenderBody()
-            <hr />
-            <footer>
-                <div class="footer">
-                    <div class="container-fluid">
-                        <div class="row">
-                            <div class="footer-col-1">
-                                <h3>Download Our App</h3>
-                                <p>Download App for android and iOs.</p>
-                                <div>
-                                    <img src="~/Images/play-store.png" />
-                                    <img src="~/Images/app-store.png" />
-                                </div>
-                            </div>
+                                }
+                                else
+                                {
+                                    <p class="dropdown-item-text">UnAdmin Role</p>
+                                }
 
-                            <div class="footer-col-2">
-                                <div class="app-logo">
-                                    <img src="~/Images/logo.png" width="20" />
-                                </div>
+            <a class="dropdown-item" role="presentation" href="#">First Item</a>
+        <a class="dropdown-item" role="presentation" href="#">Second Item</a>
+        <a class="dropdown-item" role="presentation" href="#">Third Item</a>*@
 
-                                <p>Our purpose Is To Sustainably make the Pleasure and BeneFit of Sports Accessible to the Many.</p>
-
-                            </div>
-                            <div class="footer-col-3">
-                                <h3>Useful Links</h3>
-                                <p>Coupons</p>
-                                <p>Blog Post</p>
-                                <p>Return Policy</p>
-                                <p>Become Affiliate</p>
-                            </div>
-                            <div class="footer-col-4">
-                                <h3>Follow Us</h3>
-                                <ul>
-                                    <li>
-                                        <a href="https://www.facebook.com/quynhthu1911">Facebook </a>
-                                    </li>
-                                </ul>
-                                <ul>
-                                    <li>
-                                        <a href="https://www.instagram.com/quynhthu.qt/">Instagram </a>
-                                    </li>
-                                </ul>
-                                <ul>
-                                    <li>
-                                        <a href="https://www.facebook.com/Quoc.Son.QS/">Team Leader </a>
-                                    </li>
-                                </ul>
+    @*@Html.ActionLink("Manage Role", "ListRoles", "Administration", new { }, new { @class = "dropdown-item" })
+        @Html.ActionLink("Product Type", "Index", "ProductTypes", new { }, new { @class = "dropdown-item" })
+        @Html.ActionLink("Product", "Index", "Products", new { }, new { @class = "dropdown-item" })*@
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <div class="footer">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="footer-col-1">
+                            <h3>Download Our App</h3>
+                            <p>Download App for android and iOs.</p>
+                            <div>
+                                <img src="~/Images/play-store.png" />
+                                <img src="~/Images/app-store.png" />
                             </div>
                         </div>
-                        <hr />
-                        <p3 class="copyright">Copyright 2021 - QuocPhong</p3>
+
+                        <div class="footer-col-2">
+                            <div class="app-logo">
+                                <img src="~/Images/logo.png" width="20" />
+                            </div>
+
+                            <p>Our purpose Is To Sustainably make the Pleasure and BeneFit of Sports Accessible to the Many.</p>
+
+                        </div>
+                        <div class="footer-col-3">
+                            <h3>Useful Links</h3>
+                            <p>Coupons</p>
+                            <p>Blog Post</p>
+                            <p>Return Policy</p>
+                            <p>Become Affiliate</p>
+                        </div>
+                        <div class="footer-col-4">
+                            <h3>Follow Us</h3>
+                            <ul>
+                                <li>
+                                    <a href="https://www.facebook.com/quynhthu1911">Facebook </a>
+                                </li>
+                            </ul>
+                            <ul>
+                                <li>
+                                    <a href="https://www.instagram.com/quynhthu.qt/">Instagram </a>
+                                </li>
+                            </ul>
+                            <ul>
+                                <li>
+                                    <a href="https://www.facebook.com/Quoc.Son.QS/">Team Leader </a>
+                                </li>
+                            </ul>
+
+
+
+                        </div>
                     </div>
+                    <hr />
+                    <p3 class="copyright">Copyright 2021 - QuocPhong</p3>
                 </div>
-            </footer>
-        </div>
-    </body>
+            </div>
+        </footer>
+    </div>
+
+
+</body>
 </html>
 
 @Scripts.Render("~/bundles/jquery")
@@ -140,7 +208,8 @@
 @RenderSection("scripts", required: false)
 <script src="~/Scripts/bootstrap-input-spinner.js"></script>
 <script>
-        $("input[type='number']").inputSpinner({ buttonsOnly: true })
+    $(document).ready(function () {
+         $("input[type='number']").inputSpinner({ buttonsOnly: true })
         var $changedInput = $(".changedInput")
         var $valueOnInput = $("#valueOnInput")
         var $valueOnChange = $("#valueOnChange")
@@ -173,4 +242,10 @@
             var url = $changedInput.attr("data-link");
             window.location.href = url;
         })
+    })
+
 </script>
+
+
+
+

@@ -45,15 +45,13 @@
                                 <div class="input-spiner">
                                     <input class="changedInput" type="number" value="@Html.DisplayFor(modelItem => item.Amount)" data-id="@item.ProductId" data-link="@Url.Action("AddToCart", "Cart", new { @productId = item.ProductId, @strUrl = Request.Url.ToString() })" min="0" max="200" step="1" />
                                 </div>
-
                                 @*@Html.DisplayFor(modelItem => item.Amount)*@
-
                             </td>
                             <td>
                                 @String.Format("{0:0}", item.Total)
                                 <span>đ</span>
                                 @*@Html.DisplayFor(modelItem => item.Total)*@
-                            </td>                            
+                            </td>
                         </tr>
                     }
                 </tbody>
@@ -65,18 +63,69 @@
             <div class="cart-totals">
                 <h2>Cộng giỏ hàng</h2>
                 <div class="row" style="justify-content:space-around">
-                    <div>Tổng cộng:</div>
+                    <div>Tạm tính:</div>
                     <div>
-                        <span>@ViewBag.PriceSum</span>
+                        <span id="price" value="@ViewBag.PriceSum">@ViewBag.PriceSum</span>
                         <span>đ</span>
                     </div>
                 </div>
-                <div class="container">
-                    <a href="@Url.Action("Payment", "Order")" class="btn btn-primary btn-thanh-toan">Thanh toán</a>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="giaohangnhanh" value="55000" checked>
+                    <label class="form-check-label" for="giaohangnhanh">
+                        Giao hàng nhanh: 55.000 đ
+                    </label>
                 </div>
-            </div>  
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="giaohangtietkiem" value="35000">
+                    <label class="form-check-label" for="giaohangtietkiem">
+                        Giao hàng tiết kiệm: 35.000 đ
+                    </label>
+                </div>
+                <div>
+                    <p>Tổng cộng: <span id="total-money"></span></p>
+                </div>
+                <div>
+                    <p>Giao hàng đến: </p>
+                    <p class="my-1 province" disabled>@ViewBag.UserProvince</p>
+                    <p class="my-1 district" disabled>@ViewBag.UserDistrict</p>
+                    <p class="my-1 guild" disabled>@ViewBag.Guild</o>
+                    <p class="my-1 address" disabled>@ViewBag.Address</p>
+                </div>
+                <div class="container">
+                    <a class="btn btn-primary btn-thanh-toan">Thanh toán</a>
+                </div>
+                <h6 class="my-1">*Lưu ý: Để thay đổi địa chỉ giao hàng, quý khách vui lòng chỉnh sửa lại thông tin tài khoản!</h6>
+            </div>
         </div>
     </div>
 </div>
 
 
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+            var $price = $('#price').text();
+            var $priceNhanh = $('#giaohangnhanh').val();
+            $('#total-money').text(parseInt($price) + parseInt($priceNhanh));
+            $('#giaohangnhanh').click(function () {
+                $('#total-money').text(parseInt($price) + parseInt($priceNhanh));
+
+            })
+
+            $('#giaohangtietkiem').click(function () {
+                var $priceTietKiem = $('#giaohangtietkiem').val();
+                $('#total-money').text(parseInt($price) + parseInt($priceTietKiem));
+            })
+
+
+            $('.btn-thanh-toan').click(function () {
+                if ($('province').text() == null || $('guild').text() == null || $('district').text() == null || $('address').text() == null) {
+                    window.location.href = '@Url.Action("ProvideInfo", "Manage")';
+                } else {
+                    window.location.href = '@Url.Action("Payment", "Order")';
+                }
+            })
+        })
+    </script>
+}
