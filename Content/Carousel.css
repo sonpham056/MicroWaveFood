@@ -58,6 +58,11 @@ carousel-inner img {
     transition-delay: 1700ms;
 }
 
+.img-carol{
+    width:50%!important;
+
+}
+
 .carousel-indicators {
     position: absolute;
     right: 30px;

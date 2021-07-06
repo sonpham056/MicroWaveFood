@@ -156,6 +156,7 @@ div > img {
     height: 100%;
 }
 
+
 .productImg {
     width: 155px;
     height: 155px;
@@ -275,10 +276,7 @@ td.data-title {
     padding-left:30px;
 }*/
 
-div > img {
-    width: 50%;
-    height: 100%;
-}
+
 
 .img-index {
     width: 100%;
