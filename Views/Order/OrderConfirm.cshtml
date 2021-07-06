@@ -58,7 +58,11 @@
                     <div class="history-button">
                         @if (item.IsDelivered != true)
                         {
-                            <button value="@item.OrderId" disabled>Xác nhận đã giao</button>
+                            <button class="button-delivery-confirm" value="@item.OrderId">Xác nhận đã giao</button>
+                        }
+                        else
+                        {
+                            <button class="button-delivery-confirmed">Đã xác nhận</button>
                         }
                     </div>
                 </div>
@@ -70,6 +74,16 @@
 @section scripts
 {
     <script>
-
+        $(document).ready(function () {
+            $('.button-delivery-confirm').on("click", function (e) {
+                var button = $(e.target);
+                $.post("/api/Order/OrderConfirm", { OrderId: button.val() })
+                    .done(function () {
+                        button.text("Đã xác nhận");
+                        button.removeClass("button-delivery-confirm");
+                        button.addClass("button-delivery-confirmed")
+                    })
+            });
+        })
     </script>
 }
