@@ -46,9 +46,9 @@
 </nav>*@
 </head>
 <body>
-    <nav class="start-header container-fluid sticky-top navbar-expand-md ">
+    <nav class="start-header container-fluid sticky-top navbar-expand-md">
         <nav class="header-navbar ">
-            <form class="form-inline mr-auto row" target="_self">
+            <div class="form-inline mr-auto row" target="_self" style="justify-content: space-evenly">
                 <a class="navbar-branch" href="#" style="justify-self:start">
                     <img src="~/Images/logo.png" height="80">
                 </a>
@@ -61,28 +61,66 @@
                 </div>
                 @if (User.IsInRole("admin"))
                 {
-                <div class="link-action">
-                    <ul>
-                        @Html.ActionLink("Home", "ListRoles", "Administration", new { }, new { @class = "li" })
-                        @Html.ActionLink("Product Type", "Index", "ProductTypes", new { }, new { @class = "li" })
-                        @Html.ActionLink("Product", "Index", "Products", new { }, new { @class = "li" })
-                    </ul>
-                </div>
+                    <div class="link-action">
+                        <ul class="nav navbar-nav navbar-right">
+                            <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+                                @Html.ActionLink("Home", "Index", "Home", new { }, new { @class = "nav-link active" })
+                            </li>
+                            <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+                                @Html.ActionLink("Product Type", "Index", "ProductTypes", new { }, new { @class = "nav-link active" })
+                            </li>
+                            <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+                                @Html.ActionLink("Product", "Index", "Products", new { }, new { @class = "nav-link active" })
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="link-action">
+                        <ul class="nav navbar-nav navbar-right">
+                            <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+                                <div class="dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Account
+                                </div>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    @Html.Partial("_LoginPartial")
+                                </div>
+                            </li>
+                            <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+                                @Html.Partial("../Cart/CartPartial")
+                            </li>
+                        </ul>
+                    </div>
+                }
+                else
+                {
+                    <div class="link-action">
+                        <ul class="nav navbar-nav navbar-right">
+                            <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+                                @Html.Partial("_LoginPartial")
+                            </li>
+                            
+                        </ul>
+                    </div>
+                    
                 }
 
-                <div class="dropdown">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Account
-                    </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        @Html.Partial("_LoginPartial")
-                    </div>
 
-                </div>
+                @*<div class="dropdown">
+            <div class="nav-item pl-4 pl-md-0 ml-0 ml-md-4 dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 
-            </form>
+            </div>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>*@
 
+                @*<div class="link-action">
+            <ul class="nav navbar-nav navbar-right">
+                <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+                </li>
+            </ul>
+        </div>*@
 
+            </div>
         </nav>
     </nav>
     @*
