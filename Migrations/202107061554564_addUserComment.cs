@@ -3,16 +3,16 @@ namespace MicroWaveFood.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class addIsDeliveredToOrder : DbMigration
+    public partial class addUserComment : DbMigration
     {
         public override void Up()
         {
-            AddColumn("dbo.Order", "IsDelivered", c => c.Boolean());
+            AddColumn("dbo.Comment", "UserComment", c => c.String(nullable: false, maxLength: 255));
         }
         
         public override void Down()
         {
-            DropColumn("dbo.Order", "IsDelivered");
+            DropColumn("dbo.Comment", "UserComment");
         }
     }
 }

@@ -8,13 +8,13 @@
     <div class="history-wrapper">
         <div class="history-nav row shadow p-3 mb-5 bg-white rounded">
             <div class="col py-3 nav-item text-center">
-                <a class="nav-link active" href="#">Tất cả</a>
+                <a class="nav-link active" href="@Url.Action("History", "Order")">Tất cả</a>
             </div>
             <div class="col py-3 nav-item text-center">
-                <a class="nav-link active">Đang giao</a>
+                <a class="nav-link active" href="@Url.Action("History", "Order", new { type = 1})">Đang giao</a>
             </div>
             <div class="col py-3 nav-item text-center">
-                <a class="nav-link active">Đã giao</a>
+                <a class="nav-link active" href="@Url.Action("History", "Order", new { type = 2})">Đã giao</a>
             </div>
         </div>
         <div class="history-detail">
@@ -38,7 +38,7 @@
                                 </div>
                             </div>
                             <div class="product-price-history col">
-                                <p>@subItem.Product.Price <span>đ</span></p>
+                                <p>@(@subItem.Product.Price*@subItem.Amount) <span>đ</span></p>
                             </div>
                         }
                     </div>
@@ -58,7 +58,9 @@
                     <div class="history-button">
                         @if (item.IsDelivered == true)
                         {
-                            <button class="button-comment-order" value="@item.OrderId" disabled>Đánh giá</button>
+                            <form action="@Url.Action("Comment", "Order", new { orderId = item.OrderId })", method="post">
+                                <button type="submit" class="button-comment-order">Đánh giá</button>
+                            </form>
                         }
                     </div>
                 </div>

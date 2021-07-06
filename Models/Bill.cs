@@ -19,6 +19,6 @@ namespace MicroWaveFood.Models
         public bool Status { get; set; }
         public Order Order { get; set; }
         public Product Product { get; set; }
-        public virtual ICollection<Comment> comment { get; set; }
+        public virtual Comment Comment { get; set; }
     }
 }

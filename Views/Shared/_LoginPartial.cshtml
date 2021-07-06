@@ -6,13 +6,13 @@
         @Html.AntiForgeryToken()
 
         <ul class="nav navbar-nav navbar-right">
-            <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+            <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4" style="width:100%">
                 @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage", @class = "nav-link active" })
             </li>
-            <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+            <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4" style="width:100%">
                 @Html.ActionLink("Lịch sử mua sắm", "History", "Order", routeValues: null, htmlAttributes: new { @class = "nav-link active" })
             </li>
-            <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4"><a class="nav-link active" href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
+            <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4" style="width:100%"><a class="nav-link active" href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
         </ul>
     }
 }

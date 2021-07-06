@@ -192,49 +192,13 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202106281032467_init.cs" />
-    <Compile Include="Migrations\202106281032467_init.Designer.cs">
-      <DependentUpon>202106281032467_init.cs</DependentUpon>
+    <Compile Include="Migrations\202107061523296_test.cs" />
+    <Compile Include="Migrations\202107061523296_test.Designer.cs">
+      <DependentUpon>202107061523296_test.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202106290322307_addNameToUser.cs" />
-    <Compile Include="Migrations\202106290322307_addNameToUser.Designer.cs">
-      <DependentUpon>202106290322307_addNameToUser.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202106290930400_addFullDB.cs" />
-    <Compile Include="Migrations\202106290930400_addFullDB.Designer.cs">
-      <DependentUpon>202106290930400_addFullDB.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202106291357042_addGroupTypeToProductTypeAndOriginToProduct.cs" />
-    <Compile Include="Migrations\202106291357042_addGroupTypeToProductTypeAndOriginToProduct.Designer.cs">
-      <DependentUpon>202106291357042_addGroupTypeToProductTypeAndOriginToProduct.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202106291444382_addRequiredToFields.cs" />
-    <Compile Include="Migrations\202106291444382_addRequiredToFields.Designer.cs">
-      <DependentUpon>202106291444382_addRequiredToFields.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202106291457011_addProductDescribeToProduct.cs" />
-    <Compile Include="Migrations\202106291457011_addProductDescribeToProduct.Designer.cs">
-      <DependentUpon>202106291457011_addProductDescribeToProduct.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202106291510554_removedUserNameRequired.cs" />
-    <Compile Include="Migrations\202106291510554_removedUserNameRequired.Designer.cs">
-      <DependentUpon>202106291510554_removedUserNameRequired.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202106300416194_addMoreInfomationToUser.cs" />
-    <Compile Include="Migrations\202106300416194_addMoreInfomationToUser.Designer.cs">
-      <DependentUpon>202106300416194_addMoreInfomationToUser.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202107010846549_somefix.cs" />
-    <Compile Include="Migrations\202107010846549_somefix.Designer.cs">
-      <DependentUpon>202107010846549_somefix.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202107010919548_addTotalToOrder.cs" />
-    <Compile Include="Migrations\202107010919548_addTotalToOrder.Designer.cs">
-      <DependentUpon>202107010919548_addTotalToOrder.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202107010950278_addIsDeliveredToOrder.cs" />
-    <Compile Include="Migrations\202107010950278_addIsDeliveredToOrder.Designer.cs">
-      <DependentUpon>202107010950278_addIsDeliveredToOrder.cs</DependentUpon>
+    <Compile Include="Migrations\202107061554564_addUserComment.cs" />
+    <Compile Include="Migrations\202107061554564_addUserComment.Designer.cs">
+      <DependentUpon>202107061554564_addUserComment.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -452,6 +416,7 @@
     <Content Include="Views\Order\Payment.cshtml" />
     <Content Include="Views\Order\History.cshtml" />
     <Content Include="Views\Order\OrderConfirm.cshtml" />
+    <Content Include="Views\Order\Comment.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -469,38 +434,11 @@
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202106281032467_init.resx">
-      <DependentUpon>202106281032467_init.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202107061523296_test.resx">
+      <DependentUpon>202107061523296_test.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202106290322307_addNameToUser.resx">
-      <DependentUpon>202106290322307_addNameToUser.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202106290930400_addFullDB.resx">
-      <DependentUpon>202106290930400_addFullDB.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202106291357042_addGroupTypeToProductTypeAndOriginToProduct.resx">
-      <DependentUpon>202106291357042_addGroupTypeToProductTypeAndOriginToProduct.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202106291444382_addRequiredToFields.resx">
-      <DependentUpon>202106291444382_addRequiredToFields.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202106291457011_addProductDescribeToProduct.resx">
-      <DependentUpon>202106291457011_addProductDescribeToProduct.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202106291510554_removedUserNameRequired.resx">
-      <DependentUpon>202106291510554_removedUserNameRequired.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202106300416194_addMoreInfomationToUser.resx">
-      <DependentUpon>202106300416194_addMoreInfomationToUser.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202107010846549_somefix.resx">
-      <DependentUpon>202107010846549_somefix.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202107010919548_addTotalToOrder.resx">
-      <DependentUpon>202107010919548_addTotalToOrder.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202107010950278_addIsDeliveredToOrder.resx">
-      <DependentUpon>202107010950278_addIsDeliveredToOrder.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202107061554564_addUserComment.resx">
+      <DependentUpon>202107061554564_addUserComment.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
