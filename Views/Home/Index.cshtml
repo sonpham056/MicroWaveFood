@@ -32,130 +32,61 @@
     </div>*@
 
 @*Carousel*@
-<h2 class="title" style="text-align:center">Best seller</h2>
-<div class="row">
-
-    <div id="slides" class="carousel slide container carol col-md-4" data-ride="carousel" style="align-self: center; z-index: 10;">
-
-
-        <div class="carousel-inner" style="padding-left: 60px; align-self: center; position: relative; width: 300% !important;">
-            <div class="carousel-item active">
-                <img src="~/images/caroul1.jpeg" class="img-carol">
-                <div class="carol-p">
-                    <p>Carou1</p>
-                </div>
-            </div>
-            <div class="carousel-item" >
-                <img src="~/images/caroul2.jpg" class="img-carol">
-                <div class="carol-p">
-                    <p>Carou2</p>
-                </div>
-            </div>
-            <div class="carousel-item" >
-                <img src="~/images/caroul3.jpeg" class="img-carol">
-                <div class="carol-p">
-                    <p>Carou3</p>
-                </div>
-            </div>
-            <div class="carousel-item" >
-                <img src="~/images/caroul4.jpeg" class="img-carol" >
-                <div class="carol-p">
-                    <p>Carou4</p>
-                </div>
-                
-            </div>
-            <ul class="carousel-indicators" >
-                <li data-target="#slides" data-slide-to="0" class="active"></li>
-                <li data-target="#slides" data-slide-to="1"></li>
-                <li data-target="#slides" data-slide-to="2"></li>
-                <li data-target="#slides" data-slide-to="3"></li>
-            </ul>
+<div class="row row-best-seller">
+    <div class="row">
+        <div class="col-12 text-center">
+            <h2 class="hp-category-title">Bán chạy nhất</h2>
         </div>
     </div>
-    <div class="CRSbanner col">
-        <p>
-            Most view this month
-        </p>
-        <div class="small-container">
-
-            <div class="col pt-5">
-                <div class="productImg">
-                    <img class="img-index" src="~/Images/cheese-productType.jpg" />
-                </div>
-                <div class="product-content-container">
-                    <div class="productContent">
-                        <div class="product-name">
-                            <p style="text-align:center">Tên sản phẩm</p>
-                        </div>
-                        <div class="product-price">
-                            <p style="text-align:center">Giá</p>
-                        </div>
-                        <div class="product-count">
-                            <p style="text-align:center">Số lần xem: @@</p>
+    <div class="row" style="margin-left: -15px; margin-right: -15px; padding: 0">
+        <div class="col-sm-12">
+            <div class="swiper-entry">
+                <div class="swiper-container carousel-area products-slider slider-5768 swiper-swiper-unique-id-0 initialized swiper-container-horizontal second-initialized">
+                    <div class="slider-wraper">
+                        <div class="swiper-slide slide-item product-slide -slide swiper-slide-visible swiper-slide-active" style="width: 257.167px;">
+                            <div class="swiper-slide slide-item product-slide -slide swiper-slide-visible" style="width: 257.167px;"></div>
+                            <div class="view-color-white status-publish purchasable product-type-simple">
+                                <div class="sale-wrapper ">
+                                    <span class="onsale">Sale</span>
+                                </div>
+                                <div class="sale-wrapper">
+                                    <span class="corner-text"></span>
+                                </div>
+                                <div class="product-image-wrapper hover-effect-swap"></div>
+                                <div></div>
+                            </div>
+                            <div class="swiper-slide slide-item product-slide -slide swiper-slide-visible" style="width: 257.167px;"></div>
+                            
+                            <div class="swiper-slide slide-item product-slide -slide swiper-slide-visible" style="width: 257.167px;"></div>
+                            
+                            <div class="swiper-slide slide-item product-slide -slide swiper-slide-visible" style="width: 257.167px;"></div>
                         </div>
                     </div>
-                    <a href=# @*"@Url.Action("AddToCart", "Cart", new { @productId = item.ProductId, @strUrl = Request.Url.ToString() })"*@ class="btn btn-primary">Thêm vào giỏ hàng</a>
-                </div>
-            </div>
-
-        </div>
-    </div>
-    <div class="CRSbanner col">
-        <p>
-            Most view this month
-        </p>
-        <div class="small-container">
-
-            <div class="col pt-5">
-                <div class="productImg">
-                    <img class="img-index" src="~/Images/cheese-productType.jpg" />
-                </div>
-                <div class="product-content-container">
-                    <div class="productContent">
-                        <div class="product-name">
-                            <p style="text-align:center">Tên sản phẩm</p>
-                        </div>
-                        <div class="product-price">
-                            <p style="text-align:center">Giá</p>
-                        </div>
-                        <div class="product-count">
-                            <p style="text-align:center">Số lần xem: @@</p>
-                        </div>
+                    <div class="swiper-pagination etheme-css swiper-pagination-swiper-unique-id-0 swiper-pagination-clickable swiper-pagination-bullets" data-css="">
+                        <span class="swiper-pagination-bullet swiper-pagination-bullet-active"></span>
+                        <span class="swiper-pagination-bullet"></span>
+                        <span class="swiper-pagination-bullet"></span>
+                        <span class="swiper-pagination-bullet"></span>
+                        <span class="swiper-pagination-bullet"></span>
+                        <span class="swiper-pagination-bullet"></span>
+                        <span class="swiper-pagination-bullet"></span>
+                        <span class="swiper-pagination-bullet"></span>
+                        <span class="swiper-pagination-bullet"></span>
+                        <span class="swiper-pagination-bullet"></span>
+                        <span class="swiper-pagination-bullet"></span>
+                        <span class="swiper-pagination-bullet"></span>
+                        <span class="swiper-pagination-bullet"></span>
+                        <span class="swiper-pagination-bullet"></span>
                     </div>
-                    <a href=# @*"@Url.Action("AddToCart", "Cart", new { @productId = item.ProductId, @strUrl = Request.Url.ToString() })"*@ class="btn btn-primary">Thêm vào giỏ hàng</a>
                 </div>
+                <div class="swiper-button-prev swiper-custom-left swiper-button-prev-swiper-unique-id-0 swiper-button-disabled"></div>
+                <div class="swiper-button-next swiper-custom-right swiper-button-next-swiper-unique-id-0"></div>
             </div>
-
+            
         </div>
-    </div>
-    <div class="CRSbanner col">
-        <p>
-            Most view this month
-        </p>
-        <div class="small-container">
 
-            <div class="col pt-5">
-                <div class="productImg">
-                    <img class="img-index" src="~/Images/cheese-productType.jpg" />
-                </div>
-                <div class="product-content-container">
-                    <div class="productContent">
-                        <div class="product-name">
-                            <p style="text-align:center">Tên sản phẩm</p>
-                        </div>
-                        <div class="product-price">
-                            <p style="text-align:center">Giá</p>
-                        </div>
-                        <div class="product-count">
-                            <p style="text-align:center">Số lần xem: @@</p>
-                        </div>
-                    </div>
-                    <a href=# @*"@Url.Action("AddToCart", "Cart", new { @productId = item.ProductId, @strUrl = Request.Url.ToString() })"*@ class="btn btn-primary">Thêm vào giỏ hàng</a>
-                </div>
-            </div>
-
-        </div>
     </div>
+    
 </div>
 
 @*End carousel*@
