@@ -1,0 +1,39 @@
+﻿@model IEnumerable<MicroWaveFood.Models.Bill>
+@{
+    ViewBag.Title = "Comment";
+}
+
+<h2>Comment</h2>
+
+<div class="container">
+    @foreach (var item in Model)
+    {
+        <form action="@Url.Action("SendComment", "Order", new { billId = item.BillId , strUrl = Request.Url.ToString()})" method="post">
+            <div class="comment-wrapper shadow p-3 mb-5 bg-white rounded" style="margin-left:-15px; margin-right:-15px;">
+                <div class="row">
+                    <div class="col-sm-2">
+                        <img class="img-detail-history" src="@item.Product.Image" />
+                    </div>
+                    <div class="col">
+                        <p>@item.Product.ProductName</p>
+                    </div>
+                    <div class="col">
+                        <textarea name="comment" class="form-control" rows="4" cols="50"></textarea>
+                    </div>
+                    <div class="col-sm-2">
+                        @if (item.Comment == null)
+                        {
+                            <button type="submit" class="button-delivery-confirm mt-5">Gửi nhận xét</button>
+                        }
+                        else
+                        {
+                            <button type="submit" class="button-delivery-confirmed mt-5">Đã gửi nhận xét</button>
+                        }
+
+                    </div>
+                </div>
+            </div>
+        </form>
+    }
+
+</div>
