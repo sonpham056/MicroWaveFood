@@ -249,6 +249,10 @@
     <Content Include="Images\lAU.jpg" />
     <Content Include="Images\logo.png" />
     <Content Include="Images\play-store.png" />
+    <Content Include="Images\prod1.jpeg" />
+    <Content Include="Images\prod2.jpeg" />
+    <Content Include="Images\prod3.jpeg" />
+    <Content Include="Images\prod4.jpg" />
     <Content Include="Images\shopping-cart.png" />
     <Content Include="Images\Tran-chau.jpg" />
     <Content Include="Images\whipping-archor-1L.jpg" />
