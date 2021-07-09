@@ -237,7 +237,7 @@
         })
         $minus.on("click", function (event) {
             var url = $changedInput.attr("data-link") + "&isMinus=true";
-            if ($(this).val() == 0) {
+            if ($('.changedInput').val() == 0) {
                 url = "@Url.Action("CartDelete", "Cart", new { productId = "__id__"})"
                 window.location.href = url.replace('__id__', $changedInput.attr("data-id"))
             } else {
