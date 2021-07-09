@@ -52,23 +52,29 @@
                                         <div class="sale-wrapper">
                                             <span class="corner-text"></span>
                                         </div>
-                                        <div class="product-image-wrapper hover-effect-swap">
-                                            <a class="product-content-image" href="#" data-images="">
-                                                <div class="block-srcset">
-                                                    <img alt="@item.ProductName" class="swiper-lazy wp-post-image swiper-lazy-loaded" src="@item.Image">
+                                        <div class="col pt-5">
+                                            <div class="productImg">
+                                                <img class="img-index" src="@item.Image" />
+                                            </div>
+                                            <div class="product-content-container">
+                                                <div class="productContent">
+                                                    <div>
+                                                        <div class="product-content-container">
+                                                            <div class="container text-center mt-1">
+                                                                <a href="@Url.Action("AddToCart", "Cart", new { @productId = item.ProductId, @strUrl = Request.Url.ToString() })" class="btn btn-primary button-index">Thêm vào giỏ hàng</a>
+                                                            </div>
+                                                            <div class="productContent">
+                                                                <div class="product-name">
+                                                                    <p style="text-align:center">@item.ProductName</p>
+                                                                </div>
+                                                                <div class="product-price">
+                                                                    <p style="text-align:center">@item.Price</p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                            </a>
-                                        </div>
-                                        <div class="text-center product-details">
-                                            <a href="@Url.Action("AddToCart", "Cart", new { @productId = item.ProductId, @strUrl = Request.Url.ToString() })" class="btn btn-primary">Thêm vào giỏ hàng</a>
-                                            <span class="price">
-                                                @item.Price
-                                                <span class="woocommerce-Price-currencySymbol">₫</span>
-                                            </span>
-
-                                            <h3 class="product-title">
-                                                <a href="#">@item.ProductName</a>
-                                            </h3>
+                                            </div>
                                         </div>
                                     </div>
                                     <!-- .content-product -->
@@ -80,21 +86,20 @@
 
                     </div>
                     <!-- slider wrapper-->
-
                     @*<ul class="carousel-indicators align-items-center">
-                        <li data-target="#slides" data-slide-to="0" class="active"></li>
-                        <li data-target="#slides" data-slide-to="1"></li>
-                        <li data-target="#slides" data-slide-to="2"></li>
-                        <li data-target="#slides" data-slide-to="3"></li>
-                    </ul>*@
+                            <li data-target="#slides" data-slide-to="0" class="active"></li>
+                            <li data-target="#slides" data-slide-to="1"></li>
+                            <li data-target="#slides" data-slide-to="2"></li>
+                            <li data-target="#slides" data-slide-to="3"></li>
+                        </ul>*@
 
                     @*<div class="swiper-pagination etheme-css swiper-pagination-swiper-unique-id-0 swiper-pagination-clickable swiper-pagination-bullets">
-            <span class="swiper-pagination-bullet swiper-pagination-bullet-active"></span>
-            <span class="swiper-pagination-bullet"></span>
-            <span class="swiper-pagination-bullet"></span>
-            <span class="swiper-pagination-bullet"></span>
+                            <span class="swiper-pagination-bullet swiper-pagination-bullet-active"></span>
+                            <span class="swiper-pagination-bullet"></span>
+                            <span class="swiper-pagination-bullet"></span>
+                            <span class="swiper-pagination-bullet"></span>
 
-        </div>*@
+                        </div>*@
                     <div class="swiper-pagination etheme-css swiper-pagination-swiper-unique-id-0 swiper-pagination-clickable swiper-pagination-bullets" data-css=""><span class="swiper-pagination-bullet swiper-pagination-bullet-active"></span><span class="swiper-pagination-bullet"></span><span class="swiper-pagination-bullet"></span><span class="swiper-pagination-bullet"></span><span class="swiper-pagination-bullet"></span><span class="swiper-pagination-bullet"></span><span class="swiper-pagination-bullet"></span><span class="swiper-pagination-bullet"></span><span class="swiper-pagination-bullet"></span><span class="swiper-pagination-bullet"></span><span class="swiper-pagination-bullet"></span><span class="swiper-pagination-bullet"></span><span class="swiper-pagination-bullet"></span><span class="swiper-pagination-bullet"></span></div>
                 </div><!-- slider container-->
                 <div class="swiper-button-prev swiper-custom-left swiper-button-prev-swiper-unique-id-0 swiper-button-disabled"></div>
@@ -114,18 +119,27 @@
         {
             <div class="col pt-5">
                 <div class="productImg">
-                    <img src="@item.Image" width="100" height="120" />
+                    <img class="img-index" src="@item.Image" />
                 </div>
-                <div class="productContent">
-                    <div>
-                        <p style="text-align:center">@item.ProductName</p>
-                    </div>
-                    <div>
-                        <p style="text-align:center">@item.Price</p>
+                <div class="product-content-container">
+                    <div class="productContent">
+                        <div>
+                            <div class="product-content-container">
+                                <div class="container text-center mt-1">
+                                    <a href="@Url.Action("AddToCart", "Cart", new { @productId = item.ProductId, @strUrl = Request.Url.ToString() })" class="btn btn-primary button-index">Thêm vào giỏ hàng</a>
+                                </div>
+                                <div class="productContent">
+                                    <div class="product-name">
+                                        <p style="text-align:center">@item.ProductName</p>
+                                    </div>
+                                    <div class="product-price">
+                                        <p style="text-align:center">@item.Price</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <a href="@Url.Action("AddToCart", "Cart", new { @productId = item.ProductId, @strUrl = Request.Url.ToString() })
-                   " class="btn btn-primary">Thêm vào giỏ hàng</a>
             </div>
         }
     </div>
@@ -176,9 +190,6 @@
                 </div>
                 <div class="product-content-container">
                     <div class="productContent">
-                        <div class="product-name">
-                            <p style="text-align:center">@item.ProductName</p>
-                        </div>
                         <div>
                             <div class="product-content-container">
                                 <div class="container text-center mt-1">
