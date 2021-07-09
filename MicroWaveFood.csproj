@@ -181,6 +181,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdministrationController.cs" />
+    <Compile Include="Controllers\Api\CartController.cs" />
     <Compile Include="Controllers\Api\OrderController.cs" />
     <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -192,13 +193,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202107061523296_test.cs" />
-    <Compile Include="Migrations\202107061523296_test.Designer.cs">
-      <DependentUpon>202107061523296_test.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202107061554564_addUserComment.cs" />
-    <Compile Include="Migrations\202107061554564_addUserComment.Designer.cs">
-      <DependentUpon>202107061554564_addUserComment.cs</DependentUpon>
+    <Compile Include="Migrations\202107061624336_test.cs" />
+    <Compile Include="Migrations\202107061624336_test.Designer.cs">
+      <DependentUpon>202107061624336_test.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -207,6 +204,7 @@
     <Compile Include="Models\Bill.cs" />
     <Compile Include="Models\Cart.cs" />
     <Compile Include="Models\Comment.cs" />
+    <Compile Include="Models\ListCart.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Order.cs" />
     <Compile Include="Models\Product.cs" />
@@ -256,6 +254,8 @@
     <Content Include="Images\shopping-cart.png" />
     <Content Include="Images\Tran-chau.jpg" />
     <Content Include="Images\whipping-archor-1L.jpg" />
+    <Content Include="Scripts\bootbox.js" />
+    <Content Include="Scripts\bootbox.min.js" />
     <Content Include="Scripts\bootstrap-input-spinner.js" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
@@ -444,11 +444,8 @@
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202107061523296_test.resx">
-      <DependentUpon>202107061523296_test.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202107061554564_addUserComment.resx">
-      <DependentUpon>202107061554564_addUserComment.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202107061624336_test.resx">
+      <DependentUpon>202107061624336_test.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

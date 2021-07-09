@@ -15,19 +15,22 @@ namespace MicroWaveFood.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
         public List<Cart> TakeCart()
         {
-            List<Cart> listCart = Session["Cart"] as List<Cart>;
+            //List<Cart> listCart = Session["Cart"] as List<Cart>;
+            List<Cart> listCart = ListCart.Carts;
             if (listCart == null)
             {
                 //if list cart doesn't exist, create one
                 listCart = new List<Cart>();
-                Session["Cart"] = listCart;
+                ListCart.Carts = listCart;
+                //Session["Cart"] = listCart;
             }
             return listCart;
         }
         public int AmountSum()
         {
             int amount = 0;
-            List<Cart> list = Session["Cart"] as List<Cart>;
+            //List<Cart> list = Session["Cart"] as List<Cart>;
+            List<Cart> list = ListCart.Carts;
             if (list != null)
             {
                 amount = list.Sum(n => n.Amount);
@@ -38,7 +41,8 @@ namespace MicroWaveFood.Controllers
         public long PriceSum()
         {
             long sum = 0;
-            List<Cart> list = Session["Cart"] as List<Cart>;
+            //List<Cart> list = Session["Cart"] as List<Cart>;
+            List<Cart> list = ListCart.Carts;
             if (list != null)
             {
                 sum = list.Sum(n => n.Total);
@@ -79,9 +83,10 @@ namespace MicroWaveFood.Controllers
                 db.Bills.Add(bill);
                 db.SaveChanges();
             }
-            ViewBag.Title = "Thanh toán thành công!";
+            ViewBag.Title = "Thanh toán thành công! Chúng tôi sẽ giao hàng cho quí khách trong thời gian sớm nhất!";
             list = null;
-            Session["Cart"] = null;
+            //Session["Cart"] = null;
+            ListCart.Carts = null;
             ViewBag.AmountSum = AmountSum();
             ViewBag.PriceSum = PriceSum();
             return View(order);

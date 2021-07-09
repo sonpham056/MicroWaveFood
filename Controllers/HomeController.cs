@@ -10,11 +10,12 @@ namespace MicroWaveFood.Controllers
 {
     public class HomeController : Controller
     {
-        private ApplicationDbContext db = new ApplicationDbContext();
+        private readonly ApplicationDbContext db = new ApplicationDbContext();
         public int AmountSum()
         {
             int amount = 0;
-            List<Cart> list = Session["Cart"] as List<Cart>;
+            //List<Cart> list = Session["Cart"] as List<Cart>;
+            List<Cart> list = ListCart.Carts;
             if (list != null)
             {
                 amount = list.Sum(n => n.Amount);
@@ -25,7 +26,8 @@ namespace MicroWaveFood.Controllers
         public long PriceSum()
         {
             long sum = 0;
-            List<Cart> list = Session["Cart"] as List<Cart>;
+            //List<Cart> list = Session["Cart"] as List<Cart>;
+            List<Cart> list = ListCart.Carts;
             if (list != null)
             {
                 sum = list.Sum(n => n.Total);
@@ -37,9 +39,11 @@ namespace MicroWaveFood.Controllers
 
             ViewBag.AmountSum = AmountSum();
             ViewBag.PriceSum = PriceSum();
+            List<Product> bestSeller = new List<Product>();
             var HomeViewModel = new HomeIndexViewModel
             {
-                ProductList = db.Products.Where(a => a.status == true).ToList()
+                ProductList = db.Products.Where(a => a.status == true).ToList(),
+                BestSellerList = db.Products.Where(a => a.status == true).OrderBy(a => a.Bills.Sum(b => b.ProductId)).ToList()
             };
             return View(HomeViewModel);
         }

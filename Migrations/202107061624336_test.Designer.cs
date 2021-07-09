@@ -7,13 +7,13 @@ namespace MicroWaveFood.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class addUserComment : IMigrationMetadata
+    public sealed partial class test : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(addUserComment));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(test));
         
         string IMigrationMetadata.Id
         {
-            get { return "202107061554564_addUserComment"; }
+            get { return "202107061624336_test"; }
         }
         
         string IMigrationMetadata.Source

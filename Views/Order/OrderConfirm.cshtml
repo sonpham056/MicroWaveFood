@@ -78,13 +78,17 @@
     <script>
         $(document).ready(function () {
             $('.button-delivery-confirm').on("click", function (e) {
-                var button = $(e.target);
-                $.post("/api/Order/OrderConfirm", { OrderId: button.val() })
-                    .done(function () {
-                        button.text("Đã xác nhận");
-                        button.removeClass("button-delivery-confirm");
-                        button.addClass("button-delivery-confirmed")
-                    })
+                bootbox.confirm("Xác nhận đơn hàng đã giao?", function (result) {
+                    if (result == true) {
+                        var button = $(e.target);
+                        $.post("/api/Order/OrderConfirm", { OrderId: button.val() })
+                            .done(function () {
+                                button.text("Đã xác nhận");
+                                button.removeClass("button-delivery-confirm");
+                                button.addClass("button-delivery-confirmed")
+                            })
+                    }
+                })
             });
         })
     </script>
