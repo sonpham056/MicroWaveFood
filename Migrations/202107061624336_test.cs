@@ -30,6 +30,7 @@ namespace MicroWaveFood.Migrations
                         CommentId = c.Int(nullable: false),
                         BillId = c.Int(nullable: false),
                         UserId = c.String(maxLength: 128),
+                        UserComment = c.String(nullable: false, maxLength: 255),
                         CommentDate = c.DateTime(nullable: false),
                         Status = c.Boolean(nullable: false),
                     })

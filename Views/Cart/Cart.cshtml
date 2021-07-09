@@ -86,10 +86,10 @@
                 </div>
                 <div>
                     <p>Giao hàng đến: </p>
-                    <p class="my-1 province" disabled>@ViewBag.UserProvince</p>
-                    <p class="my-1 district" disabled>@ViewBag.UserDistrict</p>
-                    <p class="my-1 guild" disabled>@ViewBag.Guild</p>
-                    <p class="my-1 address" disabled>@ViewBag.Address</p>
+                    <p class="my-1 province">@ViewBag.UserProvince</p>
+                    <p class="my-1 district">@ViewBag.UserDistrict</p>
+                    <p class="my-1 guild">@ViewBag.Guild</p>
+                    <p class="my-1 address">@ViewBag.Address</p>
                 </div>
                 <div class="container">
                     <a class="btn btn-primary btn-thanh-toan">Thanh toán</a>
@@ -120,10 +120,18 @@
 
 
             $('.btn-thanh-toan').click(function () {
-                if ($('province').text() == null || $('guild').text() == null || $('district').text() == null || $('address').text() == null) {
-                    window.location.href = '@Url.Action("ProvideInfo", "Manage")';
+                if ($('.province').text() == '' || $('.guild').text() == '' || $('.district').text() == '' || $('.address').text() == '') {
+                    bootbox.confirm("Bạn chưa có đầy đủ thông tin giao hàng! Bạn có muốn chỉnh sửa thông tin tài khoản không?", function (result) {
+                        if (result == true) {
+                            window.location.href = '@Url.Action("ProvideInfo", "Manage")';
+                        }
+                    })
                 } else {
-                    window.location.href = '@Url.Action("Payment", "Order")';
+                    bootbox.confirm("Bạn có chắc chắn muốn thanh toán?", function (result) {
+                        if (result == true) {
+                            window.location.href = '@Url.Action("Payment", "Order")';
+                        }
+                    });
                 }
             })
         })

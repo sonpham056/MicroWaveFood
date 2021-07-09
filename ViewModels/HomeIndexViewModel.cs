@@ -9,5 +9,6 @@ namespace MicroWaveFood.ViewModels
     public class HomeIndexViewModel
     {
         public List<Product> ProductList { get; set; }
+        public List<Product> BestSellerList { get; set; }
     }
 }
