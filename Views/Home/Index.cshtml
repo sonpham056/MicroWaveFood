@@ -61,7 +61,7 @@
                                                     <div>
                                                         <div class="product-content-container">
                                                             <div class="container text-center mt-1">
-                                                                <a href="@Url.Action("AddToCart", "Cart", new { @productId = item.ProductId, @strUrl = Request.Url.ToString() })" class="btn btn-primary button-index">Thêm vào giỏ hàng</a>
+                                                                <a data-product-id="@item.ProductId" class="btn btn-primary button-index">Thêm vào giỏ hàng</a>
                                                             </div>
                                                             <div class="productContent">
                                                                 <div class="product-name">
@@ -126,7 +126,7 @@
                         <div>
                             <div class="product-content-container">
                                 <div class="container text-center mt-1">
-                                    <a href="@Url.Action("AddToCart", "Cart", new { @productId = item.ProductId, @strUrl = Request.Url.ToString() })" class="btn btn-primary button-index">Thêm vào giỏ hàng</a>
+                                    <a data-product-id="@item.ProductId" class="btn btn-primary button-index">Thêm vào giỏ hàng</a>
                                 </div>
                                 <div class="productContent">
                                     <div class="product-name">
@@ -193,7 +193,7 @@
                         <div>
                             <div class="product-content-container">
                                 <div class="container text-center mt-1">
-                                    <a href="@Url.Action("AddToCart", "Cart", new { @productId = item.ProductId, @strUrl = Request.Url.ToString() })" class="btn btn-primary button-index">Thêm vào giỏ hàng</a>
+                                    <a data-product-id="@item.ProductId" class="btn btn-primary button-index">Thêm vào giỏ hàng</a>
                                 </div>
                                 <div class="productContent">
                                     <div class="product-name">
@@ -211,3 +211,22 @@
         }
     </div>
 </div>
+
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+            $('.button-index').on("click", function (e) {
+                var id = $(e.target);
+                $.post("/api/Cart/Add", { productId: id.attr("data-product-id") })
+                    .done(function () {
+                        var value = parseInt($(".notify-number").text(), 10) + 1;
+                        $('.notify-number').text(value);
+                    })
+                    .fail(function () {
+                        bootbox.alert("Something is wrong!");
+                    })
+            })
+        })
+    </script>    
+}
