@@ -34,6 +34,8 @@ namespace MicroWaveFood.Controllers
             }
             return sum;
         }
+
+        //===============================================
         public ActionResult Index()
         {
 
@@ -50,7 +52,7 @@ namespace MicroWaveFood.Controllers
             };
             return View(HomeViewModel);
         }
-
+        //=========================
         public ActionResult About()
         {
             ViewBag.AmountSum = AmountSum();
