@@ -43,7 +43,10 @@ namespace MicroWaveFood.Controllers
             var HomeViewModel = new HomeIndexViewModel
             {
                 ProductList = db.Products.Where(a => a.status == true).ToList(),
-                BestSellerList = db.Products.Where(a => a.status == true).OrderBy(a => a.Bills.Sum(b => b.ProductId)).ToList()
+                BestSellerList = db.Products
+                .Where(a => a.status == true)
+                .Where(a => a.Bills.Count > 3)
+                .ToList()
             };
             return View(HomeViewModel);
         }

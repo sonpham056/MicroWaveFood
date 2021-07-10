@@ -19,6 +19,10 @@
     padding: 10px 12px 0;
 }
 
+.slider-1461 .swiper-pagination-bullet {
+    background-color: #e1e1e1;
+}
+
 .swiper-slide {
     -ms-flex: 0 0 auto;
     flex-shrink: 0;
