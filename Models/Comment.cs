@@ -14,6 +14,9 @@ namespace MicroWaveFood.Models
         public int CommentId { get; set; }
         public int BillId { get; set; }
         public string UserId { get; set; }
+        [StringLength(255)]
+        [Required]
+        public string UserComment { get; set; }
         [Required]
         public DateTime CommentDate { get; set; }
         public bool Status { get; set; }

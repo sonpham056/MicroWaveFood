@@ -15,19 +15,22 @@ namespace MicroWaveFood.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
         public List<Cart> TakeCart()
         {
-            List<Cart> listCart = Session["Cart"] as List<Cart>;
+            //List<Cart> listCart = Session["Cart"] as List<Cart>;
+            List<Cart> listCart = ListCart.Carts;
             if (listCart == null)
             {
                 //if list cart doesn't exist, create one
                 listCart = new List<Cart>();
-                Session["Cart"] = listCart;
+                ListCart.Carts = listCart;
+                //Session["Cart"] = listCart;
             }
             return listCart;
         }
         public int AmountSum()
         {
             int amount = 0;
-            List<Cart> list = Session["Cart"] as List<Cart>;
+            //List<Cart> list = Session["Cart"] as List<Cart>;
+            List<Cart> list = ListCart.Carts;
             if (list != null)
             {
                 amount = list.Sum(n => n.Amount);
@@ -38,7 +41,8 @@ namespace MicroWaveFood.Controllers
         public long PriceSum()
         {
             long sum = 0;
-            List<Cart> list = Session["Cart"] as List<Cart>;
+            //List<Cart> list = Session["Cart"] as List<Cart>;
+            List<Cart> list = ListCart.Carts;
             if (list != null)
             {
                 sum = list.Sum(n => n.Total);
@@ -55,11 +59,12 @@ namespace MicroWaveFood.Controllers
             order.UserId = User.Identity.GetUserId();
             order.OrderDate = DateTime.Now;
             order.Status = true;
+            order.IsDelivered = false;
             order.Total = PriceSum();
             db.Orders.Add(order);
             db.SaveChanges();
 
-            
+
             foreach (Cart cart in list)
             {
                 Product product = db.Products.Find(cart.ProductId);
@@ -78,15 +83,16 @@ namespace MicroWaveFood.Controllers
                 db.Bills.Add(bill);
                 db.SaveChanges();
             }
-            ViewBag.Title = "Thanh toán thành công!";
+            ViewBag.Title = "Thanh toán thành công! Chúng tôi sẽ giao hàng cho quí khách trong thời gian sớm nhất!";
             list = null;
-            Session["Cart"] = null;
+            //Session["Cart"] = null;
+            ListCart.Carts = null;
             ViewBag.AmountSum = AmountSum();
             ViewBag.PriceSum = PriceSum();
             return View(order);
         }
 
-        public ActionResult History()
+        public ActionResult History(int? type)
         {
             var user = db.Users.Find(User.Identity.GetUserId());
             if (user == null)
@@ -94,14 +100,26 @@ namespace MicroWaveFood.Controllers
                 ViewBag.Message = "Vui lòng đăng nhập!";
                 return View("Error");
             }
-            List<Order> list = db.Orders.Include("Bills.Product").Where(a => a.UserId == user.Id && a.Status == true).OrderByDescending(a => a.OrderDate).ToList();
+            List<Order> list = new List<Order>();
+            if (type == null)
+            {
+                list = db.Orders.Include("Bills.Product").Where(a => a.Status == true && a.UserId == user.Id).OrderByDescending(a => a.OrderDate).ToList();
+            }
+            else if (type == 1) //1 = chưa giao
+            {
+                list = db.Orders.Include("Bills.Product").Where(a => a.Status == true && a.IsDelivered == false && a.UserId == user.Id).OrderByDescending(a => a.OrderDate).ToList();
+            }
+            else //còn lại = đã giao
+            {
+                list = db.Orders.Include("Bills.Product").Where(a => a.Status == true && a.IsDelivered == true && a.UserId == user.Id).OrderByDescending(a => a.OrderDate).ToList();
+            }
             ViewBag.AmountSum = AmountSum();
             ViewBag.PriceSum = PriceSum();
             return View(list);
         }
 
         [Authorize(Roles = "admin")]
-        public ActionResult OrderConfirm()
+        public ActionResult OrderConfirm(int? type)
         {
             var user = db.Users.Find(User.Identity.GetUserId());
             if (user == null)
@@ -109,12 +127,67 @@ namespace MicroWaveFood.Controllers
                 ViewBag.Message = "Vui lòng đăng nhập!";
                 return View("Error");
             }
-            List<Order> list = db.Orders.Include("Bills.Product").Where(a => a.Status == true).OrderByDescending(a => a.OrderDate).ToList();
+            List<Order> list = new List<Order>();
+            if (type == null)
+            {
+                list = db.Orders.Include("Bills.Product").Include("User").Where(a => a.Status == true).OrderByDescending(a => a.OrderDate).ToList();
+            }
+            else if (type == 1) //1 = chưa giao
+            {
+                list = db.Orders.Include("Bills.Product").Include("User").Where(a => a.Status == true && a.IsDelivered == false).OrderByDescending(a => a.OrderDate).ToList();
+            }
+            else //còn lại = đã giao
+            {
+                list = db.Orders.Include("Bills.Product").Include("User").Where(a => a.Status == true && a.IsDelivered == true).OrderByDescending(a => a.OrderDate).ToList();
+            }
             ViewBag.AmountSum = AmountSum();
             ViewBag.PriceSum = PriceSum();
             return View(list);
         }
 
+        public ActionResult Comment(int orderId)
+        {
+            var user = db.Users.Find(User.Identity.GetUserId());
+            if (user == null)
+            {
+                ViewBag.Message = "Vui lòng đăng nhập!";
+                return View("Error");
+            }
+            List<Bill> list = db.Bills.Include(a => a.Product).Include("comment").Where(a => a.OrderId == orderId).ToList();
+            if (list == null)
+            {
+                ViewBag.Message = "Oops, something happened";
+                return View("Error");
+            }
+            return View(list);
+        }
+
+        [HttpPost]
+        public ActionResult SendComment(int billId, string strUrl, string comment)
+        {
+            var user = db.Users.Find(User.Identity.GetUserId());
+            if (user == null)
+            {
+                ViewBag.Message = "Vui lòng đăng nhập!";
+                return View("Error");
+            }
+            var bill = db.Bills.Find(billId);
+            if (bill == null)
+            {
+                ViewBag.Message = "Cannot find bill!";
+                return View("Error");
+            }
+            Comment cmt = new Comment();
+            cmt.CommentId = billId;
+            cmt.BillId = billId;
+            cmt.CommentDate = DateTime.Now;
+            cmt.UserComment = comment;
+            cmt.Status = true;
+            cmt.UserId = user.Id;
+            db.Comments.Add(cmt);
+            db.SaveChanges();
+            return Redirect(strUrl);
+        }
 
         protected override void Dispose(bool disposing)
         {

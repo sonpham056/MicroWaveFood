@@ -49,8 +49,10 @@
     <nav class="start-header container-fluid sticky-top navbar-expand-md" style="background-color:aliceblue">
         <nav class="header-navbar ">
             <div class="form-inline mr-auto row" target="_self" style="justify-content: space-evenly">
-                <a class="navbar-branch" href="#" style="justify-self:start">
-                    <img src="~/Images/logo.png" height="80">
+                <a class="navbar-branch" href="~/Home/Index" style="justify-self:start">
+                   
+                    <img src="~/Images/logo.png" height="80"/>
+                    
                 </a>
                 <div class="form-group navbar-collapse">
                     <input class="form-control search-field" type="search" name="search" id="search-field">
@@ -71,6 +73,9 @@
                             </li>
                             <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
                                 @Html.ActionLink("Product", "Index", "Products", new { }, new { @class = "nav-link active" })
+                            </li>
+                            <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+                                @Html.ActionLink("Shipping confirm", "OrderConfirm", "Order", new { }, new { @class = "nav-link active" })
                             </li>
                         </ul>
                     </div>
@@ -180,7 +185,9 @@
 
             <div class="footer">
                 <div class="container-fluid">
-                    <div class="row" style=" justify-content: space-around;">
+
+                    <div class="row" style="justify-content: space-evenly">
+
                         <div class="footer-col-1">
                             <h3>Download Our App</h3>
                             <p>Download App for android and iOs.</p>
@@ -266,7 +273,7 @@
         })
         $minus.on("click", function (event) {
             var url = $changedInput.attr("data-link") + "&isMinus=true";
-            if ($(this).val() == 0) {
+            if ($('.changedInput').val() == 0) {
                 url = "@Url.Action("CartDelete", "Cart", new { productId = "__id__"})"
                 window.location.href = url.replace('__id__', $changedInput.attr("data-id"))
             } else {

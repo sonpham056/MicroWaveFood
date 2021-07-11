@@ -1,58 +1,6 @@
-<<<<<<< HEAD
 
-﻿/*@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital@1&display=swap');
-=======
-﻿body {
-}
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-=======
-﻿html, body {
-    height: 100%;
->>>>>>> 82287ca8e787cc65b843b9879524e184e2358ce2
-}
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-/* Set padding to keep content from hitting the edges */
-/*.body-content {
-    padding-left: 15px;
-    padding-right: 15px;
-}*/
-/*@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital@1&display=swap');
-<<<<<<< HEAD
->>>>>>> 843ace0df792fed23532a8c15cf8620229cf1554
-
-=======
->>>>>>> 3a144de34cfe4a73b30bc24720c06d699cf94767
-html, body {
-    width: 100%;
-    height: 100%;
-    font-family: 'Source Code Pro', monospace;
-    font-size: 25px;
-    color: rgb(19, 16, 16)
-}
-<<<<<<< HEAD
-    Này của bạn Phòng
-
-=======
->>>>>>> 3a144de34cfe4a73b30bc24720c06d699cf94767
-.navbar {
-    background-color: rgba(rgb(218, 216, 190), green, blue, 0.9) !important;
-}
-    .navbar li a {
-        color: violet !important;
-    }
-        .navbar li a:hover {
-            color: black !important;
-        }*/
-
+﻿
 
 body {
     padding-top: 50px;
@@ -60,11 +8,6 @@ body {
 }
 
 
-/* Set padding to keep content from hitting the edges */
-/*.body-content {
-    padding-left: 15px;
-    padding-right: 15px;
-}*/
 
 .title {
     text-align: center;
@@ -188,9 +131,12 @@ div > img {
     height: 100%;
 }
 
+
 .productImg {
     width: 155px;
     height: 155px;
+    position: relative;
+    margin: auto;
 }
 
 .productContent {
@@ -307,21 +253,18 @@ td.data-title {
     padding-left:30px;
 }*/
 
-div > img {
-    width: 50%;
-    height: 100%;
-}
+
 
 .img-index {
     width: 100%;
     height: 100%;
+    margin: auto;
 }
 /*end footer*/
 /*login*/
 .col-md-8 {
     -ms-flex: 0 0 66.666667%;
     flex: 0 0 75.666667%;
-    max-width: fit-content;
     border: 1px solid grey;
     border-radius: 20px;
 }
@@ -405,4 +348,16 @@ div > img {
     background-color: #ee4d2d;
     border-color: #cd3011;
     color: #fff;
+}
+
+
+.button-index {
+    background-color: #f2f2f2;
+    text-transform: uppercase;
+    font-size: .85rem;
+    text-align: center;
+    display: inline-block;
+    border-radius: 0;
+    border: 1px solid #f2f2f2;
+    color: #222222;
 }

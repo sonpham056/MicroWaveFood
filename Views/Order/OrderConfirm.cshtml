@@ -8,19 +8,21 @@
     <div class="history-wrapper">
         <div class="history-nav row shadow p-3 mb-5 bg-white rounded">
             <div class="col py-3 nav-item text-center">
-                <a class="nav-link active" href="#">Tất cả</a>
+                <a class="nav-link active" href="@Url.Action("OrderConfirm", "Order")">Tất cả</a>
             </div>
             <div class="col py-3 nav-item text-center">
-                <a class="nav-link active">Đang giao</a>
+                <a class="nav-link active" href="@Url.Action("OrderConfirm", "Order", new { type = 1})">Đang giao</a>
             </div>
             <div class="col py-3 nav-item text-center">
-                <a class="nav-link active">Đã giao</a>
+                <a class="nav-link active" href="@Url.Action("OrderConfirm", "Order", new { type = 2})">Đã giao</a>
             </div>
         </div>
         <div class="history-detail">
             @foreach (var item in Model)
             {
                 <div class="shadow p-3 mb-5 bg-white rounded" style="margin-left:-15px; margin-right:-15px;">
+                    <p>Order ID: @item.OrderId - Buyer: @item.User.Email</p>
+                    <hr />
                     <div class="row">
                         @foreach (var subItem in item.Bills)
                         {
@@ -76,13 +78,17 @@
     <script>
         $(document).ready(function () {
             $('.button-delivery-confirm').on("click", function (e) {
-                var button = $(e.target);
-                $.post("/api/Order/OrderConfirm", { OrderId: button.val() })
-                    .done(function () {
-                        button.text("Đã xác nhận");
-                        button.removeClass("button-delivery-confirm");
-                        button.addClass("button-delivery-confirmed")
-                    })
+                bootbox.confirm("Xác nhận đơn hàng đã giao?", function (result) {
+                    if (result == true) {
+                        var button = $(e.target);
+                        $.post("/api/Order/OrderConfirm", { OrderId: button.val() })
+                            .done(function () {
+                                button.text("Đã xác nhận");
+                                button.removeClass("button-delivery-confirm");
+                                button.addClass("button-delivery-confirmed")
+                            })
+                    }
+                })
             });
         })
     </script>

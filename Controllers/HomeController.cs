@@ -10,11 +10,12 @@ namespace MicroWaveFood.Controllers
 {
     public class HomeController : Controller
     {
-        private ApplicationDbContext db = new ApplicationDbContext();
+        private readonly ApplicationDbContext db = new ApplicationDbContext();
         public int AmountSum()
         {
             int amount = 0;
-            List<Cart> list = Session["Cart"] as List<Cart>;
+            //List<Cart> list = Session["Cart"] as List<Cart>;
+            List<Cart> list = ListCart.Carts;
             if (list != null)
             {
                 amount = list.Sum(n => n.Amount);
@@ -25,25 +26,41 @@ namespace MicroWaveFood.Controllers
         public long PriceSum()
         {
             long sum = 0;
-            List<Cart> list = Session["Cart"] as List<Cart>;
+            //List<Cart> list = Session["Cart"] as List<Cart>;
+            List<Cart> list = ListCart.Carts;
             if (list != null)
             {
                 sum = list.Sum(n => n.Total);
             }
             return sum;
         }
+
+        //===============================================
+        [Authorize(Roles = "admin")]
+        public ActionResult AdminIndex()
+        {
+            return View();
+        }
         public ActionResult Index()
         {
-
+            if (User.IsInRole("admin"))
+            {
+                return RedirectToAction("AdminIndex");
+            }
             ViewBag.AmountSum = AmountSum();
             ViewBag.PriceSum = PriceSum();
+            List<Product> bestSeller = new List<Product>();
             var HomeViewModel = new HomeIndexViewModel
             {
-                ProductList = db.Products.Where(a => a.status == true).ToList()
+                ProductList = db.Products.Where(a => a.status == true).ToList(),
+                BestSellerList = db.Products
+                .Where(a => a.status == true)
+                .Where(a => a.Bills.Count > 3)
+                .ToList()
             };
             return View(HomeViewModel);
         }
-
+        //=========================
         public ActionResult About()
         {
             ViewBag.AmountSum = AmountSum();
