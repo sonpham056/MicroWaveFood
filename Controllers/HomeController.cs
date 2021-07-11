@@ -36,9 +36,17 @@ namespace MicroWaveFood.Controllers
         }
 
         //===============================================
+        [Authorize(Roles = "admin")]
+        public ActionResult AdminIndex()
+        {
+            return View();
+        }
         public ActionResult Index()
         {
-
+            if (User.IsInRole("admin"))
+            {
+                return RedirectToAction("AdminIndex");
+            }
             ViewBag.AmountSum = AmountSum();
             ViewBag.PriceSum = PriceSum();
             List<Product> bestSeller = new List<Product>();
