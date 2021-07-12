@@ -184,6 +184,7 @@
     <Compile Include="Controllers\Api\CartController.cs" />
     <Compile Include="Controllers\Api\OrderController.cs" />
     <Compile Include="Controllers\CartController.cs" />
+    <Compile Include="Controllers\CommentsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\OrderController.cs" />
@@ -254,6 +255,7 @@
     <Content Include="Images\prod4.jpg" />
     <Content Include="Images\shopping-cart.png" />
     <Content Include="Images\Tran-chau.jpg" />
+    <Content Include="Images\user-icon.jpg" />
     <Content Include="Images\whipping-archor-1L.jpg" />
     <Content Include="Scripts\bootbox.js" />
     <Content Include="Scripts\bootbox.min.js" />
@@ -538,6 +540,8 @@
     <Content Include="Template\vendor\jquery\jquery.slim.min.map" />
     <None Include="Views\Account\login.cshtml" />
     <Content Include="Views\Home\AdminIndex.cshtml" />
+    <Content Include="Views\Comments\Index.cshtml" />
+    <Content Include="Views\Comments\Detail.cshtml" />
     <None Include="Views\Shared\_AdminLayout.cshtml" />
     <Content Include="Template\css\sb-admin-2.css" />
     <Content Include="Template\css\sb-admin-2.min.css" />

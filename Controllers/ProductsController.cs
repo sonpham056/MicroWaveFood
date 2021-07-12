@@ -93,10 +93,12 @@ namespace MicroWaveFood.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ProductId,ProductTypeId,ProductName,ProductDescribe,Price,Unit,Date,Image,Quantity,status,Origin")] Product product)
+        public ActionResult Edit([Bind(Include = "ProductId,ProductTypeId,ProductName,ProductDescribe,Price,Unit,Date,Image,Quantity,Origin")] Product product)
         {
             if (ModelState.IsValid)
             {
+                product.status = true;
+                product.Image = "/Images/" + product.Image;
                 db.Entry(product).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
