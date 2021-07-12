@@ -1,0 +1,52 @@
+﻿@model IEnumerable<MicroWaveFood.Models.Product>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Comments</h2>
+<div class="container">
+    <div class="history-wrapper">
+        <div class="history-nav row shadow p-3 mb-5 bg-white rounded">
+            <div class="col py-3 nav-item text-center">
+                <a class="nav-link active">Tất cả</a>
+            </div>
+        </div>
+        <div class="history-detail">
+            @foreach (var item in Model)
+            {
+                <div class="shadow p-3 mb-5 bg-white rounded" style="margin-left:-15px; margin-right:-15px;">
+                    <div class="row">
+                        <div class="product-detail-history row col-10 ">
+                            <div class="product-image-history">
+                                <img class="img-detail-history m-2" src="@item.Image" />
+                            </div>
+                            <div class="product-info-history">
+                                <div class="product-name-history m-2">
+                                    <a>@item.ProductName</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col" style="display: flex; align-items: flex-end; justify-content: flex-end;">
+                            <button class="button-comment-order comment-click" data-product-id="@item.ProductId">
+                                @Html.ActionLink("Manage this product comments", "Detail", new { id = item.ProductId }, new { @class = "text-white" })
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+@*@section scripts
+    {
+        <script>
+            $(document).ready(function () {
+                $('.comment-click').on("click", function (e) {
+                    var productId = $(e.target);
+                    $.get("/Comments/detail/", { productId = productId.attr("data-product-id") });
+                });
+            })
+        </script>
+    }*@
+
