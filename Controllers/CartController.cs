@@ -2,6 +2,7 @@
 using MicroWaveFood.Models;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -14,12 +15,14 @@ namespace MicroWaveFood.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
         public List<Cart> TakeCart()
         {
-            List<Cart> listCart = Session["Cart"] as List<Cart>;
+            //List<Cart> listCart = Session["Cart"] as List<Cart>;
+            List<Cart> listCart = ListCart.Carts;
             if (listCart == null)
             {
                 //if list cart doesn't exist, create one
                 listCart = new List<Cart>();
-                Session["Cart"] = listCart;
+                //Session["Cart"] = listCart;
+                ListCart.Carts = listCart;
             }
             return listCart;
         }
@@ -51,7 +54,8 @@ namespace MicroWaveFood.Controllers
         public int AmountSum()
         {
             int amount = 0;
-            List<Cart> list = Session["Cart"] as List<Cart>;
+            //List<Cart> list = Session["Cart"] as List<Cart>;
+            List<Cart> list = ListCart.Carts;
             if (list != null)
             {
                 amount = list.Sum(n => n.Amount);
@@ -62,7 +66,8 @@ namespace MicroWaveFood.Controllers
         public long PriceSum()
         {
             long sum = 0;
-            List<Cart> list = Session["Cart"] as List<Cart>;
+            //List<Cart> list = Session["Cart"] as List<Cart>;
+            List<Cart> list = ListCart.Carts;
             if (list != null)
             {
                 sum = list.Sum(n => n.Total);

@@ -7,7 +7,7 @@
     box-sizing: border-box;
 }
 
-/* Set padding to keep content from hitting the edges */
+/* Set padding to keep content fwm hitting the edges */
 /*.body-content {
     padding-left: 15px;
     padding-right: 15px;
@@ -156,9 +156,12 @@ div > img {
     height: 100%;
 }
 
+
 .productImg {
     width: 155px;
     height: 155px;
+    position: relative;
+    margin: auto;
 }
 
 .productContent {
@@ -275,21 +278,18 @@ td.data-title {
     padding-left:30px;
 }*/
 
-div > img {
-    width: 50%;
-    height: 100%;
-}
+
 
 .img-index {
     width: 100%;
     height: 100%;
+    margin: auto;
 }
 /*end footer*/
 /*login*/
 .col-md-8 {
     -ms-flex: 0 0 66.666667%;
     flex: 0 0 75.666667%;
-    /*max-width: fit-content;*/
     border: 1px solid grey;
     border-radius: 20px;
 }
@@ -304,4 +304,85 @@ div > img {
     z-index: 1000;
     -webkit-transition: all 0.3s ease-out;
     transition: all 0.3s ease-out;
+}
+
+.img-detail-history {
+    width: 100px;
+    height: 100px;
+}
+
+.product-price-history {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+.history-button {
+    display: flex;
+    justify-content: flex-end;
+}
+
+
+
+.history-total-price {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.button-delivery-confirm {
+    min-width: 150px;
+    min-height: 40px;
+    padding: 8px 20px;
+    outline: none;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-transform: capitalize;
+    border-radius: 2px;
+    outline: 0;
+    background-color: #ee4d2d;
+    border-color: #cd3011;
+    color: #fff;
+}
+
+.button-delivery-confirmed {
+    min-width: 150px;
+    min-height: 40px;
+    padding: 8px 20px;
+    outline: none;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-transform: capitalize;
+    border-radius: 2px;
+    outline: 0;
+    background-color: #555;
+    border-color: #555;
+    color: #fff;
+}
+
+.button-comment-order {
+    min-width: 150px;
+    min-height: 40px;
+    padding: 8px 20px;
+    outline: none;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-transform: capitalize;
+    border-radius: 2px;
+    outline: 0;
+    background-color: #ee4d2d;
+    border-color: #cd3011;
+    color: #fff;
+}
+
+
+.button-index {
+    background-color: #f2f2f2;
+    text-transform: uppercase;
+    font-size: .85rem;
+    text-align: center;
+    display: inline-block;
+    border-radius: 0;
+    border: 1px solid #f2f2f2;
+    color: #222222;
 }
