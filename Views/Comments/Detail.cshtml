@@ -1,0 +1,76 @@
+﻿@model MicroWaveFood.Models.Product
+@{
+    ViewBag.Title = "Detail";
+}
+
+<h2>Product comments detail</h2>
+<div class="container">
+    <div class="history-wrapper">
+        <div class="history-nav row shadow p-3 mb-5 bg-white rounded">
+            <div class="col py-3 text-center">
+                <div class="product-detail-history row col" style="flex-direction: column;">
+                    <div class="product-image-history">
+                        <img class="img-detail-history m-2" src="@Model.Image" style=" height: 200px; width: 200px;" />
+                    </div>
+                    <div class="product-info-history">
+                        <div class="product-name-history m-2">
+                            <a>@Model.ProductName</a>
+                        </div>
+                        <div class="product-name-history m-2">
+                            <a>@Model.Price <span>đ</span></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="history-detail">
+            @foreach (var item in Model.Bills)
+            {
+                if (item.Comment != null)
+                {
+                    <div class="shadow p-3 mb-5 bg-white rounded" style="margin-left:-15px; margin-right:-15px;">
+                        <div class="row">
+                            <div class="product-detail-history row col-10 ">
+                                <div class="user-icon">
+                                    <img src="~/Images/user-icon.jpg" style="width:60px; height: 60px; border-radius: 30px;"/>
+                                </div>
+                                <div class="product-info-history col">
+                                    <div class="product-name-history m-2">
+                                        <a>@item.Comment.User.Email</a>
+                                    </div>
+                                    <div class="product-name-history m-2">
+                                        <a>@item.Comment.UserComment</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col" style="display: flex; align-items: flex-end; justify-content: flex-end;">
+                                <button class="button-comment-order comment-click" data-product-id="@item.ProductId" data-link="@Url.Action("Delete", "Comments", new { id = item.Comment.CommentId, strURL = Request.Url.ToString() })">
+                                    Delete this comment
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+        </div>
+    </div>
+</div>
+
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+            $('.comment-click').on("click", function (e) {
+                bootbox.confirm("Delete this comment?", function (result) {
+                    if (result == true) {
+                        var value = $(e.target);
+                        window.location = value.attr("data-link");
+                    }
+                    
+                });
+                
+
+            });
+        })
+    </script>    
+}
