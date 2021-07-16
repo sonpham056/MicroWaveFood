@@ -227,6 +227,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Carousel.css" />
+    <Content Include="Content\FirstRow.css" />
     <Content Include="Content\Header.css" />
     <Content Include="Content\Nav-bar.css" />
     <Content Include="favicon.ico" />
