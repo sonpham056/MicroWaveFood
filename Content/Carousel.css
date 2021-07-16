@@ -161,9 +161,7 @@ body ::-webkit-scrollbar {
     height: 2px;
     background: #e1e1e1;
 }
-.swiper-entry:not(.swipers-couple-wrapper) .swiper-wrapper {
-    cursor: url(~/Images/drag.png) 16 9, ew-resize;
-}
+
 .swiper-pagination {
     position: relative;
     text-align: center;
