@@ -52,6 +52,11 @@ namespace MicroWaveFood.Controllers
             List<Product> bestSeller = new List<Product>();
             var HomeViewModel = new HomeIndexViewModel
             {
+                ProductTypes = db.productTypes
+                .Where(a => a.Status == true)
+                .ToList(),
+
+
                 ProductList = db.Products.Where(a => a.status == true).ToList(),
                 BestSellerList = db.Products
                 .Where(a => a.status == true)
