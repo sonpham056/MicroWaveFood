@@ -3,7 +3,18 @@
     ViewBag.Title = "Home Page";
 }
 
-
+@*<div class="col">
+        <a href="#" style="display:inline-block">@item.Name</a>
+        <ul style="margin-left:30px">
+            <li>
+                <a href="@Html">a</a>
+            </li>
+            <li>b</li>
+            <li>c</li>
+            <li>d</li>
+            <li>e</li>
+        </ul>
+    </div>*@
 <div class="navbar-first container container-fluid" style="justify-content: space-evenly!important">
     <div class="dropdown-first">
         <button class="dropbtn">
@@ -13,83 +24,156 @@
         <div class="dropdown-content" style="z-index:10;background-color:antiquewhite">
 
             <div class="row">
-                @foreach (var item in Model.ProductTypes)
-                {
-                    if (item.GroupType == "1")
+                <div class="col">
+                    <a href="#" style="display:inline-block">Nguyên liệu làm bánh</a>
+                    @foreach (var item in Model.ProductTypes)
                     {
-                        <div class="col">
-                            <a href="#" style="display:inline-block">@item.Name</a>
+                        if (item.GroupType == "Nguyên Liệu làm bánh")
+                        {
                             <ul style="margin-left:30px">
-
-                                <li>a</li>
-                                <li>b</li>
-                                <li>c</li>
-                                <li>d</li>
-                                <li>e</li>
+                                <li>
+                                    <a href="#">@item.Name</a>
+                                </li>
                             </ul>
-                        </div>
+                        }
                     }
-                }
+                </div>
+                <div class="col">
+                    <a href="#" style="display:inline-block">Làm bánh</a>
+                    @foreach (var item in Model.ProductTypes)
+                    {
+                        if (item.GroupType == "Làm bánh")
+                        {
+                            <ul style="margin-left:30px">
+                                <li>
+                                    <a href="#">@item.Name</a>
+                                </li>
+                            </ul>
+                        }
+                    }
+                </div>
+                <div class="col">
+                    <a href="#" style="display:inline-block">Khuôn khay</a>
+                    @foreach (var item in Model.ProductTypes)
+                    {
+                        if (item.GroupType == "Khuôn khay")
+                        {
+                            <ul style="margin-left:30px">
+                                <li>
+                                    <a href="#">@item.Name</a>
+                                </li>
+                            </ul>
+                        }
+                    }
+                </div>
             </div>
 
         </div>
     </div>
     <div class="dropdown-first">
         <button class="dropbtn">
-            Đồ nấu ăn
+            Đồ làm bánh
             <i class="fa fa-caret-down"></i>
         </button>
         <div class="dropdown-content" style="z-index:10;background-color:antiquewhite">
 
             <div class="row">
-                @foreach (var item in Model.ProductTypes)
-                {
-                    if (item.GroupType == "2")
+                <div class="col">
+                    <a href="#" style="display:inline-block">Nguyên liệu làm bánh</a>
+                    @foreach (var item in Model.ProductTypes)
                     {
-                        <div class="col">
-                            <a href="#" style="display:inline-block">@item.Name</a>
+                        if (item.GroupType == "Nguyên Liệu làm bánh")
+                        {
                             <ul style="margin-left:30px">
-
-                                <li>a</li>
-                                <li>b</li>
-                                <li>c</li>
-                                <li>d</li>
-                                <li>e</li>
+                                <li>
+                                    <a href="#">@item.Name</a>
+                                </li>
                             </ul>
-                        </div>
-
+                        }
                     }
-                }
+                </div>
+                <div class="col">
+                    <a href="#" style="display:inline-block">Làm bánh</a>
+                    @foreach (var item in Model.ProductTypes)
+                    {
+                        if (item.GroupType == "Làm bánh")
+                        {
+                            <ul style="margin-left:30px">
+                                <li>
+                                    <a href="#">@item.Name</a>
+                                </li>
+                            </ul>
+                        }
+                    }
+                </div>
+                <div class="col">
+                    <a href="#" style="display:inline-block">Khuôn khay</a>
+                    @foreach (var item in Model.ProductTypes)
+                    {
+                        if (item.GroupType == "Khuôn khay")
+                        {
+                            <ul style="margin-left:30px">
+                                <li>
+                                    <a href="#">@item.Name</a>
+                                </li>
+                            </ul>
+                        }
+                    }
+                </div>
             </div>
-
 
         </div>
     </div>
     <div class="dropdown-first">
         <button class="dropbtn">
-            Đồ Pha Chế
+            Đồ làm bánh
             <i class="fa fa-caret-down"></i>
         </button>
         <div class="dropdown-content" style="z-index:10;background-color:antiquewhite">
 
             <div class="row">
-                @foreach (var item in Model.ProductTypes)
-                {
-                    if (item.GroupType == "3")
+                <div class="col">
+                    <a href="#" style="display:inline-block">Nguyên liệu làm bánh</a>
+                    @foreach (var item in Model.ProductTypes)
                     {
-                        <div class="col">
-                            <a href="#" style="display:inline-block">@item.Name</a>
+                        if (item.GroupType == "Nguyên Liệu làm bánh")
+                        {
                             <ul style="margin-left:30px">
-
-                                <li>a</li>
-                                <li>b</li>
-                                <li>c</li>
-                                <li>d</li>
-                                <li>e</li>
+                                <li>
+                                    <a href="#">@item.Name</a>
+                                </li>
                             </ul>
-                        </div>
+                        }
                     }
-                }
+                </div>
+                <div class="col">
+                    <a href="#" style="display:inline-block">Làm bánh</a>
+                    @foreach (var item in Model.ProductTypes)
+                    {
+                        if (item.GroupType == "Làm bánh")
+                        {
+                            <ul style="margin-left:30px">
+                                <li>
+                                    <a href="#">@item.Name</a>
+                                </li>
+                            </ul>
+                        }
+                    }
+                </div>
+                <div class="col">
+                    <a href="#" style="display:inline-block">Khuôn khay</a>
+                    @foreach (var item in Model.ProductTypes)
+                    {
+                        if (item.GroupType == "Khuôn khay")
+                        {
+                            <ul style="margin-left:30px">
+                                <li>
+                                    <a href="#">@item.Name</a>
+                                </li>
+                            </ul>
+                        }
+                    }
+                </div>
             </div>
 
         </div>
