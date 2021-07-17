@@ -386,3 +386,30 @@ td.data-title {
     border: 1px solid #f2f2f2;
     color: #222222;
 }
+
+.woocommerce-breadcrumb {
+    text-transform: capitalize;
+    list-style: none;
+    display: block;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+.col-md-12 {
+    width: 100%;
+}
+
+.a-center {
+    text-align: center;
+}
+
+.back-history {
+    color: #b2b2b2;
+}
+
+.add-to-cart{
+    background-color: orange;
+}
+
+

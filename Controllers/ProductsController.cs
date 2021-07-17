@@ -137,6 +137,24 @@ namespace MicroWaveFood.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+        [AllowAnonymous]
+        public ActionResult ProductDetail(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Product product = db.Products.Include(p => p.ProductType).FirstOrDefault(p => p.ProductId == id);
+            if (product == null)
+            {
+                return HttpNotFound();
+            }
+            if (product.status == false)
+            {
+                return HttpNotFound();
+            }
+            return View(product);
+        }
 
         protected override void Dispose(bool disposing)
         {

@@ -1,0 +1,82 @@
+﻿@model MicroWaveFood.Models.Product
+
+@{
+    ViewBag.Title = "ProductDetail";
+}
+
+<h2>ProductDetail</h2>
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+</head>
+</html>
+<!--Section: Block Content-->
+<section class="mb-5">
+    <div class="row">
+        <div class="col-md-12 a-center">
+            <nav class="woocomerce-breadcrumb">
+                <a href="#">Trang Chủ</a>
+                <i class="material-icons" style="font-size: medium">navigate_next</i>
+                <a href="#">Test</a>
+                <a class="back-history" href="#">
+                    <i class="material-icons" style="font-size: medium">navigate_before</i>
+                    Trở về trang trước
+                </a>
+            </nav>
+        </div>
+        <div class="col-md-6 mb-4 mb-md-0">
+            <div id="mdb-lightbox-ui">
+                <a>
+                    <img src="@Model.Image" width="500" height="300"
+                         class="img-fluid z-depth-1"/>
+                </a>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <h2>@Model.ProductName</h2>
+            <p class="mb-2 text-muted text-uppercase small">@Model.ProductType.Name</p>
+            <h6><span class="mr-1"><strong>@Model.Price đ</strong></span></h6>
+            <p class="pt-1">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam, sapiente illo. Sit
+                error voluptas repellat rerum quidem, soluta enim perferendis voluptates laboriosam. Distinctio,
+                officia quis dolore quos sapiente tempore alias.
+            </p>
+            <hr>
+            <div class="table-responsive mb-2">
+                <table>
+                    <tbody>
+                        <tr>
+                            <td class="pl-0 pb-0 w-25">Quantity</td>
+                        </tr>
+                        <tr>
+                            <td class="pl-0" align="left">
+                                <div class="input-spiner">
+                                    <input class="changedInput" type="number" min="0" max="200" step="1" />
+                                </div>
+                            </td>
+                            <td align="center">
+                                <button type="submit" class="add-to-cart">
+                                    <i class="material-icons">add_shopping_cart THÊM VÀO GIỎ</i>
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</section>
+<script src="~/Scripts/bootstrap-input-spinner.js"></script>
+@section scripts{
+    <script>
+        $(document).ready(function () {
+            $("input[type='number']").inputSpinner({ buttonsOnly: true })
+            // MDB Lightbox Init
+            $(function () {
+                $("#mdb-lightbox-ui").load("mdb-addons/mdb-lightbox-ui.html");
+            });
+        });
+    </script>
+}

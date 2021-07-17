@@ -542,6 +542,7 @@
     <Content Include="Views\Home\AdminIndex.cshtml" />
     <Content Include="Views\Comments\Index.cshtml" />
     <Content Include="Views\Comments\Detail.cshtml" />
+    <Content Include="Views\Products\ProductDetail.cshtml" />
     <None Include="Views\Shared\_AdminLayout.cshtml" />
     <Content Include="Template\css\sb-admin-2.css" />
     <Content Include="Template\css\sb-admin-2.min.css" />
