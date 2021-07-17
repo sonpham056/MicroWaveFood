@@ -30,6 +30,7 @@
 .dropdown-first {
     float: left;
     overflow: hidden;
+    display:flex;
 }
 
     .dropdown-first .dropbtn {

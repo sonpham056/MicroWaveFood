@@ -49,9 +49,12 @@ namespace MicroWaveFood.Controllers
             }
             ViewBag.AmountSum = AmountSum();
             ViewBag.PriceSum = PriceSum();
+            List<string> groupType = new List<string>() { "Đồ làm bánh", "Đồ nấu ăn", "Đồ pha chế" };
+
             List<Product> bestSeller = new List<Product>();
             var HomeViewModel = new HomeIndexViewModel
             {
+
                 ProductTypes = db.productTypes
                 .Where(a => a.Status == true)
                 .ToList(),
@@ -61,7 +64,10 @@ namespace MicroWaveFood.Controllers
                 BestSellerList = db.Products
                 .Where(a => a.status == true)
                 .Where(a => a.Bills.Count > 3)
-                .ToList()
+                .ToList(),
+
+                GroupTypes = new List<string>() { "Đồ làm bánh", "Đồ nấu ăn", "Đồ pha chế" }
+
             };
             return View(HomeViewModel);
         }
@@ -70,7 +76,7 @@ namespace MicroWaveFood.Controllers
         {
             ViewBag.AmountSum = AmountSum();
             ViewBag.PriceSum = PriceSum();
-            ViewBag.Message = "Your application description page."; 
+            ViewBag.Message = "Your application description page.";
 
             return View();
         }
