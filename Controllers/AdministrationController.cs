@@ -13,6 +13,7 @@ using System.Web.Mvc;
 
 namespace MicroWaveFood.Controllers
 {
+    [Authorize(Roles = "admin")]
     public class AdministrationController : Controller
     {
         private readonly RoleManager<IdentityRole> roleManager;
@@ -37,7 +38,7 @@ namespace MicroWaveFood.Controllers
             return View();
         }
         [HttpPost]
-        public async System.Threading.Tasks.Task<ActionResult> CreateRole(CreateRoleViewModel model)
+        public async Task<ActionResult> CreateRole(CreateRoleViewModel model)
         {
             if (ModelState.IsValid)
             {
@@ -58,6 +59,29 @@ namespace MicroWaveFood.Controllers
                 }
             }
             return View(model);
+        }
+        [AllowAnonymous]
+        public async Task<ActionResult> CreateRoleAdmin()
+        {
+
+            IdentityRole identity = new IdentityRole
+            {
+                Name = "admin"
+            };
+
+            IdentityResult result = await roleManager.CreateAsync(identity);
+            if (result.Succeeded)
+            {
+                return RedirectToAction("ListRoles", "Administration");
+            }
+
+            foreach (string error in result.Errors)
+            {
+                ModelState.AddModelError("", error);
+            }
+            //if u got this far, its mean admin has already exist
+            ViewBag.Message = "admin role has already exist";
+            return View("Error");
         }
 
         [HttpGet]
@@ -165,7 +189,7 @@ namespace MicroWaveFood.Controllers
                             }
                         }
                     }
-                    
+
                 }
                 else if (user.IsSelected != true && (await userManager.IsInRoleAsync(user.UserId, role.Name)))
                 {
@@ -178,6 +202,31 @@ namespace MicroWaveFood.Controllers
                 }
             }
             return RedirectToAction("Edit", "Administration", new { id = id });
+        }
+        [AllowAnonymous]
+        public async Task<ActionResult> AddRoleToAdmin()
+        {
+            var role = await roleManager.FindByNameAsync("admin");
+            if (role == null)
+            {
+                return View("Error");
+            }
+            var update = await userManager.FindByEmailAsync("microwaveadmin@gmail.com");
+            try
+            {
+                await userManager.AddToRoleAsync(update.Id, role.Name);
+            }
+            catch (DbEntityValidationException dbEx)
+            {
+                foreach (var validationErrors in dbEx.EntityValidationErrors)
+                {
+                    foreach (var validationError in validationErrors.ValidationErrors)
+                    {
+                        Debug.WriteLine("Property: {0} Error: {1}", validationError.PropertyName, validationError.ErrorMessage);
+                    }
+                }
+            }
+            return RedirectToAction("Edit", "Administration", new { id = role.Id });
         }
     }
 }
