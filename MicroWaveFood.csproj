@@ -190,8 +190,11 @@
     <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Controllers\ProductTypesController.cs" />
+    
     <Compile Include="DAL\Product_type_context.cs" />
     <Compile Include="DAL\Product_type_Initiazer.cs" />
+    <Compile Include="Controllers\SalesController.cs" />
+    
     <Compile Include="Dtos\OrderDto.cs" />
     <Compile Include="Dtos\ProductDto.cs" />
     <Compile Include="Global.asax.cs">
@@ -200,6 +203,14 @@
     <Compile Include="Migrations\202107061624336_test.cs" />
     <Compile Include="Migrations\202107061624336_test.Designer.cs">
       <DependentUpon>202107061624336_test.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202107170749338_addSaleTable.cs" />
+    <Compile Include="Migrations\202107170749338_addSaleTable.Designer.cs">
+      <DependentUpon>202107170749338_addSaleTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202107180204097_stringlenthchange.cs" />
+    <Compile Include="Migrations\202107180204097_stringlenthchange.Designer.cs">
+      <DependentUpon>202107180204097_stringlenthchange.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -213,11 +224,14 @@
     <Compile Include="Models\Order.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\ProductType.cs" />
+    <Compile Include="Models\Sale.cs" />
+    <Compile Include="Models\ValidDate.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\CreateRoleViewModel.cs" />
     <Compile Include="ViewModels\EditRoleViewModel.cs" />
     <Compile Include="ViewModels\HomeIndexViewModel.cs" />
+    <Compile Include="ViewModels\SaleViewModel.cs" />
     <Compile Include="ViewModels\UserInfoViewModel.cs" />
     <Compile Include="ViewModels\UserRoleViewModel.cs" />
   </ItemGroup>
@@ -229,6 +243,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Carousel.css" />
+    <Content Include="Content\FirstRow.css" />
     <Content Include="Content\Header.css" />
     <Content Include="Content\Nav-bar.css" />
     <Content Include="favicon.ico" />
@@ -638,6 +653,11 @@
     <Content Include="Views\Home\AdminIndex.cshtml" />
     <Content Include="Views\Comments\Index.cshtml" />
     <Content Include="Views\Comments\Detail.cshtml" />
+    <Content Include="Views\Sales\Create.cshtml" />
+    <Content Include="Views\Sales\Delete.cshtml" />
+    <Content Include="Views\Sales\Details.cshtml" />
+    <Content Include="Views\Sales\Edit.cshtml" />
+    <Content Include="Views\Sales\Index.cshtml" />
     <None Include="Views\Shared\_AdminLayout.cshtml" />
     <Content Include="Template\css\sb-admin-2.css" />
     <Content Include="Template\css\sb-admin-2.min.css" />
@@ -2405,6 +2425,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202107061624336_test.resx">
       <DependentUpon>202107061624336_test.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202107170749338_addSaleTable.resx">
+      <DependentUpon>202107170749338_addSaleTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202107180204097_stringlenthchange.resx">
+      <DependentUpon>202107180204097_stringlenthchange.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

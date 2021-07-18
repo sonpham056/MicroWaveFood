@@ -15,6 +15,7 @@ namespace MicroWaveFood.Models
         public DbSet<Order> Orders { get; set; }
         public DbSet<Product> Products { get; set; }
         public DbSet<ProductType> productTypes { get; set; }
+        public DbSet<Sale> Sales { get; set; }
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
