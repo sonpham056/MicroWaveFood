@@ -18,7 +18,7 @@ namespace MicroWaveFood.Models
         [Display(Name = "Phần trăm giảm giá (thang 100)")]
         public int SaleRate { get; set; }
         [Required]
-        [FutureDate]
+        [ValidDate]
         [Display(Name = "Từ ngày")]
         public DateTime From { get; set; }
         [Required]

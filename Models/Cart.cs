@@ -23,10 +23,17 @@ namespace MicroWaveFood.Models
         public Cart(int productId)
         {
             ProductId = productId;
-            Product product = db.Products.Where(a => a.status == true).Single(a => a.ProductId == ProductId);
+            Product product = db.Products.Include("Sale").Where(a => a.status == true).Single(a => a.ProductId == ProductId);
             ProductName = product.ProductName;
             ProductImage = product.Image;
-            ProductPrice = product.Price;
+            if (product.SaleId != null && product.Sale.From <= DateTime.Now && product.Sale.To >= DateTime.Now)
+            {
+                ProductPrice = product.Price - (product.Sale.SaleRate * product.Price) / 100;
+            }
+            else
+            {
+                ProductPrice = product.Price;
+            }
             Amount = 1;
         }
     }

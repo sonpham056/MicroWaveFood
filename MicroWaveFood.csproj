@@ -244,11 +244,14 @@
     <Content Include="Images\Banner-whip-2.jpg" />
     <Content Include="Images\Bo-anchor-2.jpg" />
     <Content Include="Images\botmi_so11.jpg" />
+    <Content Include="Images\Bot_Hanh_Nhan_800g.jpeg" />
     <Content Include="Images\caroul1.jpeg" />
     <Content Include="Images\caroul2.jpg" />
     <Content Include="Images\caroul3.jpeg" />
     <Content Include="Images\caroul4.jpeg" />
     <Content Include="Images\cheese-productType.jpg" />
+    <Content Include="Images\Cream_cheese_USA_450g.jpeg" />
+    <Content Include="Images\discount.png" />
     <Content Include="Images\drag.png" />
     <Content Include="Images\iconAccount.png" />
     <Content Include="Images\Image_producttype_DCnauan\khuonnhua_producttype.jpeg" />
@@ -297,6 +300,7 @@
     <Content Include="Images\shopping-cart.png" />
     <Content Include="Images\Tran-chau.jpg" />
     <Content Include="Images\user-icon.jpg" />
+    <Content Include="Images\whipping-anchor-250ml.jpeg" />
     <Content Include="Images\whipping-archor-1L.jpg" />
     <Content Include="Images\Image_producttype\AFC_producttype.jpeg" />
     <Content Include="Images\Image_producttype\Bodp_producttype.jpeg" />

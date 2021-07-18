@@ -32,7 +32,7 @@
                         {
                             if (item.GroupType == "Nguyên Liệu làm bánh")
                             {
-                                <ul style="margin-left:30px; list-style-type:none">   
+                                <ul style="margin-left:30px; list-style-type:none">
                                     <li>
                                         <a href="#">@item.Name</a>
                                     </li>
@@ -324,7 +324,18 @@
         @foreach (var item in Model.ProductList)
         {
             <div class="col pt-5">
-                <div class="productImg">
+                <div class="productImg" style="position:relative">
+                    @if (item.SaleId != null && item.Sale.From <= DateTime.Now && item.Sale.To >= DateTime.Now)
+                    {
+
+                        <div class="sale">
+
+                            <img src="~/Images/discount.png" />
+                        </div>
+                        <div class="discount">
+                            <p style="text-align:right">- @item.Sale.SaleRate%</p>
+                        </div>
+                    }
                     <img class="img-index" src="@item.Image" />
                 </div>
                 <div class="product-content-container">
@@ -339,7 +350,14 @@
                                         <p style="text-align:center">@item.ProductName</p>
                                     </div>
                                     <div class="product-price">
-                                        <p style="text-align:center">@item.Price</p>
+                                        @if (item.SaleId != null && item.Sale.From <= DateTime.Now && item.Sale.To >= DateTime.Now)
+                                        {
+                                            <p style="text-align:center;"><del>@item.Price</del> <span style="color:red;">@(item.Price - (item.Price * item.Sale.SaleRate / 100)) đ</span></p>
+                                        }
+                                        else
+                                        {
+                                            <p style="text-align:center">@item.Price</p>
+                                        }
                                     </div>
                                 </div>
                             </div>
