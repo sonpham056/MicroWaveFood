@@ -74,10 +74,11 @@
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Management List</h6>
+                        <a class="collapse-item" href="@Url.Action("ListRoles", "Administration")">Manage role</a>
                         <a class="collapse-item" href="@Url.Action("Index", "ProductTypes")">Product Types</a>
                         <a class="collapse-item" href="@Url.Action("Index", "Products")">Product</a>
                         <a class="collapse-item" href="@Url.Action("OrderConfirm", "Order")">Order confirm</a>
-                        <a class="collapse-item" href="@Url.Action("ProductComments", "Products")">Comments</a>
+                        <a class="collapse-item" href="@Url.Action("Index", "Comments")">Comments</a>
                     </div>
                 </div>
             </li>
@@ -300,6 +301,45 @@
 
         <!-- Page level custom scripts -->
         @RenderSection("scripts", required: false)
+        <script src="~/Scripts/bootstrap-input-spinner.js"></script>
+        <script>
+            $(document).ready(function () {
+                $("input[type='number']").inputSpinner({ buttonsOnly: true })
+                var $changedInput = $(".changedInput")
+                var $valueOnInput = $("#valueOnInput")
+                var $valueOnChange = $("#valueOnChange")
+                var $minus = $(".btn-minus")
+                var $plus = $(".btn-plus")
+                $changedInput.on("input", function (event) {
+                    //$valueOnInput.html($(event.target).val())
+                    // or $valueOnInput.html(event.target.value) // in vanilla js
+                    // or $valueOnInput.html($changedInput.val())
+
+                });
+                $changedInput.on("change", function (event) {
+                    $valueOnChange.html($(event.target).val())
+                    //$(this).attr("data-id");
+                    //var url = $(this).attr("data-id");
+                    //window.location.href = url;
+                    //$minus = $(".btn-minus")
+                });
+                $minus.on("click", function (event) {
+                    var url = $changedInput.attr("data-link") + "&isMinus=true";
+                    if ($('.changedInput').val() == 0) {
+                        url = "@Url.Action("CartDelete", "Cart", new { productId = "__id__"})"
+                        window.location.href = url.replace('__id__', $changedInput.attr("data-id"))
+                    } else {
+                        window.location.href = url;
+                    }
+                });
+
+                $plus.on("click", function (event) {
+                    var url = $changedInput.attr("data-link");
+                    window.location.href = url;
+                })
+            });
+
+        </script>
 
 </body>
 

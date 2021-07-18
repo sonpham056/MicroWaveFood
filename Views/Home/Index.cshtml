@@ -1,35 +1,189 @@
-﻿@model MicroWaveFood.ViewModels.HomeIndexViewModel
+﻿@*@model MicroWaveFood.ViewModels.HomeIndexViewModel
 @{
     ViewBag.Title = "Home Page";
-}
+}*@
 
-@*<div class="jumbotron">
-        <h1>@ViewBag.count</h1>
-        <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-        <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-    </div>
-
-    <div class="row">
-        <div class="col-md-4">
-            <h2>Getting started</h2>
-            <p>
-                ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-                enables a clean separation of concerns and gives you full control over markup
-                for enjoyable, agile development.
-            </p>
-            <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
-        </div>
-        <div class="col-md-4">
-            <h2>Get more libraries</h2>
-            <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-            <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-        </div>
-        <div class="col-md-4">
-            <h2>Web Hosting</h2>
-            <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-            <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-        </div>
+@*<div class="col">
+        <a href="#" style="display:inline-block">@item.Name</a>
+        <ul style="margin-left:30px">
+            <li>
+                <a href="@Html">a</a>
+            </li>
+            <li>b</li>
+            <li>c</li>
+            <li>d</li>
+            <li>e</li>
+        </ul>
     </div>*@
+<div class="navbar-first container container-fluid nav" style="justify-content: space-evenly!important">
+    @foreach (var i in Model.GroupTypes)
+    {
+        <div class="dropdown-first">
+            <button class="dropbtn">
+                @i.ToString()
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content" style="z-index:10;background-color:antiquewhite; vertical-align:bottom">
+
+                <div class="row">
+                    <div class="col">
+                        <a href="#" style="display:inline-block">Nguyên liệu làm bánh</a>
+                        @foreach (var item in Model.ProductTypes)
+                        {
+                            if (item.GroupType == "Nguyên Liệu làm bánh")
+                            {
+                                <ul style="margin-left:30px; list-style-type:none">   
+                                    <li>
+                                        <a href="#">@item.Name</a>
+                                    </li>
+                                </ul>
+                            }
+                        }
+                    </div>
+                    <div class="col">
+                        <a href="#" style="display:inline-block">Làm bánh</a>
+                        @foreach (var item in Model.ProductTypes)
+                        {
+                            if (item.GroupType == "Làm bánh")
+                            {
+                                <ul style="margin-left: 30px; list-style-type: none">
+                                    <li>
+                                        <a href="#">@item.Name</a>
+                                    </li>
+                                </ul>
+                            }
+                        }
+                    </div>
+                    <div class="col">
+                        <a href="#" style="display:inline-block">Khuôn khay</a>
+                        @foreach (var item in Model.ProductTypes)
+                        {
+                            if (item.GroupType == "Khuôn khay")
+                            {
+                                <ul style="margin-left: 30px; list-style-type: none">
+                                    <li>
+                                        <a href="#">@item.Name</a>
+                                    </li>
+                                </ul>
+                            }
+                        }
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    }
+    @*<div class="dropdown-first">
+            <button class="dropbtn">
+                Đồ làm bánh
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content" style="z-index:10;background-color:antiquewhite">
+
+                <div class="row">
+                    <div class="col">
+                        <a href="#" style="display:inline-block">Nguyên liệu làm bánh</a>
+                        @foreach (var item in Model.ProductTypes)
+                        {
+                            if (item.GroupType == "Nguyên Liệu làm bánh")
+                            {
+                                <ul style="margin-left:30px">
+                                    <li>
+                                        <a href="#">@item.Name</a>
+                                    </li>
+                                </ul>
+                            }
+                        }
+                    </div>
+                    <div class="col">
+                        <a href="#" style="display:inline-block">Làm bánh</a>
+                        @foreach (var item in Model.ProductTypes)
+                        {
+                            if (item.GroupType == "Làm bánh")
+                            {
+                                <ul style="margin-left:30px">
+                                    <li>
+                                        <a href="#">@item.Name</a>
+                                    </li>
+                                </ul>
+                            }
+                        }
+                    </div>
+                    <div class="col">
+                        <a href="#" style="display:inline-block">Khuôn khay</a>
+                        @foreach (var item in Model.ProductTypes)
+                        {
+                            if (item.GroupType == "Khuôn khay")
+                            {
+                                <ul style="margin-left:30px">
+                                    <li>
+                                        <a href="#">@item.Name</a>
+                                    </li>
+                                </ul>
+                            }
+                        }
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="dropdown-first">
+            <button class="dropbtn">
+                Đồ làm bánh
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content" style="z-index:10;background-color:antiquewhite">
+
+                <div class="row">
+                    <div class="col">
+                        <a href="#" style="display:inline-block">Nguyên liệu làm bánh</a>
+                        @foreach (var item in Model.ProductTypes)
+                        {
+                            if (item.GroupType == "Nguyên Liệu làm bánh")
+                            {
+                                <ul style="margin-left:30px">
+                                    <li>
+                                        <a href="#">@item.Name</a>
+                                    </li>
+                                </ul>
+                            }
+                        }
+                    </div>
+                    <div class="col">
+                        <a href="#" style="display:inline-block">Làm bánh</a>
+                        @foreach (var item in Model.ProductTypes)
+                        {
+                            if (item.GroupType == "Làm bánh")
+                            {
+                                <ul style="margin-left:30px">
+                                    <li>
+                                        <a href="#">@item.Name</a>
+                                    </li>
+                                </ul>
+                            }
+                        }
+                    </div>
+                    <div class="col">
+                        <a href="#" style="display:inline-block">Khuôn khay</a>
+                        @foreach (var item in Model.ProductTypes)
+                        {
+                            if (item.GroupType == "Khuôn khay")
+                            {
+                                <ul style="margin-left:30px">
+                                    <li>
+                                        <a href="#">@item.Name</a>
+                                    </li>
+                                </ul>
+                            }
+                        }
+                    </div>
+                </div>
+
+            </div>
+        </div>*@
+
+</div>
+
 <div class="row">
     <div class="col-12 text-center">
         <h4 class="hp-category-title title">Bán chạy nhất</h4>
@@ -88,21 +242,22 @@
 
                     </div>
                     <!-- slider wrapper-->
+
+
+
                     <div class="swiper-pagination etheme-css swiper-pagination-swiper-unique-id-0 swiper-pagination-clickable swiper-pagination-bullets" data-css="">
                         <span class="swiper-pagination-bullet swiper-pagination-bullet-active"></span>
                         <span class="swiper-pagination-bullet"></span>
                         <span class="swiper-pagination-bullet"></span>
                         <span class="swiper-pagination-bullet"></span>
                         <span class="swiper-pagination-bullet"></span>
-                        <span class="swiper-pagination-bullet"></span>
-                        <span class="swiper-pagination-bullet"></span>
-                        <span class="swiper-pagination-bullet"></span>
-                        <span class="swiper-pagination-bullet"></span>
-                        <span class="swiper-pagination-bullet"></span>
-                        <span class="swiper-pagination-bullet"></span>
-                        <span class="swiper-pagination-bullet"></span>
-                        <span class="swiper-pagination-bullet"></span>
-                        <span class="swiper-pagination-bullet"></span>
+
+
+                        <div class="swiper-button-prev"></div>
+                        <div class="swiper-button-next"></div>
+
+
+                        <div class="swiper-scrollbar"></div>
                     </div>
 
                     @*<div class="swiper-pagination etheme-css swiper-pagination-swiper-unique-id-0 swiper-pagination-clickable swiper-pagination-bullets">
@@ -112,14 +267,53 @@
                             <span class="swiper-pagination-bullet"></span>
 
                         </div>*@
-                    @**@
+
                 </div><!-- slider container-->
-                <div class="swiper-button-prev swiper-custom-left swiper-button-prev-swiper-unique-id-0 swiper-button-disabled"></div>
-                <div class="swiper-button-next swiper-custom-right swiper-button-next-swiper-unique-id-0"></div>
-            </div><div class="clear"></div><!-- slider-entry -->
+                @*<div class="swiper-button-prev swiper-custom-left swiper-button-prev-swiper-unique-id-0 swiper-button-disabled"></div>
+                    <div class="swiper-button-next swiper-custom-right swiper-button-next-swiper-unique-id-0"></div>*@
+            </div>
+            <div class="clear"></div><!-- slider-entry -->
         </div>
     </div>
 </div>
+
+
+@*Script*@
+<script>
+    var mySwiper = new Swiper('.swiper-container', {
+        // Optional parameters
+        direction: 'vertical',
+        loop: true,
+
+        // If we need pagination
+        pagination: {
+            el: '.swiper-pagination',
+        },
+
+        // Navigation arrows
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+
+        // And if we need scrollbar
+        scrollbar: {
+            el: '.swiper-scrollbar',
+        },
+    })
+
+
+    var swiper = new Swiper('.swiper-container', {
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        }, pagination: {
+            el: '.swiper-pagination',
+        },
+
+    });
+
+</script>
 
 @*End carousel*@
 <h4 class="title">
@@ -165,28 +359,39 @@
     <div class="container-content">
         <div class="col-3">
             <div class="flex-grid-third1">
-
-                <img src="~/Images/lAU.jpg" />
-
-
-                <img src="~/Images/Bo-anchor-2.jpg" />
-
-
-                <img src="~/Images/Tran-chau.jpg" />
+                <a href="~/ListProductType.cshtml">
+                    <img style="width: 99%" src="~/Images/lAU.jpg" />
+                </a>
+                <a href=" ">
+                    <img style="width: 99%" src="~/Images/Bo-anchor-2.jpg" />
+                </a>
+                <a href=" ">
+                    <img style="width: 99%" src="~/Images/Tran-chau.jpg" />
+                </a>
+               
 
             </div>
             <div class="flex-grid-third2">
                 <div class="img1">
-                    <img src="~/Images/Banner-anchor-1.jpg" />
+                    <a href=" ">
+                        <img style="width: 100%; height: 100%" src="~/Images/Banner-anchor-1.jpg" />
+                    </a>
+                   
                 </div>
                 <div class="img2">
-                    <img src="~/Images/Anh-vuong.jpg" />
+                    <a href=" ">
+                        <img style="width: 99%" src="~/Images/Anh-vuong.jpg" />
+                    </a>
+                   
                 </div>
             </div>
         </div>
         <div>
             <div class="col-1">
-                <img src="~/Images/Banner-whip-2.jpg" />
+                <a href=" ">
+                    <img style="width: 65%" src="~/Images/Banner-whip-2.jpg" />
+                </a>
+             
             </div>
         </div>
     </div>

@@ -50,15 +50,16 @@
         <nav class="header-navbar ">
             <div class="form-inline mr-auto row" target="_self" style="justify-content: space-evenly">
                 <a class="navbar-branch" href="~/Home/Index" style="justify-self:start">
-                   
-                    <img src="~/Images/logo.png" height="80"/>
-                    
+
+                    <img src="~/Images/logo.png" height="80" />
+
                 </a>
                 <div class="form-group navbar-collapse">
                     <input class="form-control search-field" type="search" name="search" id="search-field">
-                    <label for="search-field">
-                        <i class="fa fa-search"></i>
-                    </label>
+                    <button style=" border: 1px solid #79737357;" type="submit" class="btn filled">Search<i class="et-icon et-zoom"></i></button>
+                    @*<label for="search-field">
+                       <i class="fa fa-search"></i>
+                    </label>*@
 
                 </div>
                 @if (User.IsInRole("admin"))
@@ -252,39 +253,61 @@
 <script src="~/Scripts/bootstrap-input-spinner.js"></script>
 <script>
     $(document).ready(function () {
-         $("input[type='number']").inputSpinner({ buttonsOnly: true })
+        $("input[type='number']").inputSpinner({ buttonsOnly: true })
         var $changedInput = $(".changedInput")
         var $valueOnInput = $("#valueOnInput")
         var $valueOnChange = $("#valueOnChange")
-        var $minus = $(".btn-minus")
-        var $plus = $(".btn-plus")
         $changedInput.on("input", function (event) {
-            //$valueOnInput.html($(event.target).val())
-            // or $valueOnInput.html(event.target.value) // in vanilla js
-            // or $valueOnInput.html($changedInput.val())
 
-        })
+        });
+
         $changedInput.on("change", function (event) {
             $valueOnChange.html($(event.target).val())
-            //$(this).attr("data-id");
-            //var url = $(this).attr("data-id");
-            //window.location.href = url;
-            //$minus = $(".btn-minus")
-        })
-        $minus.on("click", function (event) {
-            var url = $changedInput.attr("data-link") + "&isMinus=true";
-            if ($('.changedInput').val() == 0) {
+            var url = $(this).attr("data-link");
+            var id = $(this).attr("data-id");
+            $('.btn-minus').click(function (e) {
+                url = url + "&isMinus=true";
+                var a = $(event.target).val();
+                if (a == 0) {
+                    url = "@Url.Action("CartDelete", "Cart", new { productId = "__id__"})"
+                    window.location.href = url.replace('__id__', id)
+                } else {
+                    console.log(url);
+                    window.location.href = url;
+                }
+            });
+
+             $('.btn-plus').click(function (e) {
+                window.location.href = url;
+            });
+
+        });
+
+
+
+        @*$('.btn-minus').on("click", function (event) {
+            var getParent = $(this).parents();
+            var url = getParent[2].children[0].getAttribute("data-link") + "&isMinus=true";
+            console.log(getParent.find(".changedInput").val())
+            if ($(this).val() == 0) {
                 url = "@Url.Action("CartDelete", "Cart", new { productId = "__id__"})"
                 window.location.href = url.replace('__id__', $changedInput.attr("data-id"))
             } else {
                 window.location.href = url;
             }
+            //var a = $(this).parents();
+            //alert(a[2].childElementCount);
         })
 
-        $plus.on("click", function (event) {
+        $(".btn-plus").on("click", function (event) {
             var url = $changedInput.attr("data-link");
             window.location.href = url;
+<<<<<<< HEAD
         })
+=======
+        })*@
+    })
+>>>>>>> d04ed34e821449f0bf994aee5db563e744ee0ba9
 
 
     </script>

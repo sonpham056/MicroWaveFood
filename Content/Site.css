@@ -69,9 +69,9 @@ body {
     justify-content: space-between;
 }
 
-    .flex-grid-third1 img {
+    /*.flex-grid-third1 img {
         width: 33%;
-    }
+    }*/
 
 .flex-grid-third2 {
     display: flex;
@@ -82,17 +82,17 @@ body {
     width: 66%
 }
 
-    .img1 img {
+    /*.img1 img {
         width: 100%;
-    }
+    }*/
 
 .img2 {
     width: 33%
 }
 
-    .img2 img {
+    /*.img2 img {
         width: 100%;
-    }
+    }*/
 
 .col-1 {
     width: 250%;
@@ -108,9 +108,9 @@ body {
     /* max-width: 8.333333%; */
 }
 
-    .col-1 img {
+    /*.col-1 img {
         width: 65%;
-    }
+    }*/
 
 /* Override the default bootstrap behavior where horizontal description lists 
    will truncate terms that are too long to fit in the left column 

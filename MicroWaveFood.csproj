@@ -184,6 +184,7 @@
     <Compile Include="Controllers\Api\CartController.cs" />
     <Compile Include="Controllers\Api\OrderController.cs" />
     <Compile Include="Controllers\CartController.cs" />
+    <Compile Include="Controllers\CommentsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\OrderController.cs" />
@@ -226,6 +227,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Carousel.css" />
+    <Content Include="Content\FirstRow.css" />
     <Content Include="Content\Header.css" />
     <Content Include="Content\Nav-bar.css" />
     <Content Include="favicon.ico" />
@@ -254,6 +256,7 @@
     <Content Include="Images\prod4.jpg" />
     <Content Include="Images\shopping-cart.png" />
     <Content Include="Images\Tran-chau.jpg" />
+    <Content Include="Images\user-icon.jpg" />
     <Content Include="Images\whipping-archor-1L.jpg" />
     <Content Include="Scripts\bootbox.js" />
     <Content Include="Scripts\bootbox.min.js" />
@@ -538,6 +541,9 @@
     <Content Include="Template\vendor\jquery\jquery.slim.min.map" />
     <None Include="Views\Account\login.cshtml" />
     <Content Include="Views\Home\AdminIndex.cshtml" />
+    <Content Include="Views\Comments\Index.cshtml" />
+    <Content Include="Views\Comments\Detail.cshtml" />
+    <Content Include="Views\Products\ListProductType.cshtml" />
     <None Include="Views\Shared\_AdminLayout.cshtml" />
     <Content Include="Template\css\sb-admin-2.css" />
     <Content Include="Template\css\sb-admin-2.min.css" />
