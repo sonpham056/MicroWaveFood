@@ -1,0 +1,73 @@
+﻿@model IEnumerable<MicroWaveFood.Models.Product>
+@{
+    ViewBag.Title = "ListProduct";
+}
+
+<h2>Các mặt hàng</h2>
+
+@foreach (var item in Model)
+{
+    <div class="col pt-5">
+        <div class="productImg" style="position:relative">
+            @if (item.SaleId != null && item.Sale.From <= DateTime.Now && item.Sale.To >= DateTime.Now)
+            {
+
+                <div class="sale">
+
+                    <img src="~/Images/discount.png" />
+                </div>
+                <div class="discount">
+                    <p style="text-align:right">- @item.Sale.SaleRate%</p>
+                </div>
+            }
+            <img class="img-index" src="@item.Image" />
+        </div>
+        <div class="product-content-container">
+            <div class="productContent">
+                <div>
+                    <div class="product-content-container">
+                        <div class="container text-center mt-1">
+                            <a data-product-id="@item.ProductId" class="btn btn-primary button-index">Thêm vào giỏ hàng</a>
+                        </div>
+                        <div class="productContent">
+                            <div class="product-name">
+                                <p style="text-align:center">@item.ProductName</p>
+                            </div>
+                            <div class="product-price">
+                                @if (item.SaleId != null && item.Sale.From <= DateTime.Now && item.Sale.To >= DateTime.Now)
+                                {
+                                    <p style="text-align:center;"><del>@item.Price</del> <span style="color:red;">@(item.Price - (item.Price * item.Sale.SaleRate / 100)) đ</span></p>
+                                }
+                                else
+                                {
+                                    <p style="text-align:center">@item.Price</p>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+
+
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+            $('.button-index').on("click", function (e) {
+                var id = $(e.target);
+                $.post("/api/Cart/Add", { productId: id.attr("data-product-id") })
+                    .done(function () {
+                        var value = parseInt($(".notify-number").text(), 10) + 1;
+                        $('.notify-number').text(value);
+                    })
+                    .fail(function () {
+                        bootbox.alert("Something is wrong!");
+                    })
+            })
+        })
+    </script>
+}

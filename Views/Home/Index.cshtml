@@ -32,7 +32,7 @@
                         {
                             if (item.GroupType == "Nguyên Liệu làm bánh")
                             {
-                                <ul style="margin-left:30px; list-style-type:none">   
+                                <ul style="margin-left:30px; list-style-type:none">
                                     <li>
                                         <a href="#">@item.Name</a>
                                     </li>
@@ -73,7 +73,7 @@
             </div>
         </div>
     }
-    @*<div class="dropdown-first">
+    <div class="dropdown-first">
             <button class="dropbtn">
                 Đồ làm bánh
                 <i class="fa fa-caret-down"></i>
@@ -180,7 +180,7 @@
                 </div>
 
             </div>
-        </div>*@
+        </div>
 
 </div>
 
@@ -324,7 +324,18 @@
         @foreach (var item in Model.ProductList)
         {
             <div class="col pt-5">
-                <div class="productImg">
+                <div class="productImg" style="position:relative">
+                    @if (item.SaleId != null && item.Sale.From <= DateTime.Now && item.Sale.To >= DateTime.Now)
+                    {
+
+                        <div class="sale">
+
+                            <img src="~/Images/discount.png" />
+                        </div>
+                        <div class="discount">
+                            <p style="text-align:right">- @item.Sale.SaleRate%</p>
+                        </div>
+                    }
                     <img class="img-index" src="@item.Image" />
                 </div>
                 <div class="product-content-container">
@@ -339,7 +350,14 @@
                                         <p style="text-align:center">@item.ProductName</p>
                                     </div>
                                     <div class="product-price">
-                                        <p style="text-align:center">@item.Price</p>
+                                        @if (item.SaleId != null && item.Sale.From <= DateTime.Now && item.Sale.To >= DateTime.Now)
+                                        {
+                                            <p style="text-align:center;"><del>@item.Price</del> <span style="color:red;">@(item.Price - (item.Price * item.Sale.SaleRate / 100)) đ</span></p>
+                                        }
+                                        else
+                                        {
+                                            <p style="text-align:center">@item.Price</p>
+                                        }
                                     </div>
                                 </div>
                             </div>
@@ -354,18 +372,18 @@
 
 <div class="container-fluid banner">
     <h2 class="title" style="margin-top: 10px">
-        Backingdom - Đồ Làm Bánh - Nấu Ăn - Pha Chế
+        Bankingdom - Đồ Làm Bánh - Nấu Ăn - Pha Chế
     </h2>
     <div class="container-content">
         <div class="col-3">
             <div class="flex-grid-third1">
-                <a href="~/ListProductType.cshtml">
+                <a href="@Url.Action("ListProduct","Products",new {@str = "Nguyên liệu lẩu nướng" })" target="_blank">
                     <img style="width: 99%" src="~/Images/lAU.jpg" />
                 </a>
-                <a href=" ">
+                <a href="@Url.Action("ListProduct","Products",new {@str = "Nguyên liệu làm bánh" })" target="_blank">
                     <img style="width: 99%" src="~/Images/Bo-anchor-2.jpg" />
                 </a>
-                <a href=" ">
+                <a href="@Url.Action("ListProduct","Products",new {@str = "Nguyên liệu pha chế" })" target="_blank">
                     <img style="width: 99%" src="~/Images/Tran-chau.jpg" />
                 </a>
                
@@ -373,13 +391,13 @@
             </div>
             <div class="flex-grid-third2">
                 <div class="img1">
-                    <a href=" ">
+                    <a href="@Url.Action("ListProduct","Products",new {@str = "Nguyên liệu pha chế" })" target="_blank">
                         <img style="width: 100%; height: 100%" src="~/Images/Banner-anchor-1.jpg" />
                     </a>
                    
                 </div>
                 <div class="img2">
-                    <a href=" ">
+                    <a href="@Url.Action("ListSale","Products")" target="_blank">
                         <img style="width: 99%" src="~/Images/Anh-vuong.jpg" />
                     </a>
                    
@@ -388,7 +406,7 @@
         </div>
         <div>
             <div class="col-1">
-                <a href=" ">
+                <a href="@Url.Action("ListProduct","Products",new {@str = "Nguyên liệu làm bánh" })" target="_blank">
                     <img style="width: 65%" src="~/Images/Banner-whip-2.jpg" />
                 </a>
              

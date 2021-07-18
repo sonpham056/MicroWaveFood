@@ -3,7 +3,7 @@ namespace MicroWaveFood.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class test : DbMigration
+    public partial class re_database : DbMigration
     {
         public override void Up()
         {
@@ -14,7 +14,7 @@ namespace MicroWaveFood.Migrations
                         BillId = c.Int(nullable: false, identity: true),
                         ProductId = c.Int(nullable: false),
                         OrderId = c.Int(nullable: false),
-                        Amount = c.Int(nullable: false),
+                        Amount = c.Long(nullable: false),
                         Status = c.Boolean(nullable: false),
                     })
                 .PrimaryKey(t => t.BillId)
@@ -30,7 +30,7 @@ namespace MicroWaveFood.Migrations
                         CommentId = c.Int(nullable: false),
                         BillId = c.Int(nullable: false),
                         UserId = c.String(maxLength: 128),
-                        UserComment = c.String(nullable: false, maxLength: 255),
+                        UserComment = c.String(nullable: false, maxLength: 1000),
                         CommentDate = c.DateTime(nullable: false),
                         Status = c.Boolean(nullable: false),
                     })
@@ -124,31 +124,47 @@ namespace MicroWaveFood.Migrations
                     {
                         ProductId = c.Int(nullable: false, identity: true),
                         ProductTypeId = c.Int(nullable: false),
-                        ProductName = c.String(nullable: false),
-                        ProductDescribe = c.String(nullable: false),
+                        ProductName = c.String(nullable: false, maxLength: 100),
+                        ProductDescribe = c.String(nullable: false, maxLength: 1000),
                         Price = c.Long(nullable: false),
-                        Unit = c.String(nullable: false),
+                        Unit = c.String(nullable: false, maxLength: 50),
                         Date = c.DateTime(nullable: false),
                         Image = c.String(nullable: false),
                         Quantity = c.Int(nullable: false),
                         status = c.Boolean(nullable: false),
-                        Origin = c.String(nullable: false),
+                        Origin = c.String(nullable: false, maxLength: 50),
+                        SaleId = c.Int(),
                     })
                 .PrimaryKey(t => t.ProductId)
                 .ForeignKey("dbo.ProductType", t => t.ProductTypeId, cascadeDelete: true)
-                .Index(t => t.ProductTypeId);
+                .ForeignKey("dbo.Sale", t => t.SaleId)
+                .Index(t => t.ProductTypeId)
+                .Index(t => t.SaleId);
             
             CreateTable(
                 "dbo.ProductType",
                 c => new
                     {
                         ProductTypeId = c.Int(nullable: false, identity: true),
-                        Name = c.String(nullable: false),
-                        GroupType = c.String(nullable: false),
+                        Name = c.String(nullable: false, maxLength: 100),
+                        GroupType = c.String(nullable: false, maxLength: 100),
                         Image = c.String(nullable: false),
                         Status = c.Boolean(nullable: false),
                     })
                 .PrimaryKey(t => t.ProductTypeId);
+            
+            CreateTable(
+                "dbo.Sale",
+                c => new
+                    {
+                        SaleId = c.Int(nullable: false, identity: true),
+                        SaleName = c.String(nullable: false, maxLength: 100),
+                        SaleRate = c.Int(nullable: false),
+                        From = c.DateTime(nullable: false),
+                        To = c.DateTime(nullable: false),
+                        SaleContent = c.String(nullable: false, maxLength: 1000),
+                    })
+                .PrimaryKey(t => t.SaleId);
             
             CreateTable(
                 "dbo.AspNetRoles",
@@ -165,6 +181,7 @@ namespace MicroWaveFood.Migrations
         public override void Down()
         {
             DropForeignKey("dbo.AspNetUserRoles", "RoleId", "dbo.AspNetRoles");
+            DropForeignKey("dbo.Product", "SaleId", "dbo.Sale");
             DropForeignKey("dbo.Product", "ProductTypeId", "dbo.ProductType");
             DropForeignKey("dbo.Bill", "ProductId", "dbo.Product");
             DropForeignKey("dbo.Order", "UserId", "dbo.AspNetUsers");
@@ -175,6 +192,7 @@ namespace MicroWaveFood.Migrations
             DropForeignKey("dbo.AspNetUserLogins", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserClaims", "UserId", "dbo.AspNetUsers");
             DropIndex("dbo.AspNetRoles", "RoleNameIndex");
+            DropIndex("dbo.Product", new[] { "SaleId" });
             DropIndex("dbo.Product", new[] { "ProductTypeId" });
             DropIndex("dbo.Order", new[] { "UserId" });
             DropIndex("dbo.AspNetUserRoles", new[] { "RoleId" });
@@ -187,6 +205,7 @@ namespace MicroWaveFood.Migrations
             DropIndex("dbo.Bill", new[] { "OrderId" });
             DropIndex("dbo.Bill", new[] { "ProductId" });
             DropTable("dbo.AspNetRoles");
+            DropTable("dbo.Sale");
             DropTable("dbo.ProductType");
             DropTable("dbo.Product");
             DropTable("dbo.Order");

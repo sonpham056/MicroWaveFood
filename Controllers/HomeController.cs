@@ -60,7 +60,7 @@ namespace MicroWaveFood.Controllers
                 .ToList(),
 
 
-                ProductList = db.Products.Where(a => a.status == true).ToList(),
+                ProductList = db.Products.Include("Sale").Where(a => a.status == true).ToList(),
                 BestSellerList = db.Products
                 .Where(a => a.status == true)
                 .Where(a => a.Bills.Count > 3)
