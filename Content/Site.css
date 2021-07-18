@@ -1,5 +1,7 @@
 ﻿html, body {
     height: 100%;
+    width:auto;
+
 }
 * {
     margin: 0;

@@ -11,9 +11,8 @@
     z-index: 0;
 }
 
-    .body-wrap:before,
-    nav {
-        margin-top: 60px;
+    .body-wrap:before, nav {
+        margin-top: 0px;
         box-shadow: 5px 4px 5px #000;
     }
 
