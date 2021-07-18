@@ -20,6 +20,7 @@
 
         protected override void Seed(MicroWaveFood.Models.ApplicationDbContext context)
         {
+
            
 
             //nguyenlieu
@@ -47,6 +48,10 @@
             };
             producttypes.ForEach(s => context.productTypes.Add(s));
             context.SaveChanges();
+
+        
+       
+
 
             ////dungcu
             var producttypes_dungcu = new List<ProductType>
@@ -174,6 +179,7 @@
             producttypes_DCphache.ForEach(s => context.productTypes.Add(s));
             context.SaveChanges();
         }
+
 
 
     }
