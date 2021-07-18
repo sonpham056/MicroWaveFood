@@ -388,3 +388,17 @@ td.data-title {
     border: 1px solid #f2f2f2;
     color: #222222;
 }
+
+
+.sale {
+    position: absolute;
+    right: 0px;
+    width: 80px;
+    height: 50px;
+}
+
+.discount {
+    position: absolute;
+    right: 12px;
+    top: 6px;
+}
