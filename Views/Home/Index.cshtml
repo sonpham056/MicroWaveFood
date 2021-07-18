@@ -15,7 +15,7 @@
             <li>e</li>
         </ul>
     </div>*@
-<div class="navbar-first container container-fluid nav" style="justify-content: space-evenly!important">
+<nav class="navbar-first container container-fluid nav" style="justify-content: space-evenly!important">
     @foreach (var i in Model.GroupTypes)
     {
         if (i.ToString() == "Đồ làm bánh")
@@ -29,7 +29,7 @@
 
                     <div class="row">
                         <div class="col">
-                            <a href="#" style="display:inline-block">Nguyên liệu làm bánh</a>
+                            <a href="#" style="display:inline-block;padding-bottom:10px">Nguyên liệu làm bánh</a>
                             @foreach (var item in Model.ProductTypes)
                             {
                                 if (item.GroupType == "Nguyên liệu làm bánh")
@@ -43,7 +43,7 @@
                             }
                         </div>
                         <div class="col">
-                            <a href="#" style="display:inline-block">Làm bánh</a>
+                            <a href="#" style="display: inline-block; padding-bottom: 10px">Làm bánh</a>
                             @foreach (var item in Model.ProductTypes)
                             {
                                 if (item.GroupType == "Dụng cụ làm bánh")
@@ -57,7 +57,7 @@
                             }
                         </div>
                         <div class="col">
-                            <a href="#" style="display:inline-block">Khuôn khay</a>
+                            <a href="#" style="display: inline-block; padding-bottom: 10px">Khuôn khay</a>
                             @foreach (var item in Model.ProductTypes)
                             {
                                 if (item.GroupType == "Khuôn khay làm bánh")
@@ -71,7 +71,7 @@
                             }
                         </div>
                         <div class="col">
-                            <a href="#" style="display:inline-block">Túi, hộp, cốc, lọ</a>
+                            <a href="#" style="display: inline-block; padding-bottom: 10px">Túi, hộp, cốc, lọ</a>
                             @foreach (var item in Model.ProductTypes)
                             {
                                 if (item.GroupType == "Túi,hộp,cốc,lọ")
@@ -100,7 +100,7 @@
 
                     <div class="row">
                         <div class="col">
-                            <a href="#" style="display:inline-block">Món Á</a>
+                            <a href="#" style="display: inline-block; padding-bottom: 10px">Món Á</a>
                             @foreach (var item in Model.ProductTypes)
                             {
                                 if (item.GroupType == "Món Á")
@@ -114,7 +114,7 @@
                             }
                         </div>
                         <div class="col">
-                            <a href="#" style="display:inline-block">Món Âu</a>
+                            <a href="#" style="display: inline-block; padding-bottom: 10px">Món Âu</a>
                             @foreach (var item in Model.ProductTypes)
                             {
                                 if (item.GroupType == "Món Âu")
@@ -128,7 +128,7 @@
                             }
                         </div>
                         <div class="col">
-                            <a href="#" style="display:inline-block">Dụng cụ nấu ăn</a>
+                            <a href="#" style="display: inline-block; padding-bottom: 10px">Dụng cụ nấu ăn</a>
                             @foreach (var item in Model.ProductTypes)
                             {
                                 if (item.GroupType == "Dụng cụ nấu ăn")
@@ -142,7 +142,7 @@
                             }
                         </div>
                         <div class="col">
-                            <a href="#" style="display:inline-block">Nguyên liệu lẩu nướng</a>
+                            <a href="#" style="display: inline-block; padding-bottom: 10px">Nguyên liệu lẩu nướng</a>
                             @foreach (var item in Model.ProductTypes)
                             {
                                 if (item.GroupType == "Nguyên liệu lẩu nướng")
@@ -171,7 +171,7 @@
 
                     <div class="row">
                         <div class="col">
-                            <a href="#" style="display:inline-block">Nguyên liệu pha chế</a>
+                            <a href="#" style="display: inline-block; padding-bottom: 10px">Nguyên liệu pha chế</a>
                             @foreach (var item in Model.ProductTypes)
                             {
                                 if (item.GroupType == "Nguyên liệu pha chế")
@@ -185,38 +185,10 @@
                             }
                         </div>
                         <div class="col">
-                            <a href="#" style="display:inline-block">Dụng cụ pha chế </a>
+                            <a href="#" style="display: inline-block; padding-bottom: 10px">Dụng cụ pha chế </a>
                             @foreach (var item in Model.ProductTypes)
                             {
                                 if (item.GroupType == "Dụng cụ pha chế ")
-                                {
-                                    <ul style="margin-left: 30px; list-style-type: none">
-                                        <li>
-                                            <a href="#">@item.Name</a>
-                                        </li>
-                                    </ul>
-                                }
-                            }
-                        </div>
-                        <div class="col">
-                            <a href="#" style="display:inline-block">Đường pha chế </a>
-                            @foreach (var item in Model.ProductTypes)
-                            {
-                                if (item.GroupType.Equals("Đường pha chế "))
-                                {
-                                    <ul style="margin-left: 30px; list-style-type: none">
-                                        <li>
-                                            <a href="#">@item.Name</a>
-                                        </li>
-                                    </ul>
-                                }
-                            }
-                        </div>
-                        <div class="col">
-                            <a href="#" style="display:inline-block">Đường pha chế</a>
-                            @foreach (var item in Model.ProductTypes)
-                            {
-                                if (item.GroupType == "Đường pha chế")
                                 {
                                     <ul style="margin-left: 30px; list-style-type: none">
                                         <li>
@@ -234,8 +206,14 @@
 
     }
 
-
-</div>
+<script>
+    jQuery('.dropdown-first').hover(function () {
+        jQuery(this).find('.dropdown-content').stop(true, true).delay(200).fadeIn();
+    }, function () {
+        jQuery(this).find('.dropdown-content').stop(true, true).delay(50).fadeOut();
+    });
+</script>
+</nav>
 
 <div class="row">
     <div class="col-12 text-center">
