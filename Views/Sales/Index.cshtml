@@ -1,0 +1,57 @@
+﻿@model IEnumerable<MicroWaveFood.Models.Sale>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.SaleName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SaleRate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.From)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.To)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SaleContent)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.SaleName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SaleRate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.From)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.To)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SaleContent)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.SaleId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.SaleId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.SaleId })
+        </td>
+    </tr>
+}
+
+</table>

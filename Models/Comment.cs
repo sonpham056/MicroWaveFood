@@ -14,7 +14,7 @@ namespace MicroWaveFood.Models
         public int CommentId { get; set; }
         public int BillId { get; set; }
         public string UserId { get; set; }
-        [StringLength(255)]
+        [StringLength(1000, ErrorMessage = "Bình luận chỉ được tối đa 1000 ký tự!")]
         [Required]
         public string UserComment { get; set; }
         [Required]
