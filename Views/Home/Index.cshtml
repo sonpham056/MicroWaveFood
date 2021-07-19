@@ -1,20 +1,5 @@
-﻿@*@model MicroWaveFood.ViewModels.HomeIndexViewModel
-    @{
-        ViewBag.Title = "Home Page";
-    }*@
+﻿
 
-@*<div class="col">
-        <a href="#" style="display:inline-block">@item.Name</a>
-        <ul style="margin-left:30px">
-            <li>
-                <a href="@Html">a</a>
-            </li>
-            <li>b</li>
-            <li>c</li>
-            <li>d</li>
-            <li>e</li>
-        </ul>
-    </div>*@
 <nav class="navbar-first container container-fluid nav" style="justify-content: space-evenly!important">
     @foreach (var i in Model.GroupTypes)
     {
@@ -220,7 +205,6 @@
 
     }
 
-
 </nav>
 
 <div class="row">
@@ -419,7 +403,10 @@
                     <img style="width: 99%" src="~/Images/lAU.jpg" />
                 </a>
                 <a href="@Url.Action("ListProduct","Products",new {@str = "Nguyên liệu làm bánh" })" target="_blank">
-                    <img style="width: 99%" src="~/Images/Bo-anchor-2.jpg" />                                   @*AI đó test thử đêi*@
+
+                    <img style="width: 99%" src="~/Images/Bo-anchor-2.jpg" />                                   
+    @*AI đó test thử đêi*@
+     @*Test rồi, cái view trông chán đời vcl*@
                 </a>
                 <a href="@Url.Action("ListProduct","Products",new {@str = "Nguyên liệu pha chế" })" target="_blank">
                     <img style="width: 99%" src="~/Images/Tran-chau.jpg" />
