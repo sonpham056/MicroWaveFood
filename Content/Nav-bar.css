@@ -80,7 +80,7 @@ body {
     border: none;
     padding-right: 0;
 }
-
+    
     .navbar-toggler:active,
     .navbar-toggler:focus {
         outline: none;
@@ -185,7 +185,7 @@ body {
 }
 
 .full-height {
-    height: 100vh;
+    height: 100%;
 }
 
 .over-hide {
@@ -544,7 +544,7 @@ body.dark {
     .nav-item::before {
         position: absolute;
         display: block;
-        top: 15px;
+        /*top: 15px;*/
         left: 0;
         width: 11px;
         height: 1px;
