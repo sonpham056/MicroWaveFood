@@ -22,14 +22,17 @@
                     <img src="~/Images/logo.png" height="80" />
 
                 </a>
-                <div class="form-group navbar-collapse">
-                    <input class="form-control search-field" type="search" name="search" id="search-field">
-                    <button style=" border: 1px solid #79737357;" type="submit" class="btn filled">Search<i class="et-icon et-zoom"></i></button>
-                    @*<label for="search-field">
-                           <i class="fa fa-search"></i>
-                        </label>*@
 
-                </div>
+                @using (Html.BeginForm("Search", "Products", FormMethod.Get))
+                {
+                    <form class="form-group navbar-collapse">
+                        <input class="form-control search-field" type="search" name="str" id="search-field">
+                        <button style=" border: 1px solid #79737357;" type="submit" class="btn filled">
+                            Search<i class="et-icon et-zoom"></i>
+                        </button>
+                    </form>
+                }
+
                 @if (User.IsInRole("admin"))
                 {
                     <div class="link-action">
@@ -167,7 +170,11 @@
 @Scripts.Render("~/bundles/bootstrap")
 @RenderSection("scripts", required: false)
 <script src="~/Scripts/bootstrap-input-spinner.js"></script>
+
 <script>
+
+
+
     $(document).ready(function () {
         $("input[type='number']").inputSpinner({ buttonsOnly: true })
         var $changedInput = $(".changedInput")

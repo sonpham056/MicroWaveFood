@@ -14,5 +14,7 @@ namespace MicroWaveFood.ViewModels
         public List<Product> ListRandom { get; set; }
 
         public List<string> GroupTypes;
+
+        
     }
 }
