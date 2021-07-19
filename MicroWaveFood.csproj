@@ -216,6 +216,7 @@
     <Compile Include="ViewModels\CreateRoleViewModel.cs" />
     <Compile Include="ViewModels\EditRoleViewModel.cs" />
     <Compile Include="ViewModels\HomeIndexViewModel.cs" />
+    <Compile Include="ViewModels\ProductViewModel.cs" />
     <Compile Include="ViewModels\UserInfoViewModel.cs" />
     <Compile Include="ViewModels\UserRoleViewModel.cs" />
   </ItemGroup>

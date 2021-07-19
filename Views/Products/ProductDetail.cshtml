@@ -1,4 +1,4 @@
-﻿@model MicroWaveFood.Models.Product
+﻿@model MicroWaveFood.ViewModels.ProductViewModel
 
 @{
     ViewBag.Title = "ProductDetail";
@@ -28,21 +28,19 @@
         <div class="col-md-6 mb-4 mb-md-0">
             <div id="mdb-lightbox-ui">
                 <a>
-                    <img src="@Model.Image" width="500" height="300"
-                         class="img-fluid z-depth-1"/>
+                    <img src="@Model.Product.Image" width="500" height="300"
+                         class="img-fluid z-depth-1" />
                 </a>
             </div>
         </div>
         <div class="col-md-6">
-            <h2>@Model.ProductName</h2>
-            <p class="mb-2 text-muted text-uppercase small">@Model.ProductType.Name</p>
-            <h6><span class="mr-1"><strong>@Model.Price đ</strong></span></h6>
+            <h2>@Model.Product.ProductName</h2>
+            <p class="mb-2 text-muted text-uppercase small" style="font-weight: lighter">@Model.Product.ProductType.Name</p>
+            <h6><span class="mr-1"><strong style="color: red; text-shadow: 2px 2px 3px #ccc; font-size: 25px; font-weight: bold;">@Model.Product.Price đ</strong></span></h6>
             <p class="pt-1">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam, sapiente illo. Sit
-                error voluptas repellat rerum quidem, soluta enim perferendis voluptates laboriosam. Distinctio,
-                officia quis dolore quos sapiente tempore alias.
+                @Model.Product.ProductDescribe
             </p>
-            <hr>
+            <hr />
             <div class="table-responsive mb-2">
                 <table>
                     <tbody>
@@ -50,33 +48,79 @@
                             <td class="pl-0 pb-0 w-25">Quantity</td>
                         </tr>
                         <tr>
-                            <td class="pl-0" align="left">
-                                <div class="input-spiner">
-                                    <input class="changedInput" type="number" min="0" max="200" step="1" />
+                            <td class="pl-0">
+                                <div class="def-number-input number-input safari_only mb-0">
+                                    <input class="changedInput" type="number" min="1" max="200" value="1" />
                                 </div>
-                            </td>
-                            <td align="center">
-                                <button type="submit" class="add-to-cart">
-                                    <i class="material-icons">add_shopping_cart THÊM VÀO GIỎ</i>
-                                </button>
                             </td>
                         </tr>
                     </tbody>
                 </table>
             </div>
+            <button type="button" class="btn btn-primary btn-md mr-1 mb-2">Mua hàng ngay</button>
+            <button type="button" class="button-add-to-cart" style="background-color: orange; height: 35px;" data-product-id="@Model.Product.ProductId">
+                <i class="fas fa-shopping-cart pr-2">Thêm vào giỏ hàng</i>
+            </button>
         </div>
+    </div>
+    <div class="product-detail_content" style="padding-top: 20px;">
+        <div class="_title" style=" border-bottom-style: double; border-bottom-color: blue; max-width: 900px">
+            <h2>
+                <i class="material-icons fa fa-comments-o">comment BÌNH LUẬN</i>
+            </h2>
+        </div>
+        <div class="history-detail mt-3" style="max-width: 950px">
+            @foreach (var item in Model.Product.Bills)
+            {
+                if (item.Comment != null)
+                {
+                    <div class="shadow p-3 mb-5 bg-white rounded" style="margin-left:-15px; margin-right:-15px;">
+                        <div class="row">
+                            <div class="product-detail-history row col-10 ">
+                                <div class="user-icon">
+                                    <img src="~/Images/user-icon.jpg" style="width:60px; height: 60px; border-radius: 30px;" />
+                                </div>
+                                <div class="product-info-history col">
+                                    <div class="product-name-history m-2">
+                                        <a>@item.Comment.User.Name</a>
+                                    </div>
+                                    <div class="product-name-history m-2">
+                                        <a>@item.Comment.UserComment</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+        </div>
+    </div>
+    <h3 class="product-title">SẢN PHẨM LIÊN QUAN</h3>
+    <div>
+        
     </div>
 
 </section>
-<script src="~/Scripts/bootstrap-input-spinner.js"></script>
 @section scripts{
     <script>
         $(document).ready(function () {
-            $("input[type='number']").inputSpinner({ buttonsOnly: true })
             // MDB Lightbox Init
             $(function () {
                 $("#mdb-lightbox-ui").load("mdb-addons/mdb-lightbox-ui.html");
             });
         });
+        $(document).ready(function () {
+            $('.button-add-to-cart').on("click", function (e) {
+                var id = $(e.target);
+                $.post("/api/Cart/Add", { productId: id.attr("data-product-id") })
+                    .done(function () {
+                        var value = parseInt($(".notify-number").text(), 10) + 1;
+                        $('.notify-number').text(value);
+                    })
+                    .fail(function () {
+                        bootbox.alert("Something is wrong!");
+                    })
+            })
+        })
     </script>
 }

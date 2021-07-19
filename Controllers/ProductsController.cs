@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using MicroWaveFood.Models;
+using MicroWaveFood.ViewModels;
 
 namespace MicroWaveFood.Controllers
 {
@@ -144,7 +145,9 @@ namespace MicroWaveFood.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Product product = db.Products.Include(p => p.ProductType).FirstOrDefault(p => p.ProductId == id);
+            Product product = db.Products.Include(p => p.ProductType)
+                .Include("Bills.Comment.User")
+                .FirstOrDefault(p => p.ProductId == id);
             if (product == null)
             {
                 return HttpNotFound();
@@ -153,7 +156,12 @@ namespace MicroWaveFood.Controllers
             {
                 return HttpNotFound();
             }
-            return View(product);
+            ProductViewModel productViewModel = new ProductViewModel
+            {
+                Product = product,
+                RelatedProducts = db.Products.Where(p => p.ProductTypeId == product.ProductTypeId && p.status == true).ToList()
+            };
+            return View(productViewModel);
         }
 
         protected override void Dispose(bool disposing)
