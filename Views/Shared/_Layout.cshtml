@@ -6,44 +6,12 @@
     <title>BakingDom - Bring your cake</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-@*<nav class="navbar navbar-expand-md navbar-light bg-light sticky-top">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="">
-            <img src="img/logo.png" height="100">
-        </a>
-=======
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.0.4/popper.js"></script>
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
->>>>>>> 3a144de34cfe4a73b30bc24720c06d699cf94767
 
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a class="nav-link active" href="#">Nguyên liệu nấu ăn</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Nguyên liệu làm bánh</a>        Này của bạn Phòng
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Đồ pha chế</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Dụng cụ</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Liên hệ</a>
-                </li>
-            </ul>
-
-        </div>
-    </div>
-</nav>*@
 </head>
 <body class="body-content">
     <nav class="start-header container-fluid sticky-top navbar-expand-md" style="background-color:aliceblue">
@@ -58,8 +26,8 @@
                     <input class="form-control search-field" type="search" name="search" id="search-field">
                     <button style=" border: 1px solid #79737357;" type="submit" class="btn filled">Search<i class="et-icon et-zoom"></i></button>
                     @*<label for="search-field">
-                       <i class="fa fa-search"></i>
-                    </label>*@
+                           <i class="fa fa-search"></i>
+                        </label>*@
 
                 </div>
                 @if (User.IsInRole("admin"))
@@ -128,14 +96,11 @@
             </div>
         </nav>
     </nav>
-    
+
     <div class="container body-content">
         @RenderBody()
         <hr />
         <footer>
-
-            @*<p>&copy; @DateTime.Now.Year - footer ngu nguoi</p> footerNGUNGUOI*@
-
             <div class="footer">
                 <div class="container-fluid">
 
@@ -191,7 +156,6 @@
                     <p3 class="copyright">Copyright 2021 - QuocPhong</p3>
                 </div>
             </div>
-
         </footer>
     </div>
 
@@ -210,9 +174,7 @@
         var $valueOnInput = $("#valueOnInput")
         var $valueOnChange = $("#valueOnChange")
         $changedInput.on("input", function (event) {
-
         });
-
         $changedInput.on("change", function (event) {
             $valueOnChange.html($(event.target).val())
             var url = $(this).attr("data-link");
@@ -228,15 +190,10 @@
                     window.location.href = url;
                 }
             });
-
              $('.btn-plus').click(function (e) {
                 window.location.href = url;
             });
-
         });
-
-
-
         @*$('.btn-minus').on("click", function (event) {
             var getParent = $(this).parents();
             var url = getParent[2].children[0].getAttribute("data-link") + "&isMinus=true";
@@ -250,25 +207,9 @@
             //var a = $(this).parents();
             //alert(a[2].childElementCount);
         })
-
         $(".btn-plus").on("click", function (event) {
             var url = $changedInput.attr("data-link");
             window.location.href = url;
-<<<<<<< HEAD
-        })
-=======
         })*@
     })
->>>>>>> d04ed34e821449f0bf994aee5db563e744ee0ba9
-
-
-    </script>
-
-    
-
-
-
-
-
-
-
+</script>

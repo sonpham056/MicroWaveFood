@@ -84,11 +84,11 @@
             background-color: #ddd;
         }
 
-.dropdown-first:hover .dropdown-content {
+/*.dropdown-first:hover .dropdown-content {
     opacity: 1;
     transition: opacity;
     transition-delay: 2s;
-}
+}*/
 
 /*.dropdown-first:hover .dropdown-content {
     display: inline-flex;

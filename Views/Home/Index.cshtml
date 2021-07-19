@@ -1,7 +1,7 @@
 ﻿@*@model MicroWaveFood.ViewModels.HomeIndexViewModel
-@{
-    ViewBag.Title = "Home Page";
-}*@
+    @{
+        ViewBag.Title = "Home Page";
+    }*@
 
 @*<div class="col">
         <a href="#" style="display:inline-block">@item.Name</a>
@@ -91,23 +91,6 @@
                 </div>
             </div>
         }
-    }
-
-
-    @*<div class="dropdown-first">
-            <button class="dropbtn">
-                Đồ làm bánh
-                <i class="fa fa-caret-down"></i>
-            </button>
-            <div class="dropdown-content" style="z-index:10;background-color:antiquewhite">
-
-                <div class="row">
-                    <div class="col">
-                        <a href="#" style="display:inline-block">Nguyên liệu làm bánh</a>
-                        @foreach (var item in Model.ProductTypes)
-                        {
-                            if (item.GroupType == "Nguyên Liệu làm bánh")
-                        }
         else if (i.ToString() == "Đồ nấu ăn")
         {
             <div class="dropdown-first">
@@ -121,7 +104,7 @@
                         <div class="col">
                             <a href="#" style="display: inline-block; padding-bottom: 10px">Món Á</a>
                             @foreach (var item in Model.ProductTypes)
-
+                            {
                                 if (item.GroupType == "Món Á")
                                 {
                                     <ul style="margin-left:30px; list-style-type:none">
@@ -221,21 +204,11 @@
 
                 </div>
             </div>
-
-        </div>
-
         }
 
+    }
 
-    }*@
 
-<script>
-    jQuery('.dropdown-first').hover(function () {
-        jQuery(this).find('.dropdown-content').stop(true, true).delay(200).fadeIn();
-    }, function () {
-        jQuery(this).find('.dropdown-content').stop(true, true).delay(50).fadeOut();
-    });
-</script>
 </nav>
 
 <div class="row">
@@ -440,7 +413,7 @@
                 <a href="@Url.Action("ListProduct","Products",new {@str = "Nguyên liệu pha chế" })" target="_blank">
                     <img style="width: 99%" src="~/Images/Tran-chau.jpg" />
                 </a>
-               
+
 
             </div>
             <div class="flex-grid-third2">
@@ -448,13 +421,13 @@
                     <a href="@Url.Action("ListProduct","Products",new {@str = "Nguyên liệu pha chế" })" target="_blank">
                         <img style="width: 100%; height: 100%" src="~/Images/Banner-anchor-1.jpg" />
                     </a>
-                   
+
                 </div>
                 <div class="img2">
                     <a href="@Url.Action("ListSale","Products")" target="_blank">
                         <img style="width: 99%" src="~/Images/Anh-vuong.jpg" />
                     </a>
-                   
+
                 </div>
             </div>
         </div>
@@ -463,7 +436,7 @@
                 <a href="@Url.Action("ListProduct","Products",new {@str = "Nguyên liệu làm bánh" })" target="_blank">
                     <img style="width: 65%" src="~/Images/Banner-whip-2.jpg" />
                 </a>
-             
+
             </div>
         </div>
     </div>
@@ -517,5 +490,11 @@
                     })
             })
         })
+
+        $('.dropdown-first').hover(function () {
+            $(this).find('.dropdown-content').stop(true, true).delay(200).fadeIn();
+        }, function () {
+            $(this).find('.dropdown-content').stop(true, true).delay(0).fadeOut();
+        });
     </script>
 }
