@@ -149,10 +149,24 @@ namespace MicroWaveFood.Controllers
             }
             base.Dispose(disposing);
         }
+        
+        
+        
+        //==-----------'
+        [AllowAnonymous]
+        public ActionResult Search(string str)
+        {
+            ViewBag.AmountSum = AmountSum();
+            ViewBag.PriceSum = PriceSum();
+            var products = db.Products
+                .Where(a => a.ProductName.ToLower().Contains(str.ToLower()) && a.status == true)
+                .ToList();
+            return View(products);
+        }
+
         [AllowAnonymous]
         public ActionResult ListProduct(string str)
         {
-            
             ViewBag.AmountSum = AmountSum();
             ViewBag.PriceSum = PriceSum();
             var products = db.Products.Include("ProductType").ToList().Where(a => ConvertToUnSign3(a.ProductType.GroupType.ToLower()).Contains(ConvertToUnSign3(str.ToLower())) && a.status == true).ToList();
@@ -164,6 +178,8 @@ namespace MicroWaveFood.Controllers
             var products = db.Products.Where(a => a.SaleId != null && a.status == true).ToList();
             return View(products);
         }
+       
+
         public int AmountSum()
         {
             int amount = 0;
