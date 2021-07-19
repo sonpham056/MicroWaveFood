@@ -640,11 +640,13 @@
     <Content Include="Views\Home\AdminIndex.cshtml" />
     <Content Include="Views\Comments\Index.cshtml" />
     <Content Include="Views\Comments\Detail.cshtml" />
+    <Content Include="Views\Products\ListProduct.cshtml" />
     <Content Include="Views\Sales\Create.cshtml" />
     <Content Include="Views\Sales\Delete.cshtml" />
     <Content Include="Views\Sales\Details.cshtml" />
     <Content Include="Views\Sales\Edit.cshtml" />
     <Content Include="Views\Sales\Index.cshtml" />
+    <Content Include="Views\Products\ListSale.cshtml" />
     <None Include="Views\Shared\_AdminLayout.cshtml" />
     <Content Include="Template\css\sb-admin-2.css" />
     <Content Include="Template\css\sb-admin-2.min.css" />
