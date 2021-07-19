@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using MicroWaveFood.Models;
+using MicroWaveFood.ViewModels;
 
 namespace MicroWaveFood.Controllers
 {
@@ -145,6 +146,44 @@ namespace MicroWaveFood.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+        [AllowAnonymous]
+        public ActionResult ListProduct(string str)
+        {
+            
+            ViewBag.AmountSum = AmountSum();
+            ViewBag.PriceSum = PriceSum();
+            var products = db.Products.Include("ProductType").Where(a => a.ProductType.GroupType.ToLower() == str.ToLower() && a.status == true).ToList();
+            return View(products);
+        }
+        [AllowAnonymous]
+        public ActionResult ListSale(string str)
+        {
+            var products = db.Products.Where(a => a.SaleId != null && a.status == true).ToList();
+            return View(products);
+        }
+        public int AmountSum()
+        {
+            int amount = 0;
+            //List<Cart> list = Session["Cart"] as List<Cart>;
+            List<Cart> list = ListCart.Carts;
+            if (list != null)
+            {
+                amount = list.Sum(n => n.Amount);
+            }
+            return amount;
+        }
+
+        public long PriceSum()
+        {
+            long sum = 0;
+            //List<Cart> list = Session["Cart"] as List<Cart>;
+            List<Cart> list = ListCart.Carts;
+            if (list != null)
+            {
+                sum = list.Sum(n => n.Total);
+            }
+            return sum;
         }
     }
 }
