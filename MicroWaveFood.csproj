@@ -190,14 +190,15 @@
     <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Controllers\ProductTypesController.cs" />
+    <Compile Include="Controllers\SalesController.cs" />
     <Compile Include="Dtos\OrderDto.cs" />
     <Compile Include="Dtos\ProductDto.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202107061624336_test.cs" />
-    <Compile Include="Migrations\202107061624336_test.Designer.cs">
-      <DependentUpon>202107061624336_test.cs</DependentUpon>
+    <Compile Include="Migrations\202107180423471_re_database.cs" />
+    <Compile Include="Migrations\202107180423471_re_database.Designer.cs">
+      <DependentUpon>202107180423471_re_database.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -211,12 +212,16 @@
     <Compile Include="Models\Order.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\ProductType.cs" />
+    <Compile Include="Models\Sale.cs" />
+    <Compile Include="Models\ValidDate.cs" />
+    <Compile Include="Models\ValidPhone.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\CreateRoleViewModel.cs" />
     <Compile Include="ViewModels\EditRoleViewModel.cs" />
     <Compile Include="ViewModels\HomeIndexViewModel.cs" />
     <Compile Include="ViewModels\ProductViewModel.cs" />
+    <Compile Include="ViewModels\SaleViewModel.cs" />
     <Compile Include="ViewModels\UserInfoViewModel.cs" />
     <Compile Include="ViewModels\UserRoleViewModel.cs" />
   </ItemGroup>
@@ -241,13 +246,52 @@
     <Content Include="Images\Banner-whip-2.jpg" />
     <Content Include="Images\Bo-anchor-2.jpg" />
     <Content Include="Images\botmi_so11.jpg" />
+    <Content Include="Images\Bot_Hanh_Nhan_800g.jpeg" />
     <Content Include="Images\caroul1.jpeg" />
     <Content Include="Images\caroul2.jpg" />
     <Content Include="Images\caroul3.jpeg" />
     <Content Include="Images\caroul4.jpeg" />
     <Content Include="Images\cheese-productType.jpg" />
+    <Content Include="Images\Cream_cheese_USA_450g.jpeg" />
+    <Content Include="Images\discount.png" />
     <Content Include="Images\drag.png" />
     <Content Include="Images\iconAccount.png" />
+    <Content Include="Images\Image_producttype_DCnauan\khuonnhua_producttype.jpeg" />
+    <Content Include="Images\Image_producttype_DCnauan\KhuonNuong_producttype.jpeg" />
+    <Content Include="Images\Image_producttype_DCnauan\manhcuon_producttype.jpeg" />
+    <Content Include="Images\Image_producttype_DCphache\binhlac_producttype.jpeg" />
+    <Content Include="Images\Image_producttype_DCphache\cocnhua_producttype.jpeg" />
+    <Content Include="Images\Image_producttype_DCphache\lydong_producttype.jpeg" />
+    <Content Include="Images\Image_producttype_DCphache\muongkhuay_producttype.jpeg" />
+    <Content Include="Images\Image_producttype_DCphache\onghut_producttype.jpeg" />
+    <Content Include="Images\Image_producttype_DCphache\rayloc_producttype.jpeg" />
+    <Content Include="Images\Image_producttype_launuong\giavi_producttype.jpeg" />
+    <Content Include="Images\Image_producttype_launuong\misoi_producttype.png" />
+    <Content Include="Images\Image_producttype_launuong\thitnguoi_producttype.png" />
+    <Content Include="Images\Image_producttype_launuong\thit_producttype.png" />
+    <Content Include="Images\Image_producttype_launuong\Vienthalau_producttype.png" />
+    <Content Include="Images\Image_producttype_monAu\botphomai_producttype.jpeg" />
+    <Content Include="Images\Image_producttype_monAu\dePizza_producttype.png" />
+    <Content Include="Images\Image_producttype_monAu\matong_producttype.jpeg" />
+    <Content Include="Images\Image_producttype_monAu\myY_producttype.jpeg" />
+    <Content Include="Images\Image_producttype_monAu\tuongca_producttype.png" />
+    <Content Include="Images\Image_producttype_monAu\tuongot_producttype.png" />
+    <Content Include="Images\Image_producttype_monA\banhgao_producttype.jpeg" />
+    <Content Include="Images\Image_producttype_monA\botcari_producttype.jpeg" />
+    <Content Include="Images\Image_producttype_monA\botchien_producttype.jpeg" />
+    <Content Include="Images\Image_producttype_monA\dauhao_producttype.jpeg" />
+    <Content Include="Images\Image_producttype_monA\lauthai_producttype.jpeg" />
+    <Content Include="Images\Image_producttype_monA\phomailac_producttype.jpeg" />
+    <Content Include="Images\Image_producttype_monA\trung_producttype.jpeg" />
+    <Content Include="Images\Image_producttype_NLphache\botsua_producttype.jpeg" />
+    <Content Include="Images\Image_producttype_NLphache\nuoccotdua_producttype.jpeg" />
+    <Content Include="Images\Image_producttype_NLphache\pudding_producttype.png" />
+    <Content Include="Images\Image_producttype_NLphache\sinhto_producttype.jpeg" />
+    <Content Include="Images\Image_producttype_NLphache\siro_producttype.jpeg" />
+    <Content Include="Images\Image_producttype_NLphache\tranchau_producttype.jpeg" />
+    <Content Include="Images\Image_producttype_NLphache\tra_producttype.jpeg" />
+    <Content Include="Images\Image_producttype_duongphache\duongnau_producttype.jpeg" />
+    <Content Include="Images\Image_producttype_duongphache\duongNuoc_producttype.jpeg" />
     <Content Include="Images\lAU.jpg" />
     <Content Include="Images\logo.png" />
     <Content Include="Images\play-store.png" />
@@ -258,7 +302,61 @@
     <Content Include="Images\shopping-cart.png" />
     <Content Include="Images\Tran-chau.jpg" />
     <Content Include="Images\user-icon.jpg" />
+    <Content Include="Images\whipping-anchor-250ml.jpeg" />
     <Content Include="Images\whipping-archor-1L.jpg" />
+    <Content Include="Images\Image_producttype\AFC_producttype.jpeg" />
+    <Content Include="Images\Image_producttype\Bodp_producttype.jpeg" />
+    <Content Include="Images\Image_producttype\Botlanep_producttype.jpeg" />
+    <Content Include="Images\Image_producttype\Botmi_producttype.jpeg" />
+    <Content Include="Images\Image_producttype\Botsua_producttype.jpeg" />
+    <Content Include="Images\Image_producttype\BottronsanBotbanhbao_producttype.jpeg" />
+    <Content Include="Images\Image_producttype\Cheese_producttype.jpeg" />
+    <Content Include="Images\Image_producttype\Chocochip_producttype.png" />
+    <Content Include="Images\Image_producttype\Duong_producttype.jpeg" />
+    <Content Include="Images\Image_producttype\Gelatin_producttype.png" />
+    <Content Include="Images\Image_producttype\Hatquakho_producttype.jpeg" />
+    <Content Include="Images\Image_producttype\Mauvangdong_producttype.jpeg" />
+    <Content Include="Images\Image_producttype\MenBotno_producttype.jpeg" />
+    <Content Include="Images\Image_producttype\Raucau_producttype.jpeg" />
+    <Content Include="Images\Image_producttype\Socola_producttype.jpeg" />
+    <Content Include="Images\Image_producttype\TinhdauVani_producttype.jpeg" />
+    <Content Include="Images\Image_producttype\ToppingKembeo_producttype.jpeg" />
+    <Content Include="Images\Image_producttype\Whipping_producttype.jpeg" />
+    <Content Include="Images\Image_producttype_dungcu\banxoaykinh_producttype.jpeg" />
+    <Content Include="Images\Image_producttype_dungcu\battron_producttype.jpeg" />
+    <Content Include="Images\Image_producttype_dungcu\candientu_producttype.png" />
+    <Content Include="Images\Image_producttype_dungcu\Canep_producttype.jpeg" />
+    <Content Include="Images\Image_producttype_dungcu\caycanbot_producttype.jpeg" />
+    <Content Include="Images\Image_producttype_dungcu\Duibatkem_producttype.jpeg" />
+    <Content Include="Images\Image_producttype_dungcu\dungcudong_producttype.jpeg" />
+    <Content Include="Images\Image_producttype_dungcu\Fondant_producttype.jpeg" />
+    <Content Include="Images\Image_producttype_dungcu\Kimraucau3d_producttype.jpeg" />
+    <Content Include="Images\Image_producttype_dungcu\maydanhtrung_producttype.jpeg" />
+    <Content Include="Images\Image_producttype_dungcu\nhietke_producttype.jpeg" />
+    <Content Include="Images\Image_producttype_dungcu\raybot_producttype.jpeg" />
+    <Content Include="Images\Image_producttype_khuonkhay\Cupcake_producttype.jpeg" />
+    <Content Include="Images\Image_producttype_khuonkhay\khaynuongbanhmy_producttype.jpeg" />
+    <Content Include="Images\Image_producttype_khuonkhay\khaynuong_producttype.jpeg" />
+    <Content Include="Images\Image_producttype_khuonkhay\khuoncookies_productype.jpeg" />
+    <Content Include="Images\Image_producttype_khuonkhay\khuongatoVuong_producttype.jpeg" />
+    <Content Include="Images\Image_producttype_khuonkhay\khuonkem_producttype.jpeg" />
+    <Content Include="Images\Image_producttype_khuonkhay\khuonMousse_producttype.jpeg" />
+    <Content Include="Images\Image_producttype_khuonkhay\khuonnhung_producttype.jpeg" />
+    <Content Include="Images\Image_producttype_khuonkhay\khuonpizza_producttype.jpeg" />
+    <Content Include="Images\Image_producttype_khuonkhay\khuonTart_producttype.jpeg" />
+    <Content Include="Images\Image_producttype_khuonkhay\khuonthach_producttype.jpeg" />
+    <Content Include="Images\Image_producttype_lycoclo\cupdungsocola_producttype.jpeg" />
+    <Content Include="Images\Image_producttype_lycoclo\cupgiay_producttype.jpeg" />
+    <Content Include="Images\Image_producttype_lycoclo\daybuoc_producttype.jpeg" />
+    <Content Include="Images\Image_producttype_lycoclo\debanhchunhat_producttype.jpeg" />
+    <Content Include="Images\Image_producttype_lycoclo\hinhdan_producttype.jpeg" />
+    <Content Include="Images\Image_producttype_lycoclo\hopdung_producttype.jpeg" />
+    <Content Include="Images\Image_producttype_lycoclo\hopnhua_producttype.png" />
+    <Content Include="Images\Image_producttype_lycoclo\hopthiec_producttype.jpeg" />
+    <Content Include="Images\Image_producttype_lycoclo\Icon_producttype.jpeg" />
+    <Content Include="Images\Image_producttype_lycoclo\nenphaobong_producttype.jpeg" />
+    <Content Include="Images\Image_producttype_lycoclo\tuigiay_producttype.png" />
+    <Content Include="Images\Image_producttype_lycoclo\tuiZipdaydung_producttype.jpeg" />
     <Content Include="Scripts\bootbox.js" />
     <Content Include="Scripts\bootbox.min.js" />
     <Content Include="Scripts\bootstrap-input-spinner.js" />
@@ -285,6 +383,7 @@
     <Content Include="Content\bootstrap-reboot.css.map" />
     <Content Include="Content\bootstrap-grid.min.css.map" />
     <Content Include="Content\bootstrap-grid.css.map" />
+    <Content Include="libman.json" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -545,6 +644,14 @@
     <Content Include="Views\Comments\Index.cshtml" />
     <Content Include="Views\Comments\Detail.cshtml" />
     <Content Include="Views\Products\ProductDetail.cshtml" />
+    <Content Include="Views\Products\ListProduct.cshtml" />
+    <Content Include="Views\Sales\Create.cshtml" />
+    <Content Include="Views\Sales\Delete.cshtml" />
+    <Content Include="Views\Sales\Details.cshtml" />
+    <Content Include="Views\Sales\Edit.cshtml" />
+    <Content Include="Views\Sales\Index.cshtml" />
+    <Content Include="Views\Products\ListSale.cshtml" />
+    <Content Include="Views\Products\Search.cshtml" />
     <None Include="Views\Shared\_AdminLayout.cshtml" />
     <Content Include="Template\css\sb-admin-2.css" />
     <Content Include="Template\css\sb-admin-2.min.css" />
@@ -2296,6 +2403,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="DAL\" />
     <Folder Include="Views\Bill\" />
   </ItemGroup>
   <ItemGroup>
@@ -2310,8 +2418,8 @@
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202107061624336_test.resx">
-      <DependentUpon>202107061624336_test.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202107180423471_re_database.resx">
+      <DependentUpon>202107180423471_re_database.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
@@ -2333,7 +2441,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>50378</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>https://localhost:44360/</IISUrl>
+          <IISUrl>http://localhost:44360/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

@@ -4,6 +4,8 @@ using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
+using System.Text;
+using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.Mvc;
 using MicroWaveFood.Models;
@@ -171,6 +173,77 @@ namespace MicroWaveFood.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+        
+        
+        
+        //==-----------'
+        [AllowAnonymous]
+        public ActionResult Search(string str)
+        {
+            ViewBag.AmountSum = AmountSum();
+            ViewBag.PriceSum = PriceSum();
+            var products = db.Products
+                .ToList()
+                .Where(a => ConvertToUnSign3(a.ProductName.ToLower()).Contains(ConvertToUnSign3(str.ToLower())) && a.status == true)
+                .ToList();
+            return View(products);
+        }
+
+        [AllowAnonymous]
+        public ActionResult ListProduct(string str)
+        {
+            ViewBag.AmountSum = AmountSum();
+            ViewBag.PriceSum = PriceSum();
+            var products = db.Products.Include("ProductType").ToList().Where(a => ConvertToUnSign3(a.ProductType.GroupType.ToLower()).Contains(ConvertToUnSign3(str.ToLower())) && a.status == true).ToList();
+            return View(products);
+        }
+        [AllowAnonymous]
+        public ActionResult ListSale(string str)
+        {
+            var products = db.Products.Where(a => a.SaleId != null && a.status == true).ToList();
+            return View(products);
+        }
+       
+
+        public int AmountSum()
+        {
+            int amount = 0;
+            //List<Cart> list = Session["Cart"] as List<Cart>;
+            List<Cart> list = ListCart.Carts;
+            if (list != null)
+            {
+                amount = list.Sum(n => n.Amount);
+            }
+            return amount;
+        }
+
+        public long PriceSum()
+        {
+            long sum = 0;
+            //List<Cart> list = Session["Cart"] as List<Cart>;
+            List<Cart> list = ListCart.Carts;
+            if (list != null)
+            {
+                sum = list.Sum(n => n.Total);
+            }
+            return sum;
+        }
+
+        private static string ConvertToUnSign3(string s)
+        {
+            Regex regex = new Regex("\\p{IsCombiningDiacriticalMarks}+");
+            string temp = s.Normalize(NormalizationForm.FormD);
+            return regex.Replace(temp, String.Empty).Replace('\u0111', 'd').Replace('\u0110', 'D');
+        }
+
+        [AllowAnonymous]
+        public ActionResult ProductsInProductType(int id)
+        {
+            ViewBag.AmountSum = AmountSum();
+            ViewBag.PriceSum = PriceSum();
+            var products = db.Products.Include("ProductType").Where(a => a.ProductType.ProductTypeId == id && a.status == true).ToList();
+            return View("ListProduct", products);
         }
     }
 }

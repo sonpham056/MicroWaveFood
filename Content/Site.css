@@ -1,5 +1,8 @@
+
 ﻿html, body {
     height: 100%;
+    width:auto;
+
 }
 * {
     margin: 0;
@@ -7,33 +10,17 @@
     box-sizing: border-box;
 }
 
-/* Set padding to keep content fwm hitting the edges */
-/*.body-content {
-    padding-left: 15px;
-    padding-right: 15px;
-}*/
-/*@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital@1&display=swap');
-html, body {
-    width: 100%;
-    height: 100%;
-    font-family: 'Source Code Pro', monospace;
-    font-size: 25px;
-    color: rgb(19, 16, 16)
+
+
+﻿
+
+body {
+    padding-top: 50px;
+    padding-bottom: 20px;
 }
-.navbar {
-    background-color: rgba(rgb(218, 216, 190), green, blue, 0.9) !important;
-}
-    .navbar li a {
-        color: violet !important;
-    }
-        .navbar li a:hover {
-            color: black !important;
-        }*/
-/*.container {
-    min-height: 400px;
-    width: 70%;
-    margin: auto;
-}*/
+
+
+
 .title {
     text-align: center;
     margin: 0 auto 10px;
@@ -94,9 +81,9 @@ html, body {
     justify-content: space-between;
 }
 
-    .flex-grid-third1 img {
+    /*.flex-grid-third1 img {
         width: 33%;
-    }
+    }*/
 
 .flex-grid-third2 {
     display: flex;
@@ -107,17 +94,17 @@ html, body {
     width: 66%
 }
 
-    .img1 img {
+    /*.img1 img {
         width: 100%;
-    }
+    }*/
 
 .img2 {
     width: 33%
 }
 
-    .img2 img {
+    /*.img2 img {
         width: 100%;
-    }
+    }*/
 
 .col-1 {
     width: 250%;
@@ -133,9 +120,9 @@ html, body {
     /* max-width: 8.333333%; */
 }
 
-    .col-1 img {
+    /*.col-1 img {
         width: 65%;
-    }
+    }*/
 
 /* Override the default bootstrap behavior where horizontal description lists 
    will truncate terms that are too long to fit in the left column 
@@ -330,6 +317,7 @@ td.data-title {
     align-items: flex-end;
 }
 
+
 .button-delivery-confirm {
     min-width: 150px;
     min-height: 40px;
@@ -444,4 +432,17 @@ td.data-title {
 .product-title {
     text-align: center;
     margin-bottom: .5em;
+}
+
+.sale {
+    position: absolute;
+    right: 0px;
+    width: 80px;
+    height: 50px;
+}
+
+.discount {
+    position: absolute;
+    right: 12px;
+    top: 6px;
 }

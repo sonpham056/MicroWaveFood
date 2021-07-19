@@ -11,7 +11,10 @@ namespace MicroWaveFood.ViewModels
         public List<ProductType> ProductTypes { get; set; }
         public List<Product> ProductList { get; set; }
         public List<Product> BestSellerList { get; set; }
+        public List<Product> ListRandom { get; set; }
 
         public List<string> GroupTypes;
+
+        
     }
 }

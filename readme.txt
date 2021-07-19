@@ -9,3 +9,10 @@ Oke
 Phong
 Ok
 123123123123123
+
+// đăng kí acc admin
+B1: /Account/AdminRegister
+B2: /Administration/CreateRoleAdmin
+B3: /Administration/AddRoleToAdmin
+tài khoản: microwaveadmin@gmail.com
+pass: Admin1@

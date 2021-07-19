@@ -7,14 +7,14 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    @*<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>*@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.0.4/popper.js"></script>
-    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    @*<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">*@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 
 </head>
-<body>
-    <nav class="start-header container-fluid sticky-top navbar-expand-md" style="background-color:aliceblue">
+<body class="body-content">
+    <nav class="start-header container-fluid sticky-top navbar-expand-md" style="background-color:aliceblue; padding-left:0!important;padding-right:0!important">
         <nav class="header-navbar ">
             <div class="form-inline mr-auto row" target="_self" style="justify-content: space-evenly">
                 <a class="navbar-branch" href="~/Home/Index" style="justify-self:start">
@@ -22,14 +22,17 @@
                     <img src="~/Images/logo.png" height="80" />
 
                 </a>
-                <div class="form-group navbar-collapse">
-                    <input class="form-control search-field" type="search" name="search" id="search-field">
-                    <button style=" border: 1px solid #79737357;" type="submit" class="btn filled">Search<i class="et-icon et-zoom"></i></button>
-                    @*<label for="search-field">
-                       <i class="fa fa-search"></i>
-                    </label>*@
 
-                </div>
+                @using (Html.BeginForm("Search", "Products", FormMethod.Get))
+                {
+                    <form class="form-group navbar-collapse">
+                        <input class="form-control search-field" type="search" name="str" id="search-field">
+                        <button style=" border: 1px solid #79737357;" type="submit" class="btn filled">
+                            Search<i class="et-icon et-zoom"></i>
+                        </button>
+                    </form>
+                }
+
                 @if (User.IsInRole("admin"))
                 {
                     <div class="link-action">
@@ -92,60 +95,12 @@
                 }
 
 
-                @*<div class="dropdown">
-                        <div class="nav-item pl-4 pl-md-0 ml-0 ml-md-4 dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-
-                        </div>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            @Html.Partial("_LoginPartial")
-                        </div>
-                    </div>*@
-
-                @*<div class="link-action">
-                        <ul class="nav navbar-nav navbar-right">
-                            <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
-                            </li>
-                        </ul>
-                    </div>*@
 
             </div>
         </nav>
     </nav>
-    @*
-            @if (User.Identity != null)
-                                {
-                                    if (User.IsInRole("admin"))
-                                    {
-                                        @Html.ActionLink("Manage Role", "ListRoles", "Administration", new { }, new { @class = "dropdown-item" })
-                                        @Html.ActionLink("Product Type", "Index", "ProductTypes", new { }, new { @class = "dropdown-item" })
-                                        @Html.ActionLink("Product", "Index", "Products", new { }, new { @class = "dropdown-item" })
-                                    }
-                                    else
-                                    {
-                                        <p class="dropdown-item-text">UnAdmin Role</p>
-                                        <a clas>Give Feedback</a>
-                                        <a class="dropdown-item" role="presentation" href="#">
-                                            <p>Giỏ hàng</p>
-                                            <img src="~/Images/shopping-cart.png" />
-                                        </a>
-                                        @Html.ActionLink("Đăng xuất", "LogOff", "Account", new { }, new { @class = "dropdown-item" })
 
-                                    }
-
-                                }
-                                else
-                                {
-                                    <p class="dropdown-item-text">UnAdmin Role</p>
-                                }
-
-            <a class="dropdown-item" role="presentation" href="#">First Item</a>
-        <a class="dropdown-item" role="presentation" href="#">Second Item</a>
-        <a class="dropdown-item" role="presentation" href="#">Third Item</a>*@
-
-    @*@Html.ActionLink("Manage Role", "ListRoles", "Administration", new { }, new { @class = "dropdown-item" })
-        @Html.ActionLink("Product Type", "Index", "ProductTypes", new { }, new { @class = "dropdown-item" })
-        @Html.ActionLink("Product", "Index", "Products", new { }, new { @class = "dropdown-item" })*@
-    <div class="container body-content">
+    <div class="container body-content mt-3">
         @RenderBody()
         <hr />
         <footer>
@@ -215,7 +170,11 @@
 @Scripts.Render("~/bundles/bootstrap")
 @RenderSection("scripts", required: false)
 <script src="~/Scripts/bootstrap-input-spinner.js"></script>
+
 <script>
+
+
+
     $(document).ready(function () {
         $("input[type='number']").inputSpinner({ buttonsOnly: true })
         var $changedInput = $(".changedInput")
@@ -223,7 +182,6 @@
         var $valueOnChange = $("#valueOnChange")
         $changedInput.on("input", function (event) {
         });
-
         $changedInput.on("change", function (event) {
             $valueOnChange.html($(event.target).val())
             var url = $(this).attr("data-link");
@@ -239,15 +197,10 @@
                     window.location.href = url;
                 }
             });
-
              $('.btn-plus').click(function (e) {
                 window.location.href = url;
             });
-
         });
-
-
-
         @*$('.btn-minus').on("click", function (event) {
             var getParent = $(this).parents();
             var url = getParent[2].children[0].getAttribute("data-link") + "&isMinus=true";
@@ -261,15 +214,9 @@
             //var a = $(this).parents();
             //alert(a[2].childElementCount);
         })
-
         $(".btn-plus").on("click", function (event) {
             var url = $changedInput.attr("data-link");
             window.location.href = url;
         })*@
     })
-
 </script>
-
-
-
-
