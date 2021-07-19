@@ -1,7 +1,7 @@
-﻿@*@model MicroWaveFood.ViewModels.HomeIndexViewModel
-    @{
-        ViewBag.Title = "Home Page";
-    }*@
+﻿@model MicroWaveFood.ViewModels.HomeIndexViewModel
+@{
+    ViewBag.Title = "Home Page";
+}
 
 @*<div class="col">
         <a href="#" style="display:inline-block">@item.Name</a>
@@ -25,33 +25,35 @@
                     @i.ToString()
                     <i class="fa fa-caret-down"></i>
                 </button>
-                <div class="dropdown-content" style="z-index:10;background-color:ghostwhite; vertical-align:bottom">
+                <div class="dropdown-content" style="z-index:10;background-color:ghostwhite; vertical-align:bottom;">
 
-                    <div class="row">
+                    <div class="row" style="min-width:1000px">
                         <div class="col">
-                            <a class="nav-link ml-1" href="#">Nguyên liệu làm bánh</a>
-                            <ul class="ml-1" style="list-style-type:none;">
+                            <a class="nav-link ml-3 mt-3" href="@Url.Action("ListProduct", "Products", new { @str = "Nguyên liệu làm bánh"})">Nguyên liệu làm bánh</a>
+                            <hr />
+                            <ul class="ml-3" style="list-style-type:none;">
                                 @foreach (var item in Model.ProductTypes)
                                 {
                                     if (item.GroupType == "Nguyên liệu làm bánh")
                                     {
                                         <li class="my-2">
-                                            <a href="#">@item.Name</a>
+                                            <a href="@Url.Action("ProductsInProductType", "Products", new { @id = item.ProductTypeId})">@item.Name</a>
                                         </li>
                                     }
                                 }
                             </ul>
                         </div>
                         <div class="col">
-                            <a class="nav-link ml-1" href="#">Làm bánh</a>
-                            <ul class="ml-1" style="list-style-type:none;">
+                            <a class="nav-link ml-3 mt-3" href="@Url.Action("ListProduct", "Products", new { @str = "Làm bánh"})">Làm bánh</a>
+                            <hr />
+                            <ul class="ml-3" style="list-style-type:none;">
                                 @foreach (var item in Model.ProductTypes)
                                 {
                                     if (item.GroupType == "Dụng cụ làm bánh")
                                     {
 
                                         <li class="my-2">
-                                            <a href="#">@item.Name</a>
+                                            <a href="@Url.Action("ProductsInProductType", "Products", new { @id = item.ProductTypeId})">@item.Name</a>
                                         </li>
 
                                     }
@@ -59,15 +61,16 @@
                             </ul>
                         </div>
                         <div class="col">
-                            <a class="nav-link ml-1" href="#">Khuôn khay</a>
-                            <ul class="ml-1" style="list-style-type:none;">
+                            <a class="nav-link ml-3 mt-3" href="@Url.Action("ListProduct", "Products", new { @str = "Khuôn khay"})">Khuôn khay</a>
+                            <hr />
+                            <ul class="ml-3" style="list-style-type:none;">
                                 @foreach (var item in Model.ProductTypes)
                                 {
                                     if (item.GroupType == "Khuôn khay làm bánh")
                                     {
 
                                         <li class="my-2">
-                                            <a href="#">@item.Name</a>
+                                            <a href="@Url.Action("ProductsInProductType", "Products", new { @id = item.ProductTypeId})">@item.Name</a>
                                         </li>
 
                                     }
@@ -75,15 +78,16 @@
                             </ul>
                         </div>
                         <div class="col">
-                            <a class="nav-link ml-1" href="#">Túi, hộp, cốc, lọ</a>
-                            <ul class="ml-1" style="list-style-type:none;">
+                            <a class="nav-link ml-3 mt-3" href="@Url.Action("ListProduct", "Products", new { @str = "Túi, hộp, cốc, lọ"})">Túi, hộp, cốc, lọ</a>
+                            <hr />
+                            <ul class="ml-3" style="list-style-type:none;">
                                 @foreach (var item in Model.ProductTypes)
                                 {
                                     if (item.GroupType == "Túi,hộp,cốc,lọ")
                                     {
 
                                         <li class="my-2">
-                                            <a href="#">@item.Name</a>
+                                            <a href="@Url.Action("ProductsInProductType", "Products", new { @id = item.ProductTypeId})">@item.Name</a>
                                         </li>
                                     }
                                 }
@@ -101,19 +105,20 @@
                     @i.ToString()
                     <i class="fa fa-caret-down"></i>
                 </button>
-                <div class="dropdown-content" style="z-index: 10; background-color: ghostwhite; vertical-align: bottom">
+                <div class="dropdown-content" style="z-index: 10; background-color: ghostwhite; vertical-align: bottom; margin-left: -315px;">
 
-                    <div class="row">
+                    <div class="row" style="min-width:1000px">
                         <div class="col">
-                            <a class="nav-link ml-1" href="#">Món Á</a>
-                            <ul class="ml-1" style="list-style-type:none;">
+                            <a class="nav-link ml-3 mt-3" href="@Url.Action("ListProduct", "Products", new { @str = "Món Á"})">Món Á</a>
+                            <hr />
+                            <ul class="ml-3" style="list-style-type:none;">
                                 @foreach (var item in Model.ProductTypes)
                                 {
                                     if (item.GroupType == "Món Á")
                                     {
 
                                         <li class="my-2">
-                                            <a href="#">@item.Name</a>
+                                            <a href="@Url.Action("ProductsInProductType", "Products", new { @id = item.ProductTypeId})">@item.Name</a>
                                         </li>
 
                                     }
@@ -121,15 +126,16 @@
                             </ul>
                         </div>
                         <div class="col">
-                            <a class="nav-link ml-1" href="#">Món Âu</a>
-                            <ul class="ml-1" style="list-style-type:none;">
+                            <a class="nav-link ml-3 mt-3" href="@Url.Action("ListProduct", "Products", new { @str = "Món Âu"})">Món Âu</a>
+                            <hr />
+                            <ul class="ml-3" style="list-style-type:none;">
                                 @foreach (var item in Model.ProductTypes)
                                 {
                                     if (item.GroupType == "Món Âu")
                                     {
 
                                         <li class="my-2">
-                                            <a href="#">@item.Name</a>
+                                            <a href="@Url.Action("ProductsInProductType", "Products", new { @id = item.ProductTypeId})">@item.Name</a>
                                         </li>
 
                                     }
@@ -137,15 +143,16 @@
                             </ul>
                         </div>
                         <div class="col">
-                            <a class="nav-link ml-1" href="#">Dụng cụ nấu ăn</a>
-                            <ul class="ml-1" style="list-style-type:none;">
+                            <a class="nav-link ml-3 mt-3" href="@Url.Action("ListProduct", "Products", new { @str = "Dụng cụ nấu ăn"})">Dụng cụ nấu ăn</a>
+                            <hr />
+                            <ul class="ml-3" style="list-style-type:none;">
                                 @foreach (var item in Model.ProductTypes)
                                 {
                                     if (item.GroupType == "Dụng cụ nấu ăn")
                                     {
 
                                         <li class="my-2">
-                                            <a href="#">@item.Name</a>
+                                            <a href="@Url.Action("ProductsInProductType", "Products", new { @id = item.ProductTypeId})">@item.Name</a>
                                         </li>
 
                                     }
@@ -153,15 +160,16 @@
                             </ul>
                         </div>
                         <div class="col">
-                            <a class="nav-link ml-1" href="#">Nguyên liệu lẩu nướng</a>
-                            <ul class="ml-1" style="list-style-type:none;">
+                            <a class="nav-link ml-3 mt-3" href="@Url.Action("ListProduct", "Products", new { @str = "Nguyên liệu lẩu nướng"})">Nguyên liệu lẩu nướng</a>
+                            <hr />
+                            <ul class="ml-3" style="list-style-type:none;">
                                 @foreach (var item in Model.ProductTypes)
                                 {
                                     if (item.GroupType == "Nguyên liệu lẩu nướng")
                                     {
 
                                         <li class="my-2">
-                                            <a href="#">@item.Name</a>
+                                            <a href="@Url.Action("ProductsInProductType", "Products", new { @id = item.ProductTypeId})">@item.Name</a>
                                         </li>
                                     }
                                 }
@@ -179,34 +187,36 @@
                     @i.ToString()
                     <i class="fa fa-caret-down"></i>
                 </button>
-                <div class="dropdown-content" style="z-index: 10; background-color: ghostwhite; vertical-align: bottom ">
+                <div class="dropdown-content" style="z-index: 10; background-color: ghostwhite; vertical-align: bottom; min-width:500px; margin-left:-150px; ">
 
                     <div class="row">
                         <div class="col">
-                            <a class="nav-link ml-1" href="#">Nguyên liệu pha chế</a>
-                            <ul class="ml-1" style="list-style-type:none;">
+                            <a class="nav-link ml-3 mt-3" href="@Url.Action("ListProduct", "Products", new { @str = "Nguyên liệu pha chế"})">Nguyên liệu pha chế</a>
+                            <hr />
+                            <ul class="ml-3" style="list-style-type:none;">
                                 @foreach (var item in Model.ProductTypes)
                                 {
                                     if (item.GroupType == "Nguyên liệu pha chế")
                                     {
 
                                         <li class="my-2">
-                                            <a href="#">@item.Name</a>
+                                            <a href="@Url.Action("ProductsInProductType", "Products", new { @id = item.ProductTypeId})">@item.Name</a>
                                         </li>
                                     }
                                 }
                             </ul>
                         </div>
                         <div class="col">
-                            <a class="nav-link ml-1" href="#">Dụng cụ pha chế </a>
-                            <ul class="ml-1" style="list-style-type:none;">
+                            <a class="nav-link ml-3 mt-3" href="@Url.Action("ListProduct", "Products", new { @str = "Dụng cụ pha chế"})">Dụng cụ pha chế </a>
+                            <hr />
+                            <ul class="ml-3" style="list-style-type:none;">
                                 @foreach (var item in Model.ProductTypes)
                                 {
                                     if (item.GroupType == "Dụng cụ pha chế ")
                                     {
 
                                         <li class="my-2">
-                                            <a href="#">@item.Name</a>
+                                            <a href="@Url.Action("ProductsInProductType", "Products", new { @id = item.ProductTypeId})">@item.Name</a>
                                         </li>
                                     }
                                 }
@@ -228,132 +238,196 @@
         <h4 class="hp-category-title title">Bán chạy nhất</h4>
     </div>
 </div>
-@*Carousel*@
-<div class="row home-page-categories">
+@*another one is ganna slider and this is carousel*@
 
-    <div class="row">
-        <div class="col-sm-12">
-            <div class="swiper-entry">
-                <div class="swiper-container carousel-area products-slider slider-9856 swiper-swiper-unique-id-0 initialized swiper-container-horizontal second-initialized" data-breakpoints="1" data-xs-slides="2" data-sm-slides="4" data-md-slides="5" data-lt-slides="6" data-slides-per-view="6" data-slides-per-group="1" data-autoplay="" data-speed="300" id="swiper-unique-id-0">
-                    <div class="swiper-wrapper">
-                        @foreach (var item in Model.BestSellerList)
+@if (Model.BestSellerList.Count > 0)
+{
+    <div id="demo" class="carousel slide mb-3" data-ride="carousel">
+
+        <!-- Indicators -->
+        <ul class="carousel-indicators m-0 " style="justify-content:center;">
+            <li style="background-color:red" data-target="#demo" data-slide-to="0" class="active"></li>
+            <li style="background-color:red" data-target="#demo" data-slide-to="1"></li>
+            <li style="background-color:red" data-target="#demo" data-slide-to="2"></li>
+        </ul>
+
+        <!-- The slideshow -->
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <div class="row">
+                    @for (int i = 0; i < 3; i++)
+                    {
+                        if (i >= Model.BestSellerList.Count)
                         {
-                            <div class="swiper-slide slide-item product-slide -slide swiper-slide-visible swiper-slide-active" style="width: 250px;">
+                            break;
+                        }
+                        <div class="col pt-5">
+                            <div class="productImg" style="position:relative">
+                                @if (Model.BestSellerList[i].SaleId != null && Model.BestSellerList[i].Sale.From <= DateTime.Now && Model.BestSellerList[i].Sale.To >= DateTime.Now)
+                                {
 
-                                <div class="et_cart-on hide-hover-on-mobile product-hover-swap product-view-mask3 view-color-white product type-product post-245604 status-publish instock product_cat-nguyen-lieu-lava product_cat-cheese-pho-mai product_tag-khach-kinh-doanh product_tag-nguyen-lieu-lam-banh-trung-thu-lava has-post-thumbnail featured shipping-taxable purchasable product-type-simple">
-                                    <div class="content-product ">
-                                        <div class="sale-wrapper">
-                                            <span class="corner-text"></span>
-                                        </div>
-                                        <div class="col pt-5">
-                                            <div class="productImg">
-                                                <img class="img-index" src="@item.Image" />
+                                    <div class="sale">
+
+                                        <img src="~/Images/discount.png" />
+                                    </div>
+                                    <div class="discount">
+                                        <p style="text-align:right">- @Model.BestSellerList[i].Sale.SaleRate%</p>
+                                    </div>
+                                }
+                                <img class="img-index" src="@Model.BestSellerList[i].Image" />
+                            </div>
+                            <div class="product-content-container">
+                                <div class="productContent">
+                                    <div>
+                                        <div class="product-content-container">
+                                            <div class="container text-center mt-1">
+                                                <a data-product-id="@Model.BestSellerList[i].ProductId" class="btn btn-primary button-index">Thêm vào giỏ hàng</a>
                                             </div>
-                                            <div class="product-content-container">
-                                                <div class="productContent">
-                                                    <div>
-                                                        <div class="product-content-container">
-                                                            <div class="container text-center mt-1">
-                                                                <a data-product-id="@item.ProductId" class="btn btn-primary button-index">Thêm vào giỏ hàng</a>
-                                                            </div>
-                                                            <div class="productContent">
-                                                                <div class="product-name">
-                                                                    <p style="text-align:center">@item.ProductName</p>
-                                                                </div>
-                                                                <div class="product-price">
-                                                                    <p style="text-align:center">@item.Price</p>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
+                                            <div class="productContent">
+                                                <div class="product-name">
+                                                    <p style="text-align:center">@Model.BestSellerList[i].ProductName</p>
+                                                </div>
+                                                <div class="product-price">
+                                                    @if (Model.BestSellerList[i].SaleId != null && Model.BestSellerList[i].Sale.From <= DateTime.Now && Model.BestSellerList[i].Sale.To >= DateTime.Now)
+                                                    {
+                                                        <p style="text-align:center;"><del>@Model.BestSellerList[i].Price</del> <span style="color:red;">@(Model.BestSellerList[i].Price - (Model.BestSellerList[i].Price * Model.BestSellerList[i].Sale.SaleRate / 100)) đ</span></p>
+                                                    }
+                                                    else
+                                                    {
+                                                        <p style="text-align:center">@Model.BestSellerList[i].Price</p>
+                                                    }
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <!-- .content-product -->
-
                                 </div>
-
                             </div>
-                        }
-
-
-                    </div>
-                    <!-- slider wrapper-->
-
-
-
-                    <div class="swiper-pagination etheme-css swiper-pagination-swiper-unique-id-0 swiper-pagination-clickable swiper-pagination-bullets" data-css="">
-                        <span class="swiper-pagination-bullet swiper-pagination-bullet-active"></span>
-                        <span class="swiper-pagination-bullet"></span>
-                        <span class="swiper-pagination-bullet"></span>
-                        <span class="swiper-pagination-bullet"></span>
-                        <span class="swiper-pagination-bullet"></span>
-
-
-                        <div class="swiper-button-prev"></div>
-                        <div class="swiper-button-next"></div>
-
-
-                        <div class="swiper-scrollbar"></div>
-                    </div>
-
-                    @*<div class="swiper-pagination etheme-css swiper-pagination-swiper-unique-id-0 swiper-pagination-clickable swiper-pagination-bullets">
-                            <span class="swiper-pagination-bullet swiper-pagination-bullet-active"></span>
-                            <span class="swiper-pagination-bullet"></span>
-                            <span class="swiper-pagination-bullet"></span>
-                            <span class="swiper-pagination-bullet"></span>
-
-                        </div>*@
-
-                </div><!-- slider container-->
-                @*<div class="swiper-button-prev swiper-custom-left swiper-button-prev-swiper-unique-id-0 swiper-button-disabled"></div>
-                    <div class="swiper-button-next swiper-custom-right swiper-button-next-swiper-unique-id-0"></div>*@
+                        </div>
+                    }
+                </div>
             </div>
-            <div class="clear"></div><!-- slider-entry -->
+            <div class="carousel-item">
+                <div class="row">
+                    @for (int i = 3; i < 6; i++)
+                    {
+                        if (i >= Model.BestSellerList.Count)
+                        {
+                            break;
+                        }
+                        <div class="col pt-5">
+                            <div class="productImg" style="position:relative">
+                                @if (Model.BestSellerList[i].SaleId != null && Model.BestSellerList[i].Sale.From <= DateTime.Now && Model.BestSellerList[i].Sale.To >= DateTime.Now)
+                                {
+
+                                    <div class="sale">
+
+                                        <img src="~/Images/discount.png" />
+                                    </div>
+                                    <div class="discount">
+                                        <p style="text-align:right">- @Model.BestSellerList[i].Sale.SaleRate%</p>
+                                    </div>
+                                }
+                                <img class="img-index" src="@Model.BestSellerList[i].Image" />
+                            </div>
+                            <div class="product-content-container">
+                                <div class="productContent">
+                                    <div>
+                                        <div class="product-content-container">
+                                            <div class="container text-center mt-1">
+                                                <a data-product-id="@Model.BestSellerList[i].ProductId" class="btn btn-primary button-index">Thêm vào giỏ hàng</a>
+                                            </div>
+                                            <div class="productContent">
+                                                <div class="product-name">
+                                                    <p style="text-align:center">@Model.BestSellerList[i].ProductName</p>
+                                                </div>
+                                                <div class="product-price">
+                                                    @if (Model.BestSellerList[i].SaleId != null && Model.BestSellerList[i].Sale.From <= DateTime.Now && Model.BestSellerList[i].Sale.To >= DateTime.Now)
+                                                    {
+                                                        <p style="text-align:center;"><del>@Model.BestSellerList[i].Price</del> <span style="color:red;">@(Model.BestSellerList[i].Price - (Model.BestSellerList[i].Price * Model.BestSellerList[i].Sale.SaleRate / 100)) đ</span></p>
+                                                    }
+                                                    else
+                                                    {
+                                                        <p style="text-align:center">@Model.BestSellerList[i].Price</p>
+                                                    }
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="row">
+                    @for (int i = 6; i < 9; i++)
+                    {
+                        if (i >= Model.BestSellerList.Count)
+                        {
+                            break;
+                        }
+                        <div class="col pt-5">
+                            <div class="productImg" style="position:relative">
+                                @if (Model.BestSellerList[i].SaleId != null && Model.BestSellerList[i].Sale.From <= DateTime.Now && Model.BestSellerList[i].Sale.To >= DateTime.Now)
+                                {
+
+                                    <div class="sale">
+
+                                        <img src="~/Images/discount.png" />
+                                    </div>
+                                    <div class="discount">
+                                        <p style="text-align:right">- @Model.BestSellerList[i].Sale.SaleRate%</p>
+                                    </div>
+                                }
+                                <img class="img-index" src="@Model.BestSellerList[i].Image" />
+                            </div>
+                            <div class="product-content-container">
+                                <div class="productContent">
+                                    <div>
+                                        <div class="product-content-container">
+                                            <div class="container text-center mt-1">
+                                                <a data-product-id="@Model.BestSellerList[i].ProductId" class="btn btn-primary button-index">Thêm vào giỏ hàng</a>
+                                            </div>
+                                            <div class="productContent">
+                                                <div class="product-name">
+                                                    <p style="text-align:center">@Model.BestSellerList[i].ProductName</p>
+                                                </div>
+                                                <div class="product-price">
+                                                    @if (Model.BestSellerList[i].SaleId != null && Model.BestSellerList[i].Sale.From <= DateTime.Now && Model.BestSellerList[i].Sale.To >= DateTime.Now)
+                                                    {
+                                                        <p style="text-align:center;"><del>@Model.BestSellerList[i].Price</del> <span style="color:red;">@(Model.BestSellerList[i].Price - (Model.BestSellerList[i].Price * Model.BestSellerList[i].Sale.SaleRate / 100)) đ</span></p>
+                                                    }
+                                                    else
+                                                    {
+                                                        <p style="text-align:center">@Model.BestSellerList[i].Price</p>
+                                                    }
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
         </div>
+
+        <!-- Left and right controls -->
+        <a class="carousel-control-prev" href="#demo" data-slide="prev">
+            <span class="carousel-control-prev-icon bg-dark" style="border-radius: 10px"></span>
+        </a>
+        <a class="carousel-control-next" href="#demo" data-slide="next">
+            <span class="carousel-control-next-icon bg-dark" style="border-radius: 10px"></span>
+        </a>
     </div>
-</div>
+}
+else
+{
+    <p>Tạm thời chưa món hàng nào bán chạy!</p>
+}
 
-
-@*Script*@
-<script>
-    var mySwiper = new Swiper('.swiper-container', {
-        // Optional parameters
-        direction: 'vertical',
-        loop: true,
-
-        // If we need pagination
-        pagination: {
-            el: '.swiper-pagination',
-        },
-
-        // Navigation arrows
-        navigation: {
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev',
-        },
-
-        // And if we need scrollbar
-        scrollbar: {
-            el: '.swiper-scrollbar',
-        },
-    })
-
-
-    var swiper = new Swiper('.swiper-container', {
-        navigation: {
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev',
-        }, pagination: {
-            el: '.swiper-pagination',
-        },
-
-    });
-
-</script>
-
-@*End carousel*@
 <h4 class="title">
     Các Mặt hàng
 </h4>

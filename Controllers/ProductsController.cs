@@ -4,6 +4,8 @@ using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
+using System.Text;
+using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.Mvc;
 using MicroWaveFood.Models;
@@ -153,7 +155,7 @@ namespace MicroWaveFood.Controllers
             
             ViewBag.AmountSum = AmountSum();
             ViewBag.PriceSum = PriceSum();
-            var products = db.Products.Include("ProductType").Where(a => a.ProductType.GroupType.ToLower() == str.ToLower() && a.status == true).ToList();
+            var products = db.Products.Include("ProductType").ToList().Where(a => ConvertToUnSign3(a.ProductType.GroupType.ToLower()).Contains(ConvertToUnSign3(str.ToLower())) && a.status == true).ToList();
             return View(products);
         }
         [AllowAnonymous]
@@ -184,6 +186,22 @@ namespace MicroWaveFood.Controllers
                 sum = list.Sum(n => n.Total);
             }
             return sum;
+        }
+
+        private static string ConvertToUnSign3(string s)
+        {
+            Regex regex = new Regex("\\p{IsCombiningDiacriticalMarks}+");
+            string temp = s.Normalize(NormalizationForm.FormD);
+            return regex.Replace(temp, String.Empty).Replace('\u0111', 'd').Replace('\u0110', 'D');
+        }
+
+        [AllowAnonymous]
+        public ActionResult ProductsInProductType(int id)
+        {
+            ViewBag.AmountSum = AmountSum();
+            ViewBag.PriceSum = PriceSum();
+            var products = db.Products.Include("ProductType").Where(a => a.ProductType.ProductTypeId == id && a.status == true).ToList();
+            return View("ListProduct", products);
         }
     }
 }

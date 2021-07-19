@@ -18,7 +18,7 @@
 
 .navbar-first {
     overflow: hidden;
-    background-color: #333;
+    box-shadow: none;
 }
 
     .navbar-first a {
@@ -43,15 +43,11 @@
         font-size: 16px;
         border: none;
         outline: none;
-        color: white;
+        color: black;
         padding: 14px 16px;
         background-color: inherit;
         font-family: inherit;
         margin: 0;
-    }
-
-    .navbar a:hover, .dropdown-first:hover .dropbtn {
-        background-color: red;
     }
 
 .dropdown-content {
