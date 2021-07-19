@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MicroWaveFood.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -14,6 +15,7 @@ namespace MicroWaveFood.ViewModels
         [Required]
         [Display(Name = "Số điện thoại")]
         [DataType(DataType.PhoneNumber)]
+        [ValidPhone]
         public string PhoneNumber { get; set; }
         [Required]
         [Display(Name = "Tỉnh/TP")]
