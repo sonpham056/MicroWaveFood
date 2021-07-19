@@ -1,20 +1,5 @@
-﻿@*@model MicroWaveFood.ViewModels.HomeIndexViewModel
-    @{
-        ViewBag.Title = "Home Page";
-    }*@
+﻿
 
-@*<div class="col">
-        <a href="#" style="display:inline-block">@item.Name</a>
-        <ul style="margin-left:30px">
-            <li>
-                <a href="@Html">a</a>
-            </li>
-            <li>b</li>
-            <li>c</li>
-            <li>d</li>
-            <li>e</li>
-        </ul>
-    </div>*@
 <nav class="navbar-first container container-fluid nav" style="justify-content: space-evenly!important">
     @foreach (var i in Model.GroupTypes)
     {
@@ -29,62 +14,65 @@
 
                     <div class="row">
                         <div class="col">
-                            <a href="#" style="display:inline-block;padding-bottom:10px">Nguyên liệu làm bánh</a>
-                            @foreach (var item in Model.ProductTypes)
-                            {
+                            <a class="nav-link ml-1" href="#">Nguyên liệu làm bánh</a>
+                            <ul class="ml-1" style="list-style-type:none;">
+                                @foreach (var item in Model.ProductTypes)
+                                {
+                                    if (item.GroupType == "Nguyên liệu làm bánh")
+                                    {
+                                        <li class="my-2">
+                                            <a href="#">@item.Name</a>
+                                        </li>
+                                    }
+                                }
+                            </ul>
+                        </div>
+                        <div class="col">
+                            <a class="nav-link ml-1" href="#">Làm bánh</a>
+                            <ul class="ml-1" style="list-style-type:none;">
+                                @foreach (var item in Model.ProductTypes)
+                                {
+                                    if (item.GroupType == "Dụng cụ làm bánh")
+                                    {
 
-                                if (item.GroupType == "Nguyên liệu làm bánh")
-                                {
-                                    <ul style="margin-left:30px; list-style-type:none">
-                                        <li>
+                                        <li class="my-2">
                                             <a href="#">@item.Name</a>
                                         </li>
-                                    </ul>
-                                }
 
-                            }
+                                    }
+                                }
+                            </ul>
                         </div>
                         <div class="col">
-                            <a href="#" style="display: inline-block; padding-bottom: 10px">Làm bánh</a>
-                            @foreach (var item in Model.ProductTypes)
-                            {
-                                if (item.GroupType == "Dụng cụ làm bánh")
+                            <a class="nav-link ml-1" href="#">Khuôn khay</a>
+                            <ul class="ml-1" style="list-style-type:none;">
+                                @foreach (var item in Model.ProductTypes)
                                 {
-                                    <ul style="margin-left: 30px; list-style-type: none">
-                                        <li>
+                                    if (item.GroupType == "Khuôn khay làm bánh")
+                                    {
+
+                                        <li class="my-2">
                                             <a href="#">@item.Name</a>
                                         </li>
-                                    </ul>
+
+                                    }
                                 }
-                            }
+                            </ul>
                         </div>
                         <div class="col">
-                            <a href="#" style="display: inline-block; padding-bottom: 10px">Khuôn khay</a>
-                            @foreach (var item in Model.ProductTypes)
-                            {
-                                if (item.GroupType == "Khuôn khay làm bánh")
+                            <a class="nav-link ml-1" href="#">Túi, hộp, cốc, lọ</a>
+                            <ul class="ml-1" style="list-style-type:none;">
+                                @foreach (var item in Model.ProductTypes)
                                 {
-                                    <ul style="margin-left: 30px; list-style-type: none">
-                                        <li>
+                                    if (item.GroupType == "Túi,hộp,cốc,lọ")
+                                    {
+
+                                        <li class="my-2">
                                             <a href="#">@item.Name</a>
                                         </li>
-                                    </ul>
+                                    }
                                 }
-                            }
-                        </div>
-                        <div class="col">
-                            <a href="#" style="display: inline-block; padding-bottom: 10px">Túi, hộp, cốc, lọ</a>
-                            @foreach (var item in Model.ProductTypes)
-                            {
-                                if (item.GroupType == "Túi,hộp,cốc,lọ")
-                                {
-                                    <ul style="margin-left: 30px; list-style-type: none">
-                                        <li>
-                                            <a href="#">@item.Name</a>
-                                        </li>
-                                    </ul>
-                                }
-                            }
+                            </ul>
                         </div>
                     </div>
 
@@ -102,60 +90,67 @@
 
                     <div class="row">
                         <div class="col">
-                            <a href="#" style="display: inline-block; padding-bottom: 10px">Món Á</a>
-                            @foreach (var item in Model.ProductTypes)
-                            {
-                                if (item.GroupType == "Món Á")
+                            <a class="nav-link ml-1" href="#">Món Á</a>
+                            <ul class="ml-1" style="list-style-type:none;">
+                                @foreach (var item in Model.ProductTypes)
                                 {
-                                    <ul style="margin-left:30px; list-style-type:none">
-                                        <li>
+                                    if (item.GroupType == "Món Á")
+                                    {
+
+                                        <li class="my-2">
                                             <a href="#">@item.Name</a>
                                         </li>
-                                    </ul>
+
+                                    }
                                 }
-                            }
+                            </ul>
                         </div>
                         <div class="col">
-                            <a href="#" style="display: inline-block; padding-bottom: 10px">Món Âu</a>
-                            @foreach (var item in Model.ProductTypes)
-                            {
-                                if (item.GroupType == "Món Âu")
+                            <a class="nav-link ml-1" href="#">Món Âu</a>
+                            <ul class="ml-1" style="list-style-type:none;">
+                                @foreach (var item in Model.ProductTypes)
                                 {
-                                    <ul style="margin-left: 30px; list-style-type: none">
-                                        <li>
+                                    if (item.GroupType == "Món Âu")
+                                    {
+
+                                        <li class="my-2">
                                             <a href="#">@item.Name</a>
                                         </li>
-                                    </ul>
+
+                                    }
                                 }
-                            }
+                            </ul>
                         </div>
                         <div class="col">
-                            <a href="#" style="display: inline-block; padding-bottom: 10px">Dụng cụ nấu ăn</a>
-                            @foreach (var item in Model.ProductTypes)
-                            {
-                                if (item.GroupType == "Dụng cụ nấu ăn")
+                            <a class="nav-link ml-1" href="#">Dụng cụ nấu ăn</a>
+                            <ul class="ml-1" style="list-style-type:none;">
+                                @foreach (var item in Model.ProductTypes)
                                 {
-                                    <ul style="margin-left: 30px; list-style-type: none">
-                                        <li>
+                                    if (item.GroupType == "Dụng cụ nấu ăn")
+                                    {
+
+                                        <li class="my-2">
                                             <a href="#">@item.Name</a>
                                         </li>
-                                    </ul>
+
+                                    }
                                 }
-                            }
+                            </ul>
                         </div>
                         <div class="col">
-                            <a href="#" style="display: inline-block; padding-bottom: 10px">Nguyên liệu lẩu nướng</a>
-                            @foreach (var item in Model.ProductTypes)
-                            {
-                                if (item.GroupType == "Nguyên liệu lẩu nướng")
+                            <a class="nav-link ml-1" href="#">Nguyên liệu lẩu nướng</a>
+                            <ul class="ml-1" style="list-style-type:none;">
+                                @foreach (var item in Model.ProductTypes)
                                 {
-                                    <ul style="margin-left: 30px; list-style-type: none">
-                                        <li>
+                                    if (item.GroupType == "Nguyên liệu lẩu nướng")
+                                    {
+
+                                        <li class="my-2">
                                             <a href="#">@item.Name</a>
                                         </li>
-                                    </ul>
+                                    }
                                 }
-                            }
+                            </ul>
                         </div>
                     </div>
 
@@ -173,32 +168,34 @@
 
                     <div class="row">
                         <div class="col">
-                            <a href="#" style="display: inline-block; padding-bottom: 10px">Nguyên liệu pha chế</a>
-                            @foreach (var item in Model.ProductTypes)
-                            {
-                                if (item.GroupType == "Nguyên liệu pha chế")
+                            <a class="nav-link ml-1" href="#">Nguyên liệu pha chế</a>
+                            <ul class="ml-1" style="list-style-type:none;">
+                                @foreach (var item in Model.ProductTypes)
                                 {
-                                    <ul style="margin-left:30px; list-style-type:none">
-                                        <li>
+                                    if (item.GroupType == "Nguyên liệu pha chế")
+                                    {
+
+                                        <li class="my-2">
                                             <a href="#">@item.Name</a>
                                         </li>
-                                    </ul>
+                                    }
                                 }
-                            }
+                            </ul>
                         </div>
                         <div class="col">
-                            <a href="#" style="display: inline-block; padding-bottom: 10px">Dụng cụ pha chế </a>
-                            @foreach (var item in Model.ProductTypes)
-                            {
-                                if (item.GroupType == "Dụng cụ pha chế ")
+                            <a class="nav-link ml-1" href="#">Dụng cụ pha chế </a>
+                            <ul class="ml-1" style="list-style-type:none;">
+                                @foreach (var item in Model.ProductTypes)
                                 {
-                                    <ul style="margin-left: 30px; list-style-type: none">
-                                        <li>
+                                    if (item.GroupType == "Dụng cụ pha chế ")
+                                    {
+
+                                        <li class="my-2">
                                             <a href="#">@item.Name</a>
                                         </li>
-                                    </ul>
+                                    }
                                 }
-                            }
+                            </ul>
                         </div>
                     </div>
 
@@ -207,7 +204,6 @@
         }
 
     }
-
 
 </nav>
 
@@ -224,7 +220,6 @@
             <div class="swiper-entry">
                 <div class="swiper-container carousel-area products-slider slider-9856 swiper-swiper-unique-id-0 initialized swiper-container-horizontal second-initialized" data-breakpoints="1" data-xs-slides="2" data-sm-slides="4" data-md-slides="5" data-lt-slides="6" data-slides-per-view="6" data-slides-per-group="1" data-autoplay="" data-speed="300" id="swiper-unique-id-0">
                     <div class="swiper-wrapper">
-
                         @foreach (var item in Model.BestSellerList)
                         {
                             <div class="swiper-slide slide-item product-slide -slide swiper-slide-visible swiper-slide-active" style="width: 250px;">
@@ -348,7 +343,7 @@
 </h4>
 <div class="container">
     <div class="row">
-        @foreach (var item in Model.ProductList)
+        @foreach (var item in Model.ListRandom)
         {
             <div class="col pt-5">
                 <div class="productImg" style="position:relative">
@@ -408,7 +403,10 @@
                     <img style="width: 99%" src="~/Images/lAU.jpg" />
                 </a>
                 <a href="@Url.Action("ListProduct","Products",new {@str = "Nguyên liệu làm bánh" })" target="_blank">
-                    <img style="width: 99%" src="~/Images/Bo-anchor-2.jpg" />                                   @*AI đó test thử đêi*@
+
+                    <img style="width: 99%" src="~/Images/Bo-anchor-2.jpg" />                                   
+    @*AI đó test thử đêi*@
+     @*Test rồi, cái view trông chán đời vcl*@
                 </a>
                 <a href="@Url.Action("ListProduct","Products",new {@str = "Nguyên liệu pha chế" })" target="_blank">
                     <img style="width: 99%" src="~/Images/Tran-chau.jpg" />
@@ -446,8 +444,19 @@
     <div class="row">
         @foreach (var item in Model.ProductList)
         {
-            <div class="col pt-5">
-                <div class="productImg">
+            <div class="col-md-3 pt-5">
+                <div class="productImg" style="position:relative">
+                    @if (item.SaleId != null && item.Sale.From <= DateTime.Now && item.Sale.To >= DateTime.Now)
+                    {
+
+                        <div class="sale">
+
+                            <img src="~/Images/discount.png" />
+                        </div>
+                        <div class="discount">
+                            <p style="text-align:right">- @item.Sale.SaleRate%</p>
+                        </div>
+                    }
                     <img class="img-index" src="@item.Image" />
                 </div>
                 <div class="product-content-container">
@@ -462,7 +471,14 @@
                                         <p style="text-align:center">@item.ProductName</p>
                                     </div>
                                     <div class="product-price">
-                                        <p style="text-align:center">@item.Price</p>
+                                        @if (item.SaleId != null && item.Sale.From <= DateTime.Now && item.Sale.To >= DateTime.Now)
+                                        {
+                                            <p style="text-align:center;"><del>@item.Price</del> <span style="color:red;">@(item.Price - (item.Price * item.Sale.SaleRate / 100)) đ</span></p>
+                                        }
+                                        else
+                                        {
+                                            <p style="text-align:center">@item.Price</p>
+                                        }
                                     </div>
                                 </div>
                             </div>
@@ -492,9 +508,9 @@
         })
 
         $('.dropdown-first').hover(function () {
-            $(this).find('.dropdown-content').stop(true, true).delay(200).fadeIn();
+            $(this).find('.dropdown-content').fadeIn(500);
         }, function () {
-            $(this).find('.dropdown-content').stop(true, true).delay(0).fadeOut();
+            $(this).find('.dropdown-content').fadeOut(0);
         });
     </script>
 }
