@@ -65,7 +65,7 @@ namespace MicroWaveFood.Controllers
                 .Include("Sale")
                 .Where(a => a.status == true)
                 .Where(a => a.Bills.Count > 3)
-                .Take(10)
+                .Take(9)
                 .ToList(),
 
                 ListRandom = db.Products.Include("Sale").Where(a => a.status == true).OrderBy(a => Guid.NewGuid()).Take(5).ToList(),
