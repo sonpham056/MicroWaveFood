@@ -206,10 +206,6 @@
     <Compile Include="Migrations\202107180423471_re_database.Designer.cs">
       <DependentUpon>202107180423471_re_database.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202107200928410_addMailInfo.cs" />
-    <Compile Include="Migrations\202107200928410_addMailInfo.Designer.cs">
-      <DependentUpon>202107200928410_addMailInfo.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
@@ -2432,9 +2428,6 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202107180423471_re_database.resx">
       <DependentUpon>202107180423471_re_database.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202107200928410_addMailInfo.resx">
-      <DependentUpon>202107200928410_addMailInfo.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
