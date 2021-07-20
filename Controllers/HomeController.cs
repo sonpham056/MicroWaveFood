@@ -1,5 +1,6 @@
 ﻿using MicroWaveFood.Models;
 using MicroWaveFood.ViewModels;
+using PagedList;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -41,7 +42,7 @@ namespace MicroWaveFood.Controllers
         {
             return View();
         }
-        public ActionResult Index()
+        public ActionResult Index(int? page)
         {
             if (User.IsInRole("admin"))
             {
@@ -52,7 +53,10 @@ namespace MicroWaveFood.Controllers
             List<Product> bestSeller = new List<Product>();
             List<Product> random = new List<Product>();
             List<Product> searchProd = new List<Product>();
-            
+
+
+            int pageSize = 8;
+            int pageNumber = (page ?? 1);
             var HomeViewModel = new HomeIndexViewModel
             {
                 ProductTypes = db.productTypes
@@ -60,7 +64,7 @@ namespace MicroWaveFood.Controllers
             .ToList(),
 
 
-                ProductList = db.Products.Include("Sale").Where(a => a.status == true).ToList(),
+                ProductList = db.Products.Include("Sale").Where(a => a.status == true).ToList().ToPagedList(pageNumber, pageSize),
                 BestSellerList = db.Products
                 .Include("Sale")
                 .Where(a => a.status == true)
