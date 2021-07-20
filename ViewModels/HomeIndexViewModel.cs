@@ -1,4 +1,5 @@
 ﻿using MicroWaveFood.Models;
+using PagedList;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +10,7 @@ namespace MicroWaveFood.ViewModels
     public class HomeIndexViewModel
     {
         public List<ProductType> ProductTypes { get; set; }
-        public List<Product> ProductList { get; set; }
+        public IPagedList<Product> ProductList { get; set; }
         public List<Product> BestSellerList { get; set; }
         public List<Product> ListRandom { get; set; }
 

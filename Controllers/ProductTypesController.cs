@@ -8,6 +8,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using MicroWaveFood.Models;
+using PagedList;
 
 namespace MicroWaveFood.Controllers
 {
@@ -17,9 +18,11 @@ namespace MicroWaveFood.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: ProductTypes
-        public ActionResult Index()
+        public ActionResult Index(int? page)
         {
-            return View(db.productTypes.Where(a => a.Status == true).ToList());
+            int pageSize = 5;
+            int pageNumber = (page ?? 1);
+            return View(db.productTypes.Where(a => a.Status == true).ToList().ToPagedList(pageNumber, pageSize));
         }
 
         // GET: ProductTypes/Details/5
