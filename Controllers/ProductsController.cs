@@ -10,6 +10,7 @@ using System.Web;
 using System.Web.Mvc;
 using MicroWaveFood.Models;
 using MicroWaveFood.ViewModels;
+using PagedList;
 
 namespace MicroWaveFood.Controllers
 {
@@ -19,10 +20,12 @@ namespace MicroWaveFood.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Products
-        public ActionResult Index()
+        public ActionResult Index(int? page)
         {
+            int pageSize = 10;
+            int pageNumber = (page ?? 1);
             var products = db.Products.Where(a => a.status == true && a.ProductType.Status == true).Include(p => p.ProductType);
-            return View(products.ToList());
+            return View(products.ToList().ToPagedList(pageNumber, pageSize));
         }
 
         // GET: Products/Details/5
