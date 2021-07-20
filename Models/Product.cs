@@ -30,7 +30,6 @@ namespace MicroWaveFood.Models
         [StringLength(50, ErrorMessage = "Đơn vị sản phẩm không được quá 50 ký tự")]
         public string Unit { get; set; }
         [Required]
-        [ValidDate]
         [Display(Name = "Ngày nhập hàng")]
         public DateTime Date { get; set; }
         [Required]
