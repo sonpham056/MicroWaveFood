@@ -1,5 +1,4 @@
-<<<<<<< HEAD
-=======
+
 ﻿html, body {
     height: 100%;
     width:auto;
@@ -10,7 +9,7 @@
     padding: 0;
     box-sizing: border-box;
 }
->>>>>>> 0a73d57f8995116ffa71e938a9f8963b7ab8139e
+
 
 
 ﻿
@@ -376,6 +375,64 @@ td.data-title {
     color: #222222;
 }
 
+.woocommerce-breadcrumb {
+    text-transform: capitalize;
+    list-style: none;
+    display: block;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+.col-md-12 {
+    width: 100%;
+}
+
+.a-center {
+    text-align: center;
+}
+
+.back-history {
+    color: #b2b2b2;
+}
+
+.pdetail_infos .pdetail_qty {
+    font-size: 13px;
+    padding: 12px 8px;
+    height: inherit;
+    margin-right: 2px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.product_detail_content ._title {
+    border-bottom: 3px double #8CC63F;
+    margin-bottom: 10px;
+    padding-bottom: 6px;
+}
+
+.fa {
+    display: inline-block;
+    font-family: FontAwesome;
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.product_detail_content ._title h2 {
+    margin: 0px;
+    padding: 0px;
+    color: #491E12;
+    text-transform: uppercase;
+    font-size: 22px;
+}
+
+.product-title {
+    text-align: center;
+    margin-bottom: .5em;
+}
 
 .sale {
     position: absolute;
