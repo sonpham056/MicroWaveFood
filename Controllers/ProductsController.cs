@@ -187,7 +187,8 @@ namespace MicroWaveFood.Controllers
             ViewBag.PriceSum = PriceSum();
             var products = db.Products
                 .ToList()
-                .Where(a => ConvertToUnSign3(a.ProductName.ToLower()).Contains(ConvertToUnSign3(str.ToLower())) && a.status == true)
+                .Where(a => ConvertToUnSign3(a.ProductName.ToLower())
+                .Contains(ConvertToUnSign3(str.ToLower())) && a.status == true)
                 .ToList();
             return View(products);
         }
