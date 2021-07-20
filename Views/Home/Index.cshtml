@@ -1,4 +1,6 @@
 ﻿@model MicroWaveFood.ViewModels.HomeIndexViewModel
+@using PagedList.Mvc
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
 @{
     ViewBag.Title = "Home Page";
 }
@@ -566,7 +568,11 @@ else
         }
     </div>
 </div>
-
+<div class="custom-pagination">
+    <br />
+    <p class="text-center">Page @(Model.ProductList.PageCount < Model.ProductList.PageNumber ? 0 : Model.ProductList.PageNumber) of @Model.ProductList.PageCount</p>
+    @Html.PagedListPager(Model.ProductList, page => Url.Action("Index", new { page }))
+</div>
 @section scripts
 {
     <script>
