@@ -94,7 +94,10 @@
                 <div class="container">
                     <a class="btn btn-primary btn-thanh-toan">Thanh toán</a>
                 </div>
-                <h6 class="my-1">*Lưu ý: Để thay đổi địa chỉ giao hàng, quý khách vui lòng chỉnh sửa lại thông tin tài khoản!</h6>
+                <h6 class="my-1 mb-3">*Lưu ý: Để thay đổi địa chỉ giao hàng, quý khách vui lòng nhấn vào nút bên dưới!</h6>
+                <div class="text-center">
+                    <a class="button-comment-order" href="@Url.Action("ProvideInfo", "Manage", new { @url = Request.Url.ToString()})">Thay đổi thông tin</a>
+                </div>
             </div>
         </div>
     </div>
@@ -103,6 +106,32 @@
 
 @section scripts
 {
+    <script src="~/Scripts/bootstrap-input-spinner.js"></script>
+
+    <script>
+    $(document).ready(function () {
+        $("input[type='number']").inputSpinner({ buttonsOnly: true })
+        var $changedInput = $(".changedInput")
+        $changedInput.on("change", function (event) {
+            var url = $(this).attr("data-link");
+            var id = $(this).attr("data-id");
+            $('.btn-minus').click(function (e) {
+                url = url + "&isMinus=true";
+                var a = $(event.target).val();
+                if (a == 0) {
+                    url = "@Url.Action("CartDelete", "Cart", new { productId = "__id__"})"
+                    window.location.href = url.replace('__id__', id)
+                } else {
+                    console.log(url);
+                    window.location.href = url;
+                }
+            });
+             $('.btn-plus').click(function (e) {
+                window.location.href = url;
+            });
+        });
+    })
+    </script>
     <script>
         $(document).ready(function () {
             var $price = $('#price').text();
@@ -123,7 +152,7 @@
                 if ($('.province').text() == '' || $('.guild').text() == '' || $('.district').text() == '' || $('.address').text() == '') {
                     bootbox.confirm("Bạn chưa có đầy đủ thông tin giao hàng! Bạn có muốn chỉnh sửa thông tin tài khoản không?", function (result) {
                         if (result == true) {
-                            window.location.href = '@Url.Action("ProvideInfo", "Manage")';
+                            window.location.href = '@Url.Action("ProvideInfo", "Manage", new { @url = Request.Url.ToString()})';
                         }
                     })
                 } else {

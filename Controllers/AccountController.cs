@@ -417,6 +417,7 @@ namespace MicroWaveFood.Controllers
         {
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
             Session["cart"] = null;
+            ListCart.Carts = null;
             ViewBag.PriceSum = PriceSum();
             ViewBag.AmountSum = AmountSum();
             return RedirectToAction("Index", "Home");
