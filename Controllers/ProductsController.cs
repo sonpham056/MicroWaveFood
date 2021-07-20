@@ -12,6 +12,7 @@ using System.Web;
 using System.Web.Mvc;
 using MicroWaveFood.Models;
 using MicroWaveFood.ViewModels;
+using PagedList;
 
 namespace MicroWaveFood.Controllers
 {
@@ -21,10 +22,12 @@ namespace MicroWaveFood.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Products
-        public ActionResult Index()
+        public ActionResult Index(int? page)
         {
+            int pageSize = 10;
+            int pageNumber = (page ?? 1);
             var products = db.Products.Where(a => a.status == true && a.ProductType.Status == true).Include(p => p.ProductType);
-            return View(products.ToList());
+            return View(products.ToList().ToPagedList(pageNumber, pageSize));
         }
 
         // GET: Products/Details/5
@@ -187,10 +190,9 @@ namespace MicroWaveFood.Controllers
             ViewBag.PriceSum = PriceSum();
             var products = db.Products
                 .ToList()
-                .Where(a => ConvertToUnSign3(a.ProductName.ToLower())
-                .Contains(ConvertToUnSign3(str.ToLower())) && a.status == true)
+                .Where(a => a.ProductName.ToLower().Contains(str.ToLower()) && a.status == true)
                 .ToList();
-            return View(products);
+            return View("ListProduct", products);
         }
 
         [AllowAnonymous]
@@ -198,7 +200,7 @@ namespace MicroWaveFood.Controllers
         {
             ViewBag.AmountSum = AmountSum();
             ViewBag.PriceSum = PriceSum();
-            var products = db.Products.Include("ProductType").ToList().Where(a => ConvertToUnSign3(a.ProductType.GroupType.ToLower()).Contains(ConvertToUnSign3(str.ToLower())) && a.status == true).ToList();
+            var products = db.Products.Include("ProductType").ToList().Where(a => a.ProductType.GroupType.ToLower().Contains(str.ToLower()) && a.status == true).ToList();
             return View(products);
         }
         [AllowAnonymous]

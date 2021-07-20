@@ -74,12 +74,16 @@
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Management List</h6>
-                        <a class="collapse-item" href="@Url.Action("ListRoles", "Administration")">Manage role</a>
-                        <a class="collapse-item" href="@Url.Action("Index", "ProductTypes")">Product Types</a>
-                        <a class="collapse-item" href="@Url.Action("Index", "Products")">Product</a>
+                        @if (User.IsInRole("admin"))
+                        {
+                            <a class="collapse-item" href="@Url.Action("ListRoles", "Administration")">Manage role</a>
+                            <a class="collapse-item" href="@Url.Action("Index", "ProductTypes")">Product Types</a>
+                            <a class="collapse-item" href="@Url.Action("Index", "Products")">Product</a>
+                            <a class="collapse-item" href="@Url.Action("Index", "Sales")">Sales</a>
+                        }
                         <a class="collapse-item" href="@Url.Action("OrderConfirm", "Order")">Order confirm</a>
                         <a class="collapse-item" href="@Url.Action("Index", "Comments")">Comments</a>
-                        <a class="collapse-item" href="@Url.Action("Index", "Sales")">Sales</a>
+
                     </div>
                 </div>
             </li>

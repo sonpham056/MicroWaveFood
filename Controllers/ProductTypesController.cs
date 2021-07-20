@@ -20,7 +20,7 @@ namespace MicroWaveFood.Controllers
         // GET: ProductTypes
         public ActionResult Index(int? page)
         {
-            int pageSize = 5;
+            int pageSize = 10;
             int pageNumber = (page ?? 1);
             return View(db.productTypes.Where(a => a.Status == true).ToList().ToPagedList(pageNumber, pageSize));
         }

@@ -9,6 +9,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using MicroWaveFood.Models;
+using MicroWaveFood.ViewModels;
 
 namespace MicroWaveFood.Controllers
 {
@@ -24,41 +25,99 @@ namespace MicroWaveFood.Controllers
         }
 
         [HttpPost]
-        public ActionResult AddToSale(int productId, int saleId, string url)
+        public ActionResult AddToSale(List<SaleViewModel> list, int saleId,string url)
         {
-            
-            try
+
+            //try
+            //{
+            //    var product = db.Products.Find(productId);
+            //    var sale = db.Sales.Find(saleId);
+            //    if (product == null || sale == null)
+            //    {
+            //        ViewBag.Message = "Error";
+            //        return View("Error");
+            //    }
+            //    product.SaleId = sale.SaleId;
+            //    db.Entry(product).State = EntityState.Modified;
+            //    db.SaveChanges();
+            //    return Redirect(url);
+            //}
+            //catch (DbEntityValidationException e)
+            //{
+            //    foreach (var eve in e.EntityValidationErrors)
+            //    {
+            //        Console.WriteLine("Entity of type \"{0}\" in state \"{1}\" has the following validation errors:",
+            //            eve.Entry.Entity.GetType().Name, eve.Entry.State);
+            //        foreach (var ve in eve.ValidationErrors)
+            //        {
+            //            Debug.WriteLine("- Property: \"{0}\", Error: \"{1}\"",
+            //                ve.PropertyName, ve.ErrorMessage);
+            //        }
+            //    }
+            //    throw;
+            //}
+            var sale = db.Sales.Find(saleId);
+            if (sale == null)
             {
-                var product = db.Products.Find(productId);
-                var sale = db.Sales.Find(saleId);
-                if (product == null || sale == null)
+                ViewBag.Message = "Error";
+                return View("Error");
+            }
+
+            foreach (var item in list)
+            {
+                var product = db.Products.Find(item.ProductId);
+                if (product == null)
+                {
+                    return View("Error");
+                }
+                if (item.IsSelected == true)
+                {
+                    product.SaleId = saleId;
+                }
+                else
+                {
+                    product.SaleId = null;
+                }
+                db.Entry(product).State = EntityState.Modified;
+            }
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+        [HttpPost]
+        public ActionResult Details(List<SaleViewModel> list, int saleId, string url)
+        {
+            var sale = db.Sales.Find(saleId);
+            if (sale == null)
+            {
+                ViewBag.Message = "Error";
+                return View("Error");
+            }
+
+            foreach (var item in list)
+            {
+                var product = db.Products.Find(item.ProductId);
+                if (product == null)
                 {
                     ViewBag.Message = "Error";
                     return View("Error");
                 }
-                product.SaleId = sale.SaleId;
-                db.Entry(product).State = EntityState.Modified;
-                db.SaveChanges();
-                return Redirect(url);
-            }
-            catch (DbEntityValidationException e)
-            {
-                foreach (var eve in e.EntityValidationErrors)
+                if (item.IsSelected == true)
                 {
-                    Console.WriteLine("Entity of type \"{0}\" in state \"{1}\" has the following validation errors:",
-                        eve.Entry.Entity.GetType().Name, eve.Entry.State);
-                    foreach (var ve in eve.ValidationErrors)
-                    {
-                        Debug.WriteLine("- Property: \"{0}\", Error: \"{1}\"",
-                            ve.PropertyName, ve.ErrorMessage);
-                    }
+                    product.SaleId = saleId;
                 }
-                throw;
+                else
+                {
+                    product.SaleId = null;
+                }
+                db.Entry(product).State = EntityState.Modified;
             }
+            db.SaveChanges();
+            return RedirectToAction("Index");
         }
 
         // GET: Sales/Details/5
-        public ActionResult Details(int? id)
+        public ActionResult Details(int? id, int? productTypeId)
         {
             if (id == null)
             {
@@ -69,14 +128,47 @@ namespace MicroWaveFood.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.productId = new SelectList(db.Products.Where(a => a.status == true), "ProductId", "ProductName");
-            return View(sale);
+            List<SaleViewModel> list = new List<SaleViewModel>();
+            if (productTypeId == null)
+            {
+                foreach (var item in db.Products.Where(a => a.status == true).ToList())
+                {
+                    SaleViewModel saleView = new SaleViewModel
+                    {
+                        ProductId = item.ProductId,
+                        ProductName = item.ProductName,
+                        SaleId = (int)id,
+                        IsSelected = item.SaleId == null ? false : true
+                    };
+                    list.Add(saleView);
+                }
+            }
+            else
+            {
+                foreach (var item in db.Products.Where(a => a.status == true && a.ProductTypeId == productTypeId).ToList())
+                {
+                    SaleViewModel saleView = new SaleViewModel
+                    {
+                        ProductId = item.ProductId,
+                        ProductName = item.ProductName,
+                        SaleId = (int)id
+                    };
+                    list.Add(saleView);
+                }
+            }
+            ViewBag.productTypeId = new SelectList(db.productTypes.Where(a => a.Status == true), "ProductTypeId", "Name");
+           
+            //SaleViewModel saleVM = new SaleViewModel
+            //{
+                
+            //};
+            return View(list);
         }
 
         // GET: Sales/Create
         public ActionResult Create()
         {
-            
+
             return View();
         }
 

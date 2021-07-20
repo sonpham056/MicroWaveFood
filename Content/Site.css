@@ -446,3 +446,12 @@ td.data-title {
     right: 12px;
     top: 6px;
 }
+
+a.button-comment-order {
+    background-color: darkgray;
+    color: black;
+}
+
+    a.button-comment-order:hover {
+        text-decoration: none;
+        background-color: gray;

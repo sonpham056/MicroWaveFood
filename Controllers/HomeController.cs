@@ -37,14 +37,14 @@ namespace MicroWaveFood.Controllers
         }
 
         //===============================================
-        [Authorize(Roles = "admin")]
+        [Authorize(Roles = "admin, manager")]
         public ActionResult AdminIndex()
         {
             return View();
         }
         public ActionResult Index(int? page)
         {
-            if (User.IsInRole("admin"))
+            if (User.IsInRole("admin") || User.IsInRole("manager"))
             {
                 return RedirectToAction("AdminIndex");
             }

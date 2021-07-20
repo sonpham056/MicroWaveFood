@@ -169,7 +169,7 @@ namespace MicroWaveFood.Controllers
             return View(list);
         }
 
-        [Authorize(Roles = "admin")]
+        [Authorize(Roles = "admin, manager")]
         public ActionResult OrderConfirm(int? type)
         {
             var user = db.Users.Find(User.Identity.GetUserId());
