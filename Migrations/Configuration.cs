@@ -194,7 +194,7 @@
 
 
 
-            ////Producttttttttttt
+            //Producttttttttttt
             //var products = new List<Product>
             //{
             //    //nguyen liệu làm bánh
@@ -256,7 +256,7 @@
             //    new Product{ProductTypeId = 50 ,ProductName="Gia vị truyền thống",Image = "/Images/Image_producttype_monA/botcari_producttype.jpeg", ProductDescribe = "Sản phẩm này là",Price = 50000,Unit = "Bịch",Date = DateTime.Parse("2021/09/01"),Quantity =10, status = true,Origin="Việt Nam" },
             //    new Product{ProductTypeId = 51,ProductName="Dầu mè, hắc xì dầu",Image = "/Images/Image_producttype_monA/dauhao_producttype.jpeg", ProductDescribe = "Sản phẩm này là",Price = 30000,Unit = "Chai",Date = DateTime.Parse("2021/09/01"),Quantity =10, status = true,Origin="Việt Nam" },
             //    //Túi - hộp - cốc - lọ
-                
+
             //    new Product{ProductTypeId = 52,ProductName="Túi giấy",Image = "/Images/Image_producttype_lycoclo/tuigiay_producttype.png",ProductDescribe = "Sản phẩm này là",Price = 10000,Unit = "Cái",Date = DateTime.Parse("2021/09/01"),Quantity =10, status = true,Origin="Việt Nam" },
             //    new Product{ProductTypeId = 53,ProductName="Cup giấy",Image = "/Images/Image_producttype_lycoclo/cupgiay_producttype.jpeg", ProductDescribe = "Sản phẩm này là",Price = 10000,Unit = "Cái",Date = DateTime.Parse("2021/09/01"),Quantity =10, status = true,Origin="Việt Nam" },
             //    new Product{ProductTypeId = 54,ProductName="Túi đựng socola",Image = "/Images/Image_producttype_lycoclo/cupdungsocola_producttype.jpeg", ProductDescribe = "Sản phẩm này là",Price = 10000,Unit = "Cái",Date = DateTime.Parse("2021/09/01"),Quantity =10, status = true,Origin="Việt Nam" },
@@ -269,19 +269,19 @@
             //    new Product{ProductTypeId = 61,ProductName="Đồ tổ chức party",Image = "/Images/Image_producttype_lycoclo/Icon_producttype.jpeg", ProductDescribe = "Sản phẩm này là",Price = 70000,Unit = "Cái",Date = DateTime.Parse("2021/09/01"),Quantity =10, status = true,Origin="Việt Nam" },
             //    new Product{ProductTypeId = 62,ProductName="Hình dán",Image = "/Images/Image_producttype_lycoclo/hinhdan_producttype.jpeg", ProductDescribe = "Sản phẩm này là",Price = 40000,Unit = "Cái",Date = DateTime.Parse("2021/09/01"),Quantity =10, status = true,Origin="Việt Nam" },
             //    new Product{ProductTypeId = 63,ProductName="Dây buộc",Image = "/Images/Image_producttype_lycoclo/daybuoc_producttype.jpeg", ProductDescribe = "Sản phẩm này là",Price = 20000,Unit = "Cuộn",Date = DateTime.Parse("2021/09/01"),Quantity =10, status = true,Origin="Việt Nam" },
-               
+
             //    //Dụng cụ nấu ăn
             //    new Product{ProductTypeId = 64,ProductName="Đồ làm pento",Image = "/Images/Image_producttype_DCnauan/khuonnhua_producttype.jpeg", ProductDescribe = "Sản phẩm này là",Price = 10000,Unit = "Cái",Date = DateTime.Parse("2021/09/01"),Quantity =10, status = true,Origin="Việt Nam" },
             //    new Product{ProductTypeId = 65,ProductName="Mành cuộn cơm",Image = "/Images/Image_producttype_DCnauan/manhcuon_producttype.jpeg", ProductDescribe = "Sản phẩm này là",Price = 40000,Unit = "Cái",Date = DateTime.Parse("2021/09/01"),Quantity =10, status = true,Origin="Việt Nam" },
             //    new Product{ProductTypeId = 66,ProductName="Chảo rán",Image = "/Images/Image_producttype_DCnauan/KhuonNuong_producttype.jpeg", ProductDescribe = "Sản phẩm này là",Price = 200000,Unit = "Cái",Date = DateTime.Parse("2021/09/01"),Quantity =10, status = true,Origin="Việt Nam" },
-                
+
             //    //Nguyên liệu lẩu nướng
             //    new Product{ProductTypeId = 67,ProductName="Viên thả lẩu",Image = "/Images/Image_producttype_launuong/Vienthalau_producttype.png", ProductDescribe = "Sản phẩm này là",Price = 100000,Unit = "Bịch",Date = DateTime.Parse("2021/09/01"),Quantity =10, status = true,Origin="Việt Nam" },
             //    new Product{ProductTypeId = 68,ProductName="Thịt nhập khẩu",Image = "/Images/Image_producttype_launuong/thit_producttype.png", ProductDescribe = "Sản phẩm này là",Price = 200000,Unit = "Bịch",Date = DateTime.Parse("2021/09/01"),Quantity =10, status = true,Origin="Việt Nam" },
             //    new Product{ProductTypeId = 69,ProductName="Thịt nguội",Image = "/Images/Image_producttype_launuong/thitnguoi_producttype.png",  ProductDescribe = "Sản phẩm này là",Price = 100000,Unit = "Bịch",Date = DateTime.Parse("2021/09/01"),Quantity =10, status = true,Origin="Việt Nam" },
             //    new Product{ProductTypeId = 70,ProductName="Gia vị lẩu nướng",Image = "/Images/Image_producttype_launuong/giavi_producttype.jpeg", ProductDescribe = "Sản phẩm này là",Price = 10000,Unit = "Bịch",Date = DateTime.Parse("2021/09/01"),Quantity =10, status = true,Origin="Việt Nam" },
             //    new Product{ProductTypeId = 71,ProductName="Mì sợi",Image = "/Images/Image_producttype_launuong/misoi_producttype.png",  ProductDescribe = "Sản phẩm này là",Price = 5000,Unit = "Bịch",Date = DateTime.Parse("2021/09/01"),Quantity =10, status = true,Origin="Việt Nam" },
-                
+
             //    //Nguyên liệu pha chế
             //    new Product{ProductTypeId = 72,ProductName="Trà",Image = "/Images/Image_producttype_NLphache/tra_producttype.jpeg",ProductDescribe = "Sản phẩm này là",Price = 100000,Unit = "Bịch",Date = DateTime.Parse("2021/09/01"),Quantity =10, status = true,Origin="Việt Nam" },
             //    new Product{ProductTypeId = 73,ProductName="Sữa pha chế",Image = "/Images/Image_producttype_NLphache/botsua_producttype.jpeg", ProductDescribe = "Sản phẩm này là",Price = 120000,Unit = "Bịch",Date = DateTime.Parse("2021/09/01"),Quantity =10, status = true,Origin="Việt Nam" },
@@ -289,7 +289,7 @@
             //    new Product{ProductTypeId = 75,ProductName="Sinh tố",Image = "/Images/Image_producttype_NLphache/sinhto_producttype.jpeg", ProductDescribe = "Sản phẩm này là",Price = 150000,Unit = "Chai",Date = DateTime.Parse("2021/09/01"),Quantity =10, status = true,Origin="Việt Nam" },
             //    new Product{ProductTypeId = 76,ProductName="Pudding",Image = "/Images/Image_producttype_NLphache/pudding_producttype.png", ProductDescribe = "Sản phẩm này là",Price = 140000,Unit = "Bịch",Date = DateTime.Parse("2021/09/01"),Quantity =10, status = true,Origin="Việt Nam" },
             //    new Product{ProductTypeId = 77,ProductName="Nước cốt dừa",Image = "/Images/Image_producttype_NLphache/nuoccotdua_producttype.jpeg",ProductDescribe = "Sản phẩm này là",Price = 40000,Unit = "Lon",Date = DateTime.Parse("2021/09/01"),Quantity =10, status = true,Origin="Việt Nam" },
-            
+
             //     //Dụng cụ pha chế
             //     new Product{ProductTypeId = 78,ProductName="Bình lắc",Image = "/Images/Image_producttype_DCphache/binhlac_producttype.jpeg", ProductDescribe = "Sản phẩm này là",Price = 104000,Unit = "Cái",Date = DateTime.Parse("2021/09/01"),Quantity =10, status = true,Origin="Việt Nam" },
             //     new Product{ProductTypeId = 79,ProductName="Ly đong",Image = "/Images/Image_producttype_DCphache/lydong_producttype.jpeg", ProductDescribe = "Sản phẩm này là",Price = 50000,Unit = "Cái",Date = DateTime.Parse("2021/09/01"),Quantity =10, status = true,Origin="Việt Nam" },

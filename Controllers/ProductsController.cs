@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Data.Entity.Validation;
+using System.Diagnostics;
 using System.Linq;
 using System.Net;
 using System.Text;
@@ -142,6 +144,31 @@ namespace MicroWaveFood.Controllers
             db.Entry(product).State = EntityState.Modified;
             db.SaveChanges();
             return RedirectToAction("Index");
+        }
+        [AllowAnonymous]
+        public ActionResult ProductDetail(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Product product = db.Products.Include(p => p.ProductType)
+                .Include("Bills.Comment.User")
+                .FirstOrDefault(p => p.ProductId == id);
+            if (product == null)
+            {
+                return HttpNotFound();
+            }
+            if (product.status == false)
+            {
+                return HttpNotFound();
+            }
+            ProductViewModel productViewModel = new ProductViewModel
+            {
+                Product = product,
+                RelatedProducts = db.Products.Where(p => p.ProductTypeId == product.ProductTypeId && p.status == true).ToList()
+            };
+            return View(productViewModel);
         }
 
         protected override void Dispose(bool disposing)
