@@ -146,7 +146,7 @@ namespace MicroWaveFood.Controllers
             return RedirectToAction("Index");
         }
         [AllowAnonymous]
-        public ActionResult ProductDetail(int? id, int? page)
+        public ActionResult ProductDetail(int? id)
         {
             if (id == null)
             {
@@ -163,14 +163,13 @@ namespace MicroWaveFood.Controllers
             {
                 return HttpNotFound();
             }
-            int pageSize = 5;
-            int pageNumber = (page ?? 1);
             ProductViewModel productViewModel = new ProductViewModel
             {
                 Product = product,
                 RelatedProducts = db.Products.Where(p => p.ProductTypeId == product.ProductTypeId && p.status == true).ToList()
             };
-
+            ViewBag.AmountSum = AmountSum();
+            ViewBag.PriceSum = PriceSum();
             return View(productViewModel);
         }
 

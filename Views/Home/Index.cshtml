@@ -318,7 +318,9 @@
                                         <p style="text-align:right">- @Model.BestSellerList[i].Sale.SaleRate%</p>
                                     </div>
                                 }
+                            <a href="@Url.Action("ProductDetail", "Products", new { id = Model.BestSellerList[i].ProductId})">
                                 <img class="img-index" src="@Model.BestSellerList[i].Image" />
+                            </a>
                             </div>
                             <div class="product-content-container">
                                 <div class="productContent">
@@ -371,7 +373,9 @@
                                         <p style="text-align:right">- @Model.BestSellerList[i].Sale.SaleRate%</p>
                                     </div>
                                 }
+                            <a href="@Url.Action("ProductDetail", "Products", new { id = Model.BestSellerList[i].ProductId})">
                                 <img class="img-index" src="@Model.BestSellerList[i].Image" />
+                            </a>
                             </div>
                             <div class="product-content-container">
                                 <div class="productContent">
@@ -439,7 +443,9 @@ else
                             <p style="text-align:right">- @item.Sale.SaleRate%</p>
                         </div>
                     }
+                <a href="@Url.Action("ProductDetail", "Products", new { id = item.ProductId})">
                     <img class="img-index" src="@item.Image" />
+                </a>
                 </div>
                 <div class="product-content-container">
                     <div class="productContent">
@@ -538,7 +544,9 @@ else
                             <p style="text-align:right">- @item.Sale.SaleRate%</p>
                         </div>
                     }
+                <a href="@Url.Action("ProductDetail", "Products", new { id = item.ProductId})">
                     <img class="img-index" src="@item.Image" />
+                </a>
                 </div>
                 <div class="product-content-container">
                     <div class="productContent">
