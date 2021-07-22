@@ -168,6 +168,8 @@ namespace MicroWaveFood.Controllers
                 Product = product,
                 RelatedProducts = db.Products.Where(p => p.ProductTypeId == product.ProductTypeId && p.status == true).ToList()
             };
+            ViewBag.AmountSum = AmountSum();
+            ViewBag.PriceSum = PriceSum();
             return View(productViewModel);
         }
 
