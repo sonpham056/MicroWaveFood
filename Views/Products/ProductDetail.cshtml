@@ -16,13 +16,11 @@
     <div class="row">
         <div class="col-md-12 a-center">
             <nav class="woocomerce-breadcrumb">
-                <a href="#">Trang Chủ</a>
+                <a href="@Url.Action("Index","Home")">Trang Chủ</a>
                 <i class="material-icons" style="font-size: medium">navigate_next</i>
-                <a href="#">Test</a>
-                <a class="back-history" href="#">
-                    <i class="material-icons" style="font-size: medium">navigate_before</i>
-                    Trở về trang trước
-                </a>
+                <a href="@Url.Action("ListProduct","Products", new {@str = @Model.Product.ProductType.GroupType })">@Model.Product.ProductType.GroupType</a>
+                <i class="material-icons" style="font-size: medium">navigate_next</i>
+                <a href="@Url.Action("ProductsInProductType","Products", new {@id = @Model.Product.ProductTypeId })">@Model.Product.ProductType.Name</a>
             </nav>
         </div>
         <div class="col-md-6 mb-4 mb-md-0">
@@ -57,7 +55,7 @@
                     </tbody>
                 </table>
             </div>
-            <button type="button" class="btn btn-primary btn-md mr-1 mb-2">Mua hàng ngay</button>
+            <a href="@Url.Action("Cart","Cart")" class="btn btn-primary btn-md mr-1 mb-2">Mua hàng ngay</a>
             <button type="button" class="button-add-to-cart" style="background-color: orange; height: 35px;" data-product-id="@Model.Product.ProductId">
                 <i class="fas fa-shopping-cart pr-2">Thêm vào giỏ hàng</i>
             </button>

@@ -12,6 +12,7 @@ using System.Web;
 using System.Web.Mvc;
 using MicroWaveFood.Models;
 using MicroWaveFood.ViewModels;
+using PagedList;
 
 namespace MicroWaveFood.Controllers
 {
@@ -143,7 +144,7 @@ namespace MicroWaveFood.Controllers
             return RedirectToAction("Index");
         }
         [AllowAnonymous]
-        public ActionResult ProductDetail(int? id)
+        public ActionResult ProductDetail(int? id, int? page)
         {
             if (id == null)
             {
@@ -160,11 +161,14 @@ namespace MicroWaveFood.Controllers
             {
                 return HttpNotFound();
             }
+            int pageSize = 5;
+            int pageNumber = (page ?? 1);
             ProductViewModel productViewModel = new ProductViewModel
             {
                 Product = product,
                 RelatedProducts = db.Products.Where(p => p.ProductTypeId == product.ProductTypeId && p.status == true).ToList()
             };
+
             return View(productViewModel);
         }
 
