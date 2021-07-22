@@ -8,7 +8,7 @@ using System.Data;
 
 namespace MicroWaveFood.Controllers
 {
-    [Authorize(Roles = "admin")]
+    [Authorize(Roles = "admin, manager")]
     public class CommentsController : Controller
     {
         private readonly ApplicationDbContext db = new ApplicationDbContext();

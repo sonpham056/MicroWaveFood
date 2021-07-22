@@ -6,6 +6,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Data.Entity;
+using System.Net.Mail;
+using System.Net;
 
 namespace MicroWaveFood.Controllers
 {
@@ -64,7 +66,7 @@ namespace MicroWaveFood.Controllers
             db.Orders.Add(order);
             db.SaveChanges();
 
-
+            string _body = "";
             foreach (Cart cart in list)
             {
                 Product product = db.Products.Find(cart.ProductId);
@@ -79,17 +81,63 @@ namespace MicroWaveFood.Controllers
                 bill.ProductId = product.ProductId;
                 bill.Amount = cart.Amount;
                 bill.Status = true;
-
                 db.Bills.Add(bill);
+
+
+                _body += "Tên sản phẩm: " + cart.ProductName.ToString();
+                _body += " - Giá: " + cart.ProductPrice.ToString();
+                _body += " - Số lượng: " + cart.Amount.ToString();
+                _body += " - thành tiền: " + (cart.ProductPrice * cart.Amount).ToString();
+                _body += "\n";
                 db.SaveChanges();
             }
+
+            _body += "\n Tổng tiền: " + order.Total.ToString();
             ViewBag.Title = "Thanh toán thành công! Chúng tôi sẽ giao hàng cho quí khách trong thời gian sớm nhất!";
+
+
+            var user = db.Users.Find(User.Identity.GetUserId());
+
+            var mail = user.Email.ToString();
+            
+            string _subject = "Đơn hàng từ Microwave Food đây :v";
+
+            var mailInfo = new MailInfo { To = mail, Body = _body, Subject = _subject };
+            SendMail(mailInfo);
+
             list = null;
             //Session["Cart"] = null;
             ListCart.Carts = null;
             ViewBag.AmountSum = AmountSum();
             ViewBag.PriceSum = PriceSum();
+            
+
             return View(order);
+        }
+
+        public void SendMail(MailInfo emailInfo)
+        {
+            string email = "microwavefood.https@gmail.com";
+            string password = "Microwave123";
+            using (MailMessage m = new MailMessage(email, emailInfo.To))
+            {
+                m.Subject = emailInfo.Subject;
+                m.Body = emailInfo.Body;
+                
+                m.IsBodyHtml = false;
+                using (SmtpClient smtp = new SmtpClient())
+                {
+                    smtp.Host = "smtp.gmail.com";
+                    smtp.EnableSsl = true;
+                    
+                    NetworkCredential networkCred = new NetworkCredential(email, password);
+                    smtp.UseDefaultCredentials = true;
+                    smtp.Credentials = networkCred;
+                    smtp.Port = 587;
+                    smtp.Send(m);
+                    ViewBag.Message = "Sent";
+                }
+            }
         }
 
         public ActionResult History(int? type)
@@ -103,22 +151,25 @@ namespace MicroWaveFood.Controllers
             List<Order> list = new List<Order>();
             if (type == null)
             {
-                list = db.Orders.Include("Bills.Product").Where(a => a.Status == true && a.UserId == user.Id).OrderByDescending(a => a.OrderDate).ToList();
+                list = db.Orders.Include("Bills.Product").Where(a => a.Status == true && a.UserId == user.Id)
+                    .OrderByDescending(a => a.OrderDate).ToList();
             }
             else if (type == 1) //1 = chưa giao
             {
-                list = db.Orders.Include("Bills.Product").Where(a => a.Status == true && a.IsDelivered == false && a.UserId == user.Id).OrderByDescending(a => a.OrderDate).ToList();
+                list = db.Orders.Include("Bills.Product").Where(a => a.Status == true && a.IsDelivered == false && a.UserId == user.Id)
+                    .OrderByDescending(a => a.OrderDate).ToList();
             }
             else //còn lại = đã giao
             {
-                list = db.Orders.Include("Bills.Product").Where(a => a.Status == true && a.IsDelivered == true && a.UserId == user.Id).OrderByDescending(a => a.OrderDate).ToList();
+                list = db.Orders.Include("Bills.Product").Where(a => a.Status == true && a.IsDelivered == true && a.UserId == user.Id)
+                    .OrderByDescending(a => a.OrderDate).ToList();
             }
             ViewBag.AmountSum = AmountSum();
             ViewBag.PriceSum = PriceSum();
             return View(list);
         }
 
-        [Authorize(Roles = "admin")]
+        [Authorize(Roles = "admin, manager")]
         public ActionResult OrderConfirm(int? type)
         {
             var user = db.Users.Find(User.Identity.GetUserId());
@@ -188,6 +239,8 @@ namespace MicroWaveFood.Controllers
             db.SaveChanges();
             return Redirect(strUrl);
         }
+        
+        
 
         protected override void Dispose(bool disposing)
         {

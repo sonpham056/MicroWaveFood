@@ -350,7 +350,7 @@ namespace MicroWaveFood.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> ProvideInfo(UserInfoViewModel model, ManageMessageId? message)
+        public async Task<ActionResult> ProvideInfo(UserInfoViewModel model, ManageMessageId? message, string url)
         {
             if (!ModelState.IsValid)
             {
@@ -383,9 +383,13 @@ namespace MicroWaveFood.Controllers
                 Logins = await UserManager.GetLoginsAsync(userId),
                 BrowserRemembered = await AuthenticationManager.TwoFactorBrowserRememberedAsync(userId)
             };
-            if (result.Succeeded)
+            if (result.Succeeded && string.IsNullOrEmpty(url))
             {
                 return View("index", modelIndexView);
+            } 
+            else if (result.Succeeded && !string.IsNullOrEmpty(url))
+            {
+                return Redirect(url);
             }
             AddErrors(result);
             return View(modelIndexView);

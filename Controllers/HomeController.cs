@@ -37,14 +37,14 @@ namespace MicroWaveFood.Controllers
         }
 
         //===============================================
-        [Authorize(Roles = "admin")]
+        [Authorize(Roles = "admin, manager")]
         public ActionResult AdminIndex()
         {
             return View();
         }
         public ActionResult Index(int? page)
         {
-            if (User.IsInRole("admin"))
+            if (User.IsInRole("admin") || User.IsInRole("manager"))
             {
                 return RedirectToAction("AdminIndex");
             }
@@ -62,8 +62,6 @@ namespace MicroWaveFood.Controllers
                 ProductTypes = db.productTypes
             .Where(a => a.Status == true)
             .ToList(),
-
-
                 ProductList = db.Products.Include("Sale").Where(a => a.status == true).ToList().ToPagedList(pageNumber, pageSize),
                 BestSellerList = db.Products
                 .Include("Sale")
@@ -72,7 +70,9 @@ namespace MicroWaveFood.Controllers
                 .Take(9)
                 .ToList(),
 
+                //add mềm
                 ListRandom = db.Products.Include("Sale").Where(a => a.status == true).OrderBy(a => Guid.NewGuid()).Take(5).ToList(),
+                //add cứng
                 GroupTypes = new List<string>() { "Đồ làm bánh", "Đồ nấu ăn", "Đồ pha chế" }
 
 
@@ -100,7 +100,7 @@ namespace MicroWaveFood.Controllers
         }
 
 
-        
+
 
     }
 }

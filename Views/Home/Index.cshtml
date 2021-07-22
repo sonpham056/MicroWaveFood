@@ -263,7 +263,9 @@
                                         <p style="text-align:right">- @Model.BestSellerList[i].Sale.SaleRate%</p>
                                     </div>
                                 }
-                                <img class="img-index" src="@Model.BestSellerList[i].Image" />
+                                <a href="@Url.Action("ProductDetail", "Products", new { id = Model.BestSellerList[i].ProductId})">
+                                    <img class="img-index" src="@Model.BestSellerList[i].Image" />
+                                </a>
                             </div>
                             <div class="product-content-container">
                                 <div class="productContent">
@@ -483,9 +485,9 @@ else
                 </a>
                 <a href="@Url.Action("ListProduct","Products",new {@str = "Nguyên liệu làm bánh" })" target="_blank">
 
-                    <img style="width: 99%" src="~/Images/Bo-anchor-2.jpg" />                                   
-    @*AI đó test thử đêi*@
-     @*Test rồi, cái view trông chán đời vcl*@
+                    <img style="width: 99%" src="~/Images/Bo-anchor-2.jpg" />
+                    @*AI đó test thử đêi*@
+                    @*Test rồi, cái view trông chán đời vcl*@
                 </a>
                 <a href="@Url.Action("ListProduct","Products",new {@str = "Nguyên liệu pha chế" })" target="_blank">
                     <img style="width: 99%" src="~/Images/Tran-chau.jpg" />
@@ -570,7 +572,7 @@ else
 </div>
 <div class="custom-pagination">
     <br />
-    <p class="text-center">Page @(Model.ProductList.PageCount < Model.ProductList.PageNumber ? 0 : Model.ProductList.PageNumber) of @Model.ProductList.PageCount</p>
+    <p class="text-center">Trang @(Model.ProductList.PageCount < Model.ProductList.PageNumber ? 0 : Model.ProductList.PageNumber) trong tổng @Model.ProductList.PageCount</p>
     @Html.PagedListPager(Model.ProductList, page => Url.Action("Index", new { page }))
 </div>
 @section scripts
