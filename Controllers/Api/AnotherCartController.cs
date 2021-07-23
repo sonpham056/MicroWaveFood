@@ -2,8 +2,6 @@
 using MicroWaveFood.Models;
 using System;
 using System.Collections.Generic;
-using System.Data.Entity;
-using System.Diagnostics;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -11,10 +9,10 @@ using System.Web.Http;
 
 namespace MicroWaveFood.Controllers.Api
 {
-    public class CartController : ApiController
+    public class AnotherCartController : ApiController
     {
         [HttpPost]
-        public IHttpActionResult Add(ProductDto product)
+        public IHttpActionResult AddWithAmount(ProductDto product)
         {
             if (product == null)
             {
@@ -25,16 +23,17 @@ namespace MicroWaveFood.Controllers.Api
             if (cart == null)
             {
                 cart = new Cart(product.ProductId);
+                cart.Amount = product.Amount;
                 list.Add(cart);
             }
             else
             {
-                cart.Amount++;
+                cart.Amount += product.Amount;
             }
 
             return Ok();
         }
-        
+
         private List<Cart> TakeCart()
         {
             //List<Cart> listCart = Session["Cart"] as List<Cart>;
@@ -48,7 +47,5 @@ namespace MicroWaveFood.Controllers.Api
             }
             return listCart;
         }
-
-
     }
 }

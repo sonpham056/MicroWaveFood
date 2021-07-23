@@ -51,6 +51,26 @@ namespace MicroWaveFood.Controllers
             }
         }
 
+        public ActionResult AddToCartWithAmount(int productId, int amount)
+        {
+            //take cart
+            List<Cart> list = TakeCart();
+            //check if this product is in session["cart"]
+            Cart cart = list.Find(a => a.ProductId == productId);
+            if (cart == null)
+            {
+                cart = new Cart(productId);
+                cart.Amount = amount;
+                list.Add(cart);
+                return RedirectToAction("Cart");
+            }
+            else
+            {
+                cart.Amount += amount;
+                return RedirectToAction("Cart");
+            }
+        }
+
         public int AmountSum()
         {
             int amount = 0;
