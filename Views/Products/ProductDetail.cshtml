@@ -3,9 +3,10 @@
 @{
     ViewBag.Title = "ProductDetail";
 }
-
-<h2>ProductDetail</h2>
-<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<head>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+</head>
+<h2>Chi tiết sản phẩm</h2>
 <!--Section: Block Content-->
 <section class="mb-5">
     <div class="row">
@@ -27,7 +28,15 @@
         <div class="col-md-6">
             <h2>@Model.Product.ProductName</h2>
             <p class="mb-2 text-muted text-uppercase small" style="font-weight: lighter">@Model.Product.ProductType.Name</p>
-            <h6><span class="mr-1"><strong style="color: red; text-shadow: 2px 2px 3px #ccc; font-size: 25px; font-weight: bold;">@Model.Product.Price đ</strong></span></h6>
+            @if (Model.Product.SaleId != null && Model.Product.Sale.From <= DateTime.Now && Model.Product.Sale.To >= DateTime.Now)
+            {
+                <del><h6><span class="mr-1"><strong style="color: red; text-shadow: 2px 2px 3px #ccc; font-size: 25px; font-weight: bold;">@Model.Product.Price đ</strong></span></h6></del>
+                <h6><span class="mr-1"><strong style="color: red; text-shadow: 2px 2px 3px #ccc; font-size: 25px; font-weight: bold;">@(@Model.Product.Price - Model.Product.Price * Model.Product.Sale.SaleRate / 100) đ</strong></span></h6>
+            }
+            else
+            {
+                <h6><span class="mr-1"><strong style="color: red; text-shadow: 2px 2px 3px #ccc; font-size: 25px; font-weight: bold;">@Model.Product.Price đ</strong></span></h6>
+            }
             <p class="pt-1">
                 @Model.Product.ProductDescribe
             </p>
@@ -40,8 +49,22 @@
                         </tr>
                         <tr>
                             <td class="pl-0">
-                                <div class="def-number-input number-input safari_only mb-0">
-                                    <input class="changedInput" type="number" min="1" max="200" value="1" />
+                                <div class="def-number-input number-input safari_only mb-0 row">
+                                    <div class="col-sm-2">
+                                        <input class="changedInput" type="number" min="1" max="200" value="1" onchange="inputChanged();"/>
+                                    </div>
+                                    <div class="col">
+                                        @if (Model.Product.SaleId != null && Model.Product.Sale.From <= DateTime.Now && Model.Product.Sale.To >= DateTime.Now)
+                                        {
+                                            <input type="hidden" id="hidden-price" value="@(@Model.Product.Price - Model.Product.Price * Model.Product.Sale.SaleRate / 100)" />
+                                            <p style="color: red; text-shadow: 2px 2px 3px #ccc; font-size: 25px; font-weight: bold; padding-top: 0px;" id="price">@(@Model.Product.Price - Model.Product.Price * Model.Product.Sale.SaleRate / 100) đ</p>
+                                        }
+                                        else
+                                        {
+                                            <input type="hidden" id="hidden-price" value="@Model.Product.Price" />
+                                            <p style="color: red; text-shadow: 2px 2px 3px #ccc; font-size: 25px; font-weight: bold; padding-top: 0px;" id="price">@Model.Product.Price</p>
+                                        }
+                                    </div>
                                 </div>
                             </td>
                         </tr>
@@ -143,36 +166,33 @@
 @section scripts{
     <script>
         $(document).ready(function () {
-            // MDB Lightbox Init
-            $(function () {
-                $("#mdb-lightbox-ui").load("mdb-addons/mdb-lightbox-ui.html");
-            });
-        });
-        $(document).ready(function () {
             $('.button-add-to-cart').on("click", function (e) {
-                var id = $(e.target);
-                $.post("/api/Cart/Add", { productId: id.attr("data-product-id") })
-                    .done(function () {
-                        var value = parseInt($(".notify-number").text(), 10) + 1;
-                        $('.notify-number').text(value);
-                    })
-                    .fail(function () {
-                        bootbox.alert("Something is wrong!");
-                    })
+                var id = $(this);
+                var a = $('.changedInput');
+                if (parseInt(a.val(), 10) > 200) {
+                    bootbox.alert("Bạn chỉ được chọn tối đa 200 sản phẩm này!");
+                }
+                else {
+                    $.post("/api/AnotherCart", { productId: id.attr("data-product-id"), amount: a.val() })
+                        .done(function () {
+                            var value = parseInt($(".notify-number").text(), 10) + parseInt(a.val(), 10);
+                            $('.notify-number').text(value);
+                        })
+                        .fail(function () {
+                            bootbox.alert("Something is wrong!");
+                        })
+                }
             });
             $('.button-add-to-cart2').on("click", function (e) {
                 var id = $(e.target);
-                $.post("/api/Cart/Add", { productId: id.attr("data-product-id") })
-                    .done(function () {
-                        var value = parseInt($(".notify-number").text(), 10) + 1;
-                        $('.notify-number').text(value);
-                        window.location.href = "/Cart/Cart";
-                    })
-                    .fail(function () {
-                        bootbox.alert("Something is wrong!");
-                    });
-                console.log("123");
+                var amount = $('.changedInput').val();
+                window.location.href = "/Cart/AddToCartWithAmount/?productId=" + id.attr("data-product-id") + "&amount=" + amount;
             })
-        })
+        });
+        function inputChanged() {
+            var amount = $('.changedInput').val();
+            var price = $('#hidden-price').val()
+            $('#price').text(parseInt(amount, 10) * parseInt(price, 10) + "đ");
+        }
     </script>
 }

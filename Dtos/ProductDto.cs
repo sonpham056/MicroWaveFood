@@ -8,5 +8,6 @@ namespace MicroWaveFood.Dtos
     public class ProductDto
     {
         public int ProductId { get; set; }
+        public int Amount { get; set; }
     }
 }
