@@ -240,7 +240,19 @@ namespace MicroWaveFood.Controllers
             return Redirect(strUrl);
         }
         
-        
+        public ActionResult DeleteOrder(int orderId, string str)
+        {
+            var order = db.Orders.Find(orderId);
+            if (order == null)
+            {
+                ViewBag.Message = "Cannot find order!";
+                return View("Error");
+            }
+            order.Status = false;
+            db.Entry(order).State = EntityState.Modified;
+            db.SaveChanges();
+            return Redirect(str);
+        }
 
         protected override void Dispose(bool disposing)
         {
