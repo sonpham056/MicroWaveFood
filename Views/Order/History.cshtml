@@ -51,6 +51,7 @@
                         else
                         {
                             <p class="text-warning">Đang giao</p>
+                            <a class="btn btn-info" href="@Url.Action("DeleteOrder","Order", new { orderId = item.OrderId, str = Request.Url.ToString()})">Hủy đơn hàng</a>
                         }
 
                         <p>Tổng tiền <span>@item.Total</span></p>
