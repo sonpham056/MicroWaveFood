@@ -15,7 +15,7 @@ namespace MicroWaveFood.Controllers
         // GET: Comments
         public ActionResult Index()
         {
-            var list = db.Products.Include("Bills.Comment").Where(a => a.status == true).ToList();
+            var list = db.Products.Include("Bills.Comment").Where(a => a.status == true ).ToList();
             return View(list);
         }
 
